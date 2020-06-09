@@ -1,6 +1,7 @@
 # Dashboard Végétal
 
 > Projet de fin de session chez Web Force 3
+>
 > Etudiants : Carlyne, Théau et Marie
 
 Le projet est mené en entier, depuis sa conception jusqu'à l'aboutissement du site final.
