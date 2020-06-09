@@ -9,6 +9,10 @@
 </template>
 
 <style lang="scss">
+  * {
+    box-sizing: border-box;
+  }
+
   /* colors */
   $blue: #1A432A;
   $gray-600: #C98E3E;
