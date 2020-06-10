@@ -1,5 +1,4 @@
 <template>
-    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#"><i class="fa fa-leaf"></i>  dashboard végétal</a>
 <!-- **** Ajouter lien vers la page d'accueil **** -->
@@ -18,7 +17,7 @@
                     <li class="nav-item dropdown">   <!-- BOUTTON CONNECTION -->
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <!-- **** Si l'utilisateur est connecté : afficher prénom **** -->
-                            bienvenue <span class="text-success font-weight-bold">  PRENOM  </span> !
+                            bienvenue <span class="text-primary font-weight-bold">  PRENOM  </span> !
                         <!-- **** Sinon :  **** -->
                             connection
                         </a>
@@ -54,21 +53,23 @@
                     </li>
 
                 </ul>
-
-                <form class="form-inline my-2 my-lg-0">    <!-- ESPACE DE RECHERCHE -->
-                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une plante" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                </form>
             
+                <BarreRecherche/>
+
             </div>
 
         </nav>
-    </div>
 </template>
 
 
 <script>
+import BarreRecherche from '../components/BarreRecherche.vue';
+
 export default {
+    name: "Navbar",
+    components: {
+        BarreRecherche
+    }
 
 }
 </script>

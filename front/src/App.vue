@@ -21,5 +21,5 @@
 
   /* shapes */
   $border-radius: .12rem;
-  @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+  @import "../node_modules/bootstrap/scss/bootstrap.scss";
 </style>
