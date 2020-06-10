@@ -1,13 +1,13 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><i class="fa fa-leaf"></i>  dashboard végétal</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+            <a class="navbar-brand text-capitalize" href="#"><i class="fa fa-leaf"></i>  dashboard végétal</a>
 <!-- **** Ajouter lien vers la page d'accueil **** -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto text-capitalize">
 
                     <li class="nav-item">     <!-- BOUTTON CATALOGUE -->
                         <a class="nav-link" href="#">catalogue</a>
@@ -15,7 +15,7 @@
                     </li>
 
                     <li class="nav-item dropdown">   <!-- BOUTTON CONNECTION -->
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <!-- **** Si l'utilisateur est connecté : afficher prénom **** -->
                             bienvenue <span class="text-primary font-weight-bold">  PRENOM  </span> !
                         <!-- **** Sinon :  **** -->
