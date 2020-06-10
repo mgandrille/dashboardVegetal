@@ -5,6 +5,10 @@
 {% block body %}
     <h1>Plantes index</h1>
 
+    {% if app.user %}
+        {{ app.user.username }}
+    {% endif %}
+
     <table class="table">
         <thead>
             <tr>

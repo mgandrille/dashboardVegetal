@@ -9,20 +9,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/plantes")
  */
 class PlantesController extends AbstractController
 {
+
     /**
      * @Route("/", name="plantes_index", methods={"GET"})
      */
     public function index(PlantesRepository $plantesRepository): Response
     {
+        
         return $this->render('plantes/index.html.twig', [
             'plantes' => $plantesRepository->findAll(),
         ]);
+
+
     }
 
     /**
@@ -33,17 +42,11 @@ class PlantesController extends AbstractController
         $plante = new Plantes();
         $form = $this->createForm(PlantesType::class, $plante);
         $form->handleRequest($request);
-        // dd($plante);
-    
-        // if($form->isSubmitted()){
-
-        //     dd($request);
-        // }
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // dd($request);
             $entityManager = $this->getDoctrine()->getManager();
+            $plante = ucfirst($plante);
             $entityManager->persist($plante);
             $entityManager->flush();
 

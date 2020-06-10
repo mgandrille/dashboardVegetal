@@ -13,8 +13,6 @@ class AppController extends AbstractController
      * @Route("/", name="app_index")
      */
      public function index(PlantesRepository $plantesRepository){
-         return $this->render('plantes/index.html.twig', [
-             'plantes'  => $plantesRepository->findAll(),
-         ]);
+         return $this->render('base.html.twig');
      }
 }
