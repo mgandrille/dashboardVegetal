@@ -1,16 +1,37 @@
 $banner-height: 300px;
+$lg-breakpoint: 62rem;
+$md-breakpoint: 48rem;
 
 .banner {
-	background-color: #1A432A;
+	
 	min-height: $banner-height;
-	@media (min-width: 48em) {
-		height: 100vh;	
+	background: url('https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png'),
+		url("https://i.postimg.cc/HLzbtyqS/opacity-plant.png"),
+		#1A432A;
+	background-blend-mode: luminosity;
+	background-repeat: no-repeat;
+	background-size: 75%, 
+		60%;
+	background-position: -50% 40%, 
+		120%;
+
+	@media (min-width: $md-breakpoint) {
+		
+	}
+
+	@media (min-width: $lg-breakpoint) {
+		height: 100vh;
+		background-size: 150%,
+			120%;	
+		background-position: right top, 
+			-150% 150%;
 	}
 }
 
 .main-content {
 	margin-top: $banner-height;
-	@media (min-width: 48em) {
+	min-height: 100vh;
+	@media (min-width: $lg-breakpoint) {
 		margin-top: 0;	
 	}
 }
