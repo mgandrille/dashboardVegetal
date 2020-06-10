@@ -22,7 +22,7 @@ class PlantesController extends AbstractController
 {
 
     /**
-     * @Route("/", name="plantes_index", methods={"GET"})
+     * @Route("/index/admin", name="plantes_index", methods={"GET"})
      */
     public function index(PlantesRepository $plantesRepository): Response
     {
@@ -35,7 +35,7 @@ class PlantesController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="plantes_new", methods={"GET","POST"})
+     * @Route("/new/admin", name="plantes_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -59,7 +59,7 @@ class PlantesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="plantes_show", methods={"GET"})
+     * @Route("/{id}/admin", name="plantes_show", methods={"GET"})
      */
     public function show(Plantes $plante): Response
     {
@@ -69,7 +69,7 @@ class PlantesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="plantes_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit/admin", name="plantes_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Plantes $plante): Response
     {
@@ -89,7 +89,7 @@ class PlantesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="plantes_delete", methods={"DELETE"})
+     * @Route("/{id}/admin", name="plantes_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Plantes $plante): Response
     {

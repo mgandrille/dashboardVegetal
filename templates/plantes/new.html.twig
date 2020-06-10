@@ -3,9 +3,15 @@
 {% block title %}New Plantes{% endblock %}
 
 {% block body %}
-    <h1>Create new Plantes</h1>
 
-    {{ include('plantes/_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
 
-    <a href="{{ path('plantes_index') }}">back to list</a>
+        <h1>Create new Plantes</h1>
+
+        {{ include('plantes/_form.html.twig') }}
+
+        <a href="{{ path('plantes_index') }}">back to list</a>
+
+    {% endif %}
+    
 {% endblock %}
