@@ -8,7 +8,9 @@
                 <!-- main content -->
                 <main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
                     <div class="row">
-                        <div class="col-sm-12">[navbar]</div>
+                        <div class="col-sm-12">
+                            <Navbar/>
+                        </div>
                     </div>
 
                     <div class="title row mt-5">
@@ -35,14 +37,18 @@
     </div>
 </template>
 
-style
 
 <style scoped lang="scss" src="./home.scss"></style>
 
 
 <script>
+import Navbar from '../components/Navbar.vue';
+
 export default {
-    name: "Home"
+    name: "Home",
+    components : {
+        Navbar
+    }
 };
 </script>
 
