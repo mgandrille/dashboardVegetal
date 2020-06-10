@@ -23,7 +23,7 @@ $font-size-base: 1rem;
 $headings-font-family: 'Vidaloka';
 $h1-font-size: $font-size-base * 4.5;
 
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap.scss";
 
 $annotations-color: $gray-500;
 $banner-height: 300px;
