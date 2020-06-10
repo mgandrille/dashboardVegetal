@@ -1,0 +1,19 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vidaloka&display=swap');
+@import './variables-styles.scss';
+
+
+/*
+* style principal
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-size: $font-size-base;
+}
+

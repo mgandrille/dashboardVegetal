@@ -1,0 +1,38 @@
+@import '../../variables-styles.scss';
+
+.card-img-top {
+	height: auto;
+	width: 150px;
+
+	@media (min-width: $md-breakpoint ) {
+		height: 200px;
+		width: auto;
+	}
+}
+
+.card-header {
+	background-color: transparent;
+	border: none;
+
+	.separator {
+		min-width: 60%;
+		min-height: 100%;
+		margin: auto;
+
+		div {
+			background-color: $main-color;
+			min-width: 100%;
+			min-height: 3px;
+			border-radius: 50px;
+			margin: auto;
+		}
+	}
+}
+
+p {
+	color: $annotations-color;
+}
+
+img {
+	object-fit: cover;
+}
