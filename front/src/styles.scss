@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+/*
+* reatribution variables Boottrap
+*/
+
+/* bootstrap theming */
+$blue: #1A432A;
+$gray-600: #C98E3E;
+$green :#228749;
+$gray-100: #EDECEA;
+
+/* theme's color */
+$main-color: $blue;
+$highlight-color: $gray-600;
+$action-color: $green;
+$light-bg-color: $gray-100;
+
+$link-color: $highlight-color;
+
+/* shapes */
+$border-radius: .12rem;
+
+/* Typeface */
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 4.5;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+
+/*
+* style principal
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-size: $font-size-base;
+}
+
+h1,
+h2 {
+	font-family: 'Alice', serif;
+}
