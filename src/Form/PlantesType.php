@@ -41,22 +41,26 @@ class PlantesType extends AbstractType
                 'class'         => Cutting::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
                 // 'choice_value'  => 'month'
             ])
             ->add('carves', EntityType::class, [
                 'class'         => Carve::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
             ])
             ->add('flowerings', EntityType::class, [
                 'class'         => Flowering::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
             ])
             ->add('pottings', EntityType::class, [
                 'class'         => Potting::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
             ])
         ;
     }
