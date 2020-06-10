@@ -27,9 +27,10 @@
                         </div>
                     </div>
 
-                    <div class="apperçu row p-3">
-                        <div class="col-lg-6">[card-dashboard]</div>
-                        <div class="col-lg-6">[card-dashboard]</div>
+                    <div class="apperçu row p-3 justify-content-between">
+                        <!-- Attention, infos en dur. Faire un v-for pour afficher les 2 derniers dashboard de la bdd-->
+                        <PlantCard />
+                        <PlantCard />
                     </div>
                 </main>
             </div>
@@ -43,11 +44,13 @@
 
 <script>
 import Navbar from '../components/Navbar.vue';
+import PlantCard from '../components/plant-card/PlantCard.vue';
 
 export default {
     name: "Home",
     components : {
-        Navbar
+        Navbar,
+        PlantCard
     }
 };
 </script>
