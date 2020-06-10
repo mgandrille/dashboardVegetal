@@ -46,7 +46,6 @@ class PlantesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager = $this->getDoctrine()->getManager();
-            $plante = ucfirst($plante);
             $entityManager->persist($plante);
             $entityManager->flush();
 

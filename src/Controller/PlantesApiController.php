@@ -36,7 +36,7 @@ class PlantesApiController extends AbstractController
 
         $plantes = $plantesrepository->findAll();
 
-        $data = $this->serializer->normalize($array, null, ['groups' => 'all_plantes']);
+        $data = $this->serializer->normalize($plantes, null, ['groups' => 'all_plantes']);
 
         return new JsonResponse($data);
     

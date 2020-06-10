@@ -103,6 +103,18 @@ class Plantes
      */
     private $difficulty;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="plante_id")
+     * @Groups("all_plantes")
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="plante_id")
+     * @Groups("all_plantes")
+     */
+    private $category;
+
     public function __construct()
     {
         $this->pottings = new ArrayCollection();
@@ -331,6 +343,30 @@ class Plantes
     public function setDifficulty(?Difficulty $difficulty): self
     {
         $this->difficulty = $difficulty;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
