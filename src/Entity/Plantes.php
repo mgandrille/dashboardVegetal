@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\Potting;
 use App\Entity\Cutting;
 use App\Entity\Carve;
@@ -21,26 +22,31 @@ class Plantes
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("all_plantes")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("all_plantes")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups("all_plantes")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("all_plantes")
      */
     private $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("all_plantes")
      */
     private $species;
 
@@ -49,40 +55,65 @@ class Plantes
      */
     private $created_at;
 
+
+    /**
+     * @Groups("all_plantes")
+     */
+    private $normalizeDate;
+
     /**
      * @ORM\ManyToMany(targetEntity=Potting::class, mappedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $pottings;
 
     /**
      * @ORM\ManyToMany(targetEntity=Cutting::class, mappedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $cuttings;
 
     /**
      * @ORM\ManyToMany(targetEntity=Carve::class, mappedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $carves;
 
     /**
      * @ORM\ManyToMany(targetEntity=Flowering::class, mappedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $flowerings;
 
     /**
      * @ORM\ManyToOne(targetEntity=Watering::class, inversedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $watering;
 
     /**
      * @ORM\ManyToOne(targetEntity=Sunshine::class, inversedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $sunshine;
 
     /**
      * @ORM\ManyToOne(targetEntity=Difficulty::class, inversedBy="id_plante")
+     * @Groups("all_plantes")
      */
     private $difficulty;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="plante_id")
+     * @Groups("all_plantes")
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="plante_id")
+     * @Groups("all_plantes")
+     */
+    private $category;
 
     public function __construct()
     {
@@ -152,6 +183,11 @@ class Plantes
         return $this->created_at;
     }
 
+    public function getNormalizeDate(){
+
+        return $this->getCreatedAt()->format('Y-m-d H:i:s');
+    }
+
     public function setCreatedAt($created_at): self
     {
         $this->created_at = $created_at;
@@ -202,7 +238,7 @@ class Plantes
             $cutting->addIdPlante($this);
         }
 
-        // return $this;
+        return $this;
     }
 
     public function removeCutting(Cutting $cutting): self
@@ -310,4 +346,29 @@ class Plantes
 
         return $this;
     }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
 }

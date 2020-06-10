@@ -15,6 +15,8 @@ use App\Entity\Cutting;
 use App\Entity\Carve;
 use App\Entity\Flowering;
 use App\Entity\Potting;
+use App\Entity\Type;
+use App\Entity\Category;
 
 class PlantesType extends AbstractType
 {
@@ -41,22 +43,33 @@ class PlantesType extends AbstractType
                 'class'         => Cutting::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
-                // 'choice_value'  => 'month'
+                'by_reference'  => false
             ])
             ->add('carves', EntityType::class, [
                 'class'         => Carve::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
             ])
             ->add('flowerings', EntityType::class, [
                 'class'         => Flowering::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
             ])
             ->add('pottings', EntityType::class, [
                 'class'         => Potting::class,
                 'choice_label'  => 'month',
                 'multiple' => true,
+                'by_reference'  => false
+            ])
+            ->add('type', EntityType::class, [
+                'class'         => Type::class,
+                'choice_label'  => 'plante_type',
+            ])
+            ->add('category', EntityType::class, [
+                'class'         => Category::class,
+                'choice_label'  => 'categories'
             ])
         ;
     }
