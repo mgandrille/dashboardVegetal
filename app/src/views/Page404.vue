@@ -4,13 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="container mt-4 text-center ">
-                    <div class="title mt-5 p-3">
-
-                        <h1 class="text-uppercase text-center">oh non...</h1>
-                        <h2 class="text-center">... Vous êtes sur la page 404...</h2>
-                    </div>
-
-                    <NoResult/>
+                    <NoResult message="Vous êtes sur la page 404"/>
                 </div>
             </div>
         </div>
