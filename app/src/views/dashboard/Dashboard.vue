@@ -1,33 +1,35 @@
 <template>
-   <div class="home">
+    <div class="home">
         <div class="container-fluid">
             <div class="row">
-                <!-- left-side banner -->
-                <div class="filtrage col-lg-2 position-fixed">
-					filtrage
-				</div>
+                <!-- left-side filter -->
+                <div class="filtrage col-lg-2 position-fixed">filtrage</div>
 
                 <!-- main content -->
-                <main class="main-content col-lg-10 offset-lg-2 container-lg bg-light">
-                    
-                    <div class="searchbar row p-3 justify-content-center">
-                            <BarreRecherche />
-                    </div>
-
-					<div class="title row mt-5 p-3">
-						<div class="col-lg-12 d-flex flex-wrap justify-content-center">
-							<!-- faire un v-for -->
+                <main class="main-content row col-lg-10 offset-lg-2 container-lg bg-light col-12">
+                    <div class="col-lg-9">
+                        <h2 class="mb-3">Prochain arrosage</h2>
+                        <div class="row bg-primary justify-content-center">
                             <PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-						</div>
+                            <PlantCard />
+                        </div>
+
+                        <div class="row">
+                            <h2 class="mb-3">Toutes vos plantes</h2>
+
+                            <div class="row flex-wrap col-lg-12 mb-3">
+                                <PlantCard />
+                                <PlantCard />
+								<PlantCard />
+								<PlantCard />
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="col-lg-3">
+						<h2 class="mb-3">Vos widgets</h2>
+						<Meteo />
+					</div>
                 </main>
             </div>
         </div>
@@ -35,16 +37,18 @@
 </template>
 
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss" src="./dashboard.scss"></style>
 
 <script>
-import PlantCard from '../../components/plant-card/PlantCard.vue';
+import PlantCard from "../../components/plant-card/PlantCard.vue";
+import Meteo from "../../components/Meteo.vue";
 
 export default {
-	name: 'Dashboard',
-	components: {
-		PlantCard
-	}
+    name: "Dashboard",
+    components: {
+		PlantCard,
+		Meteo
+    }
 };
 </script>
 
