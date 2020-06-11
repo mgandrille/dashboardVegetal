@@ -35,16 +35,14 @@
 </template>
 
 
-<style scoped lang="scss" src="./catalogue.scss"></style>
+<style scoped lang="scss"></style>
 
 <script>
-import BarreRecherche from '../../components/BarreRecherche.vue';
 import PlantCard from '../../components/plant-card/PlantCard.vue';
 
 export default {
-	name: 'Catalogue',
+	name: 'Dashboard',
 	components: {
-		BarreRecherche,
 		PlantCard
 	}
 };
