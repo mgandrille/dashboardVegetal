@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Dashboard::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $dashboard;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -146,6 +151,24 @@ class User implements UserInterface
     public function setImage($image){
 
         $this->image = $image;
+        return $this;
+    }
+
+    public function getDashboard(): ?Dashboard
+    {
+        return $this->dashboard;
+    }
+
+    public function setDashboard(?Dashboard $dashboard): self
+    {
+        $this->dashboard = $dashboard;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $dashboard ? null : $this;
+        if ($dashboard->getUser() !== $newUser) {
+            $dashboard->setUser($newUser);
+        }
+
         return $this;
     }
 }
