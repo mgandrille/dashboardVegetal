@@ -28,7 +28,7 @@
                                 mon dashboard
                             </router-link>
                             <router-link :to="{ path: '/deconnection' }" class="dropdown-item text-secondary" href="#">
-                                <i class="fa fa-sign-out"></i>
+                                <i class="fa fa-sign-out-alt"></i>
                                 déconnection
                             </router-link>
                         <!-- **** Sinon :  **** -->
