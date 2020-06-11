@@ -4,6 +4,7 @@ import About from '../views/about/About.vue'
 import Home from '../views/home/Home.vue'
 import Authentification from '../views/authentification/Authentification.vue'
 import Catalogue from '../views/catalogue/Catalogue.vue'
+import Dashboard from '../views/dashboard/Dashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,12 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/authentification',
+    path: '/authentification/connexion',
+    name: 'Authentification',
+    component: Authentification
+  },
+  {
+    path: '/authentification/inscription',
     name: 'Authentification',
     component: Authentification
   },
@@ -22,6 +28,11 @@ Vue.use(VueRouter)
     path: '/catalogue',
     name: 'Catalogue',
     component: Catalogue
+  },
+  {
+    path: '/dashboard/:id',
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/about',

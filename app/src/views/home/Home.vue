@@ -22,10 +22,16 @@
                         </div>
                     </div>
 
-                    <div class="apperçu row p-3 justify-content-between">
+                    <div class="row p-3">
+                        <div class="col-lg-12">
+                            <h2>Voir les derniers dashboard créés</h2>
+                        </div>
+                    </div>
+
+                    <div class="apperçu row p-3 justify-content-center justify-content-md-around">
                         <!-- Attention, infos en dur. Faire un v-for pour afficher les 2 derniers dashboard de la bdd-->
-                        <PlantCard />
-                        <PlantCard />
+                        <PlantCardHome />
+                        <PlantCardHome />
                     </div>
                 </main>
             </div>
@@ -38,12 +44,22 @@
 
 
 <script>
+<<<<<<< HEAD
 import PlantCard from '../components/plant-card/PlantCard.vue';
+=======
+import Footer from '../../components/Footer.vue';
+import PlantCardHome from '../../components/plant-card/PlantCardHome.vue';
+>>>>>>> feature
 
 export default {
     name: "Home",
     components : {
+<<<<<<< HEAD
         PlantCard
+=======
+        Footer,
+        PlantCardHome
+>>>>>>> feature
     }
 };
 </script>

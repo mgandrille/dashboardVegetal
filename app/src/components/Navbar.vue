@@ -70,6 +70,10 @@ export default {
 </script>
 
 
-<style>
+<style scoped lang="scss">
+    @import '../variables-styles.scss';
 
+    nav {
+        height: $navbar-height;
+    }
 </style>
