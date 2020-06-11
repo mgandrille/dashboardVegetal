@@ -27,6 +27,14 @@ Vue.use(VueRouter)
     path: '/about',
     name: 'About',
     component: About
+  },
+  {
+    path: '/page404',
+    name: 'Page404',
+    // route level code-splitting
+    // this generates a separate chunk (page404.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "page404" */ '../views/Page404.vue')
   }
 ]
 

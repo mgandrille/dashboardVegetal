@@ -17,6 +17,8 @@ use App\Entity\Flowering;
 use App\Entity\Potting;
 use App\Entity\Type;
 use App\Entity\Category;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PlantesType extends AbstractType
 {
@@ -70,6 +72,23 @@ class PlantesType extends AbstractType
             ->add('category', EntityType::class, [
                 'class'         => Category::class,
                 'choice_label'  => 'categories'
+            ])
+            ->add('picture', FileType::class, [
+                'label'         => 'Image de la plante',
+                'mapped'        => false,
+                'required'      => false,
+                'constraints'   => [
+                    new File([
+                        'maxSize'   => '1024k',
+                        'mimeTypes' => [
+                            // 'image/jpg',
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage'  => "Merci d'entrer une image valide"
+                    ])
+                ]
             ])
         ;
     }

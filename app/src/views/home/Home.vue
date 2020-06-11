@@ -27,11 +27,6 @@
                         <PlantCard />
                         <PlantCard />
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <Footer/>
-                        </div>
-                    </div>
                 </main>
             </div>
         </div>
@@ -43,13 +38,11 @@
 
 
 <script>
-import Footer from '../../components/Footer.vue';
-import PlantCard from '../../components/plant-card/PlantCard.vue';
+import PlantCard from '../components/plant-card/PlantCard.vue';
 
 export default {
     name: "Home",
     components : {
-        Footer,
         PlantCard
     }
 };
