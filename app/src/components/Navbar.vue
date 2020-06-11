@@ -23,7 +23,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <!-- **** Si l'utilisateur est connecté :  **** -->
-                            <router-link :to="{ path: '/dashboard', params: { userId: 123 } }" class="dropdown-item text-secondary">
+                            <router-link :to="{ path: '/dashboard', params: {id: 123 } }" class="dropdown-item text-secondary">
                                 <i class="fa fa-leaf"></i>
                                 mon dashboard
                             </router-link>

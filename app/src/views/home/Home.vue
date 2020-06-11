@@ -44,22 +44,14 @@
 
 
 <script>
-<<<<<<< HEAD
-import PlantCard from '../components/plant-card/PlantCard.vue';
-=======
 import Footer from '../../components/Footer.vue';
 import PlantCardHome from '../../components/plant-card/PlantCardHome.vue';
->>>>>>> feature
 
 export default {
     name: "Home",
     components : {
-<<<<<<< HEAD
-        PlantCard
-=======
         Footer,
         PlantCardHome
->>>>>>> feature
     }
 };
 </script>
