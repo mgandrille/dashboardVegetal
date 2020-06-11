@@ -17,7 +17,7 @@
 
                     <div class="content row p-3">
                         <div class="col-lg-12">
-                            <p>Suivez, arrosez et planifiez votre entretient de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs. Vous venez d'acquérir une plante ? 
+                            <p>Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs. Vous venez d'acquérir une plante ? 
                                 <a href="#">Inscrivez-vous</a> pour créer votre dashboard.</p>
                         </div>
                     </div>
@@ -44,22 +44,14 @@
 
 
 <script>
-<<<<<<< HEAD
-import PlantCard from '../components/plant-card/PlantCard.vue';
-=======
 import Footer from '../../components/Footer.vue';
 import PlantCardHome from '../../components/plant-card/PlantCardHome.vue';
->>>>>>> feature
 
 export default {
     name: "Home",
     components : {
-<<<<<<< HEAD
-        PlantCard
-=======
         Footer,
         PlantCardHome
->>>>>>> feature
     }
 };
 </script>
