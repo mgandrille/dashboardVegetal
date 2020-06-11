@@ -6,7 +6,7 @@
 				<div class="banner col-lg-4 position-fixed"></div>
 
 				<!-- main content -->
-				<main class="mt-5 main-content col-lg-8 offset-lg-4 container-lg bg-light">
+				<main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
 					<div class="title row mt-5 p-3">
                         <div class="col-lg-12">
                             <p>Rejoignez-nous</p>
@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import FormCreation from '../components/form/FormCreation.vue';
-import FormAuth from '../components/form/FormAuth.vue';
+import FormCreation from '../../components/form/FormCreation.vue';
+import FormAuth from '../../components/form/FormAuth.vue';
 
 export default {
 	name: "Authentification",

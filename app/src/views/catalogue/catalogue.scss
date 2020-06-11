@@ -1,0 +1,17 @@
+@import '../../variables-styles.scss';
+
+.filtrage {
+	min-height: $banner-height;
+	
+	@media (min-width: $lg-breakpoint) {
+		height: 100vh;
+	}
+
+	.main-content {
+		margin-top: $banner-height;
+		min-height: 100vh;
+		@media (min-width: $lg-breakpoint) {
+			margin-top: 0;	
+		}
+	}
+}

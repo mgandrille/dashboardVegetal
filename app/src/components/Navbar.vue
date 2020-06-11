@@ -1,5 +1,5 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed fixed-top" id="top">
             <a class="navbar-brand text-capitalize" href="#"><i class="fa fa-leaf"></i>  dashboard végétal</a>
 <!-- **** Ajouter lien vers la page d'accueil **** -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

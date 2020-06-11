@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import About from '../views/About.vue'
-import Home from '../views/Home.vue'
-import Authentification from '../views/Authentification.vue'
+import About from '../views/about/About.vue'
+import Home from '../views/home/Home.vue'
+import Authentification from '../views/authentification/Authentification.vue'
+import Catalogue from '../views/catalogue/Catalogue.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
     path: '/authentification',
     name: 'Authentification',
     component: Authentification
+  },
+  {
+    path: '/catalogue',
+    name: 'Catalogue',
+    component: Catalogue
   },
   {
     path: '/about',

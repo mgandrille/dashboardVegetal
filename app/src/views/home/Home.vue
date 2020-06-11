@@ -6,7 +6,7 @@
                 <div class="banner col-lg-4 position-fixed"></div>
 
                 <!-- main content -->
-                <main class="mt-4 main-content col-lg-8 offset-lg-4 container-lg bg-light">
+                <main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
                     
                     <div class="title row mt-5 p-3">
                         <div class="col-lg-12">
@@ -43,8 +43,8 @@
 
 
 <script>
-import Footer from '../components/Footer.vue';
-import PlantCard from '../components/plant-card/PlantCard.vue';
+import Footer from '../../components/Footer.vue';
+import PlantCard from '../../components/plant-card/PlantCard.vue';
 
 export default {
     name: "Home",
