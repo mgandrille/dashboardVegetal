@@ -3,7 +3,9 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side filter -->
-                <div class="filtrage col-lg-2 position-fixed">filtrage</div>
+                <div class="filtrage col-lg-2 position-fixed">
+                    <Filtrage/>
+                </div>
 
                 <!-- main content -->
                 <main class="main-content row col-lg-10 offset-lg-2 container-lg bg-light col-12">
@@ -42,12 +44,14 @@
 <script>
 import PlantCard from "../../components/plant-card/PlantCard.vue";
 import Meteo from "../../components/Meteo.vue";
+import Filtrage from "../../components/Filtrage.vue";
 
 export default {
     name: "Dashboard",
     components: {
 		PlantCard,
-		Meteo
+        Meteo,
+        Filtrage
     }
 };
 </script>
