@@ -1,10 +1,10 @@
 <template>
-   <div class="home">
+	<div class="home">
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner -->
                 <div class="filtrage col-lg-2 position-fixed">
-					filtrage
+					<Filtrage/>
 				</div>
 
                 <!-- main content -->
@@ -40,12 +40,14 @@
 <script>
 import BarreRecherche from '../../components/BarreRecherche.vue';
 import PlantCard from '../../components/plant-card/PlantCard.vue';
+import Filtrage from '../../components/Filtrage.vue';
 
 export default {
 	name: 'Catalogue',
 	components: {
 		BarreRecherche,
-		PlantCard
+		PlantCard,
+		Filtrage
 	}
 };
 </script>
