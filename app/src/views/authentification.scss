@@ -2,22 +2,22 @@
 
 .banner {	
 	min-height: $banner-height;
-	background: url('https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png'),
-		url("https://i.postimg.cc/HLzbtyqS/opacity-plant.png"),
+	background: url('https://i.postimg.cc/qRh9N8h6/people-happy.png'),
+		url('https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png'),
 		#1A432A;
 	background-blend-mode: luminosity;
 	background-repeat: no-repeat;
-	background-size: 75%, 
-		60%;
-	background-position: -50% 40%, 
-		120%;
+	background-size: 180%, 
+		50%;
+	background-position: 50% 100%, 
+		100% 0;
 
 	@media (min-width: $lg-breakpoint) {
 		height: 100vh;
-		background-size: 150%,
-			120%;	
-		background-position: right top, 
-			-150% 150%;
+		background-size: 180%,
+			180%;	
+		background-position: 50% 100%, 
+			50% 150%;
 	}
 }
 

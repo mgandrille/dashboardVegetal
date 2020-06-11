@@ -8,6 +8,7 @@ $gray-600: #C98E3E;
 $green :#228749;
 $gray-100: #EDECEA;
 
+
 /* theme's color */
 $main-color: $blue;
 $highlight-color: $gray-600;
@@ -22,6 +23,9 @@ $border-radius: .12rem;
 $font-size-base: 1rem;
 $headings-font-family: 'Vidaloka';
 $h1-font-size: $font-size-base * 4.5;
+
+/* Form */
+$input-placeholder-color: #adb5bd; 
 
 @import "~bootstrap/scss/bootstrap.scss";
 
