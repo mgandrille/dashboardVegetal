@@ -115,6 +115,11 @@ class Plantes
      */
     private $category;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Dashboard::class, mappedBy="plantes")
+     */
+    private $dashboards;
+
     public function __construct()
     {
         $this->pottings = new ArrayCollection();
@@ -122,6 +127,7 @@ class Plantes
         $this->carves = new ArrayCollection();
         $this->flowerings = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
+        $this->dashboards = new ArrayCollection();
     }
 
 
@@ -367,6 +373,34 @@ class Plantes
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Dashboard[]
+     */
+    public function getDashboards(): Collection
+    {
+        return $this->dashboards;
+    }
+
+    public function addDashboard(Dashboard $dashboard): self
+    {
+        if (!$this->dashboards->contains($dashboard)) {
+            $this->dashboards[] = $dashboard;
+            $dashboard->addPlante($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDashboard(Dashboard $dashboard): self
+    {
+        if ($this->dashboards->contains($dashboard)) {
+            $this->dashboards->removeElement($dashboard);
+            $dashboard->removePlante($this);
+        }
 
         return $this;
     }
