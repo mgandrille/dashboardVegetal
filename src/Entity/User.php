@@ -38,6 +38,8 @@ class User implements UserInterface
      */
     private $password;
 
+    private $image;
+
     /**
      * @ORM\Column(type="boolean")
      */
@@ -134,6 +136,16 @@ class User implements UserInterface
     {
         $this->isVerified = $isVerified;
 
+        return $this;
+    }
+
+    public function getImage(){
+        return $this->image;
+    }
+
+    public function setImage($image){
+
+        $this->image = $image;
         return $this;
     }
 }

@@ -14,6 +14,9 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use App\Service\FileUploader;
 
 /**
  * @Route("/plantes")
@@ -37,13 +40,20 @@ class PlantesController extends AbstractController
     /**
      * @Route("/new/admin", name="plantes_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger, FileUploader $fileUploader): Response
     {
         $plante = new Plantes();
         $form = $this->createForm(PlantesType::class, $plante);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $pictureFile = $form['picture']->getData();
+
+            if ($pictureFile) {
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $plante->setPicture($pictureFileName);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($plante);
