@@ -5,6 +5,7 @@ import Home from '../views/home/Home.vue'
 import Authentification from '../views/authentification/Authentification.vue'
 import Catalogue from '../views/catalogue/Catalogue.vue'
 import Dashboard from '../views/dashboard/Dashboard.vue'
+import Detail from '../views/detail/Detail.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/dashboard/:id',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: Detail
   },
   {
     path: '/about',

@@ -6,7 +6,7 @@
                 <div class="filtrage col-lg-2 position-fixed">filtrage</div>
 
                 <!-- main content -->
-                <main class="main-content row col-lg-10 offset-lg-2 container-lg bg-light">
+                <main class="main-content row col-lg-10 offset-lg-2 container-lg bg-light col-12">
                     <div class="col-lg-9">
                         <h2 class="mb-3">Prochain arrosage</h2>
                         <div class="row bg-primary justify-content-center">

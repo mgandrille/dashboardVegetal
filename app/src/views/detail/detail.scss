@@ -1,0 +1,29 @@
+@import '../../variables-styles.scss';
+
+.banner {	
+	margin-top: $navbar-height;
+	min-height: $banner-height;
+	background-image: url('https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png');
+	background-color: white;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+
+	@media (min-width: $lg-breakpoint) {
+		min-height: calc(100vh - 150px - 75px);
+	}
+}
+
+.main-content {
+	margin-top: $banner-height;
+	min-height: 100vh;
+	@media (min-width: $lg-breakpoint) {
+		margin-top: $navbar-height;	
+	}
+}
+
+footer {
+	z-index: 200;
+	height: 150px;
+	background-color: $main-color;
+}
