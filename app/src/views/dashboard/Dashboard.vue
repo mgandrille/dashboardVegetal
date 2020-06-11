@@ -7,7 +7,7 @@
 
                 <!-- main content -->
                 <main class="main-content row col-lg-10 offset-lg-2 container-lg bg-light">
-                    <div class="col-lg-9 m-3">
+                    <div class="col-lg-9">
                         <h2 class="mb-3">Prochain arrosage</h2>
                         <div class="row bg-primary justify-content-center">
                             <PlantCard />
@@ -15,9 +15,9 @@
                         </div>
 
                         <div class="row">
-                            <h2 class="mb-3 m-3">Toutes vos plantes</h2>
+                            <h2 class="mb-3">Toutes vos plantes</h2>
 
-                            <div class="row flex-nowrap overflow-auto">
+                            <div class="row flex-wrap col-lg-12 mb-3">
                                 <PlantCard />
                                 <PlantCard />
 								<PlantCard />
@@ -26,7 +26,10 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3">widget</div>
+                    <div class="col-lg-3">
+						<h2 class="mb-3">Vos widgets</h2>
+						<Meteo />
+					</div>
                 </main>
             </div>
         </div>
@@ -38,11 +41,13 @@
 
 <script>
 import PlantCard from "../../components/plant-card/PlantCard.vue";
+import Meteo from "../../components/Meteo.vue";
 
 export default {
     name: "Dashboard",
     components: {
-        PlantCard
+		PlantCard,
+		Meteo
     }
 };
 </script>
