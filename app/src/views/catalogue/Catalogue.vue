@@ -17,8 +17,8 @@
 					<div class="title row mt-5 p-3">
 						<div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard 	v-for="plant in plants" 
-										:key="plant.id" 
-										:plantSrcImg="plant.picture">
+										:key="plant.id"
+										:plantItem="plant" >
 								<template v-slot:plant-name>
 									<h5 class="card-title">{{ plant.name }}</h5>
 								</template>
