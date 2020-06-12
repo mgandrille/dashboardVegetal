@@ -30,9 +30,6 @@ class PlantesController extends AbstractController
      */
     public function index(PlantesRepository $plantesRepository, DashboardRepository $dashboardrepository): Response
     {
-        
-        $dash = $dashboardrepository->findBigger();
-        dd($dash);
 
         return $this->render('plantes/index.html.twig', [
             'plantes' => $plantesRepository->findAll(),
@@ -77,7 +74,7 @@ class PlantesController extends AbstractController
      */
     public function show(Plantes $plante): Response
     {
-        return PlantesApiController::findOne($plante);
+        // return PlantesApiController::findOne($plante);
     }
 
     /**
