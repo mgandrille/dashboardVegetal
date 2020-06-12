@@ -19,6 +19,7 @@ use App\Entity\Type;
 use App\Entity\Category;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Doctrine\DBAL\Types\TextType;
 
 class PlantesType extends AbstractType
 {
@@ -81,7 +82,7 @@ class PlantesType extends AbstractType
                     new File([
                         'maxSize'   => '1024k',
                         'mimeTypes' => [
-                            // 'image/jpg',
+                            'image/jpg',
                             'image/jpeg',
                             'image/gif',
                             'image/png',

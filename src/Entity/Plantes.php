@@ -22,31 +22,31 @@ class Plantes
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("all_plantes")
-     */
+     * @Groups({"all_plantes", "dashboard"})     
+     * */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $species;
 
@@ -57,63 +57,68 @@ class Plantes
 
 
     /**
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $normalizeDate;
 
     /**
      * @ORM\ManyToMany(targetEntity=Potting::class, mappedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $pottings;
 
     /**
      * @ORM\ManyToMany(targetEntity=Cutting::class, mappedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $cuttings;
 
     /**
      * @ORM\ManyToMany(targetEntity=Carve::class, mappedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $carves;
 
     /**
      * @ORM\ManyToMany(targetEntity=Flowering::class, mappedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $flowerings;
 
     /**
      * @ORM\ManyToOne(targetEntity=Watering::class, inversedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $watering;
 
     /**
      * @ORM\ManyToOne(targetEntity=Sunshine::class, inversedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $sunshine;
 
     /**
      * @ORM\ManyToOne(targetEntity=Difficulty::class, inversedBy="id_plante")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $difficulty;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="plante_id")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="plante_id")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Dashboard::class, mappedBy="plantes")
+     */
+    private $dashboards;
 
     public function __construct()
     {
@@ -122,6 +127,7 @@ class Plantes
         $this->carves = new ArrayCollection();
         $this->flowerings = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
+        $this->dashboards = new ArrayCollection();
     }
 
 
@@ -367,6 +373,34 @@ class Plantes
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Dashboard[]
+     */
+    public function getDashboards(): Collection
+    {
+        return $this->dashboards;
+    }
+
+    public function addDashboard(Dashboard $dashboard): self
+    {
+        if (!$this->dashboards->contains($dashboard)) {
+            $this->dashboards[] = $dashboard;
+            $dashboard->addPlante($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDashboard(Dashboard $dashboard): self
+    {
+        if ($this->dashboards->contains($dashboard)) {
+            $this->dashboards->removeElement($dashboard);
+            $dashboard->removePlante($this);
+        }
 
         return $this;
     }

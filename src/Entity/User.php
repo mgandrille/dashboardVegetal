@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,19 +18,25 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("dashboard")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("dashboard")
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("dashboard")
      */
     private $roles = [];
 
+    /**
+     * @Groups("dashboard")
+     */
     private $email;
 
     /**
@@ -42,8 +49,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("dashboard")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Dashboard::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $dashboard;
 
     public function getId(): ?int
     {
@@ -146,6 +159,24 @@ class User implements UserInterface
     public function setImage($image){
 
         $this->image = $image;
+        return $this;
+    }
+
+    public function getDashboard(): ?Dashboard
+    {
+        return $this->dashboard;
+    }
+
+    public function setDashboard(?Dashboard $dashboard): self
+    {
+        $this->dashboard = $dashboard;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $dashboard ? null : $this;
+        if ($dashboard->getUser() !== $newUser) {
+            $dashboard->setUser($newUser);
+        }
+
         return $this;
     }
 }
