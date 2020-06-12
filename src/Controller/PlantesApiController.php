@@ -14,6 +14,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\Plantes;
 
 class PlantesApiController extends AbstractController
 {
@@ -40,6 +41,16 @@ class PlantesApiController extends AbstractController
 
         return new JsonResponse($data);
     
+    }
+
+    /**
+     * @Route("/api/plantes/{id}")
+     */
+    public function findOne(Plantes $plante){
+        // Find one plant with id and return Json
+
+        $data = $this->serializer->normalize($plante, null, ['groups'   => 'all_plantes']);
+        return new JsonResponse($data);
     }
 
 }

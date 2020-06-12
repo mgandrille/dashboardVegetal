@@ -17,13 +17,13 @@ class Flowering
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $month;
 

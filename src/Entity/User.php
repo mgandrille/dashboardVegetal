@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,19 +19,25 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("dashboard")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"dashboard"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"dashboard"})
      */
     private $roles = [];
 
+    /**
+     * @Groups({"dashboard"})
+     */
     private $email;
 
     /**
@@ -38,12 +46,21 @@ class User implements UserInterface
      */
     private $password;
 
-    private $image;
-
     /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Dashboard::class, mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"dashboard"})
+     */
+    private $dashboard;
+
+    public function __construct()
+    {
+        $this->dashboard = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -139,13 +156,21 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getImage(){
-        return $this->image;
+    public function getDashboard(): ?Dashboard
+    {
+        return $this->dashboard;
     }
 
-    public function setImage($image){
+    public function setDashboard(?Dashboard $dashboard): self
+    {
+        $this->dashboard = $dashboard;
 
-        $this->image = $image;
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $dashboard ? null : $this;
+        if ($dashboard->getUser() !== $newUser) {
+            $dashboard->setUser($newUser);
+        }
+
         return $this;
     }
 }
