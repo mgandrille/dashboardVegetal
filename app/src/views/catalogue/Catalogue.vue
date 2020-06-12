@@ -12,6 +12,7 @@
                     
                     <div class="searchbar row p-3 justify-content-center">
                             <BarreRecherche />
+							<h1>{{ plants }}</h1>
                     </div>
 
 					<div class="title row mt-5 p-3">
@@ -48,6 +49,19 @@ export default {
 		BarreRecherche,
 		PlantCard,
 		Filtrage
+	},
+
+	data() {
+		return {
+			plants: []
+		}
+	},
+
+	created() {
+		this.$http.get('http://localhost:8888/plantes.json')
+			.then((result) => {
+				this.plants = result.data;
+			})
 	}
 };
 </script>

@@ -1,0 +1,535 @@
+[
+  {
+    "id": 1,
+    "name": "ijhqgsf",
+    "description": "qfs)iy",
+    "picture": "poqoigu",
+    "species": "ogu",
+    "normalizeDate": "2020-06-09 12:33:46",
+    "pottings": {
+      
+    },
+    "cuttings": {
+      
+    },
+    "carves": {
+      
+    },
+    "flowerings": {
+      
+    },
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 2,
+    "name": "dgdffdgfdg",
+    "description": "dfgdfgdg",
+    "picture": "dfgdfg",
+    "species": "dfgdfg",
+    "normalizeDate": "2020-06-09 13:05:36",
+    "pottings": {
+      
+    },
+    "cuttings": {
+      
+    },
+    "carves": {
+      
+    },
+    "flowerings": {
+      
+    },
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 3,
+    "name": "iqfyd²pq",
+    "description": "psiegh",
+    "picture": "qpghqg",
+    "species": "q*gdojhg",
+    "normalizeDate": "2020-06-09 14:28:32",
+    "pottings": {
+      
+    },
+    "cuttings": {
+      
+    },
+    "carves": {
+      
+    },
+    "flowerings": {
+      
+    },
+    "watering": {
+      "id": 2,
+      "frequency": "occasionnel",
+      "timeFrequency": 604800
+    },
+    "sunshine": {
+      "id": 2,
+      "exposure": "mi_ombre"
+    },
+    "difficulty": {
+      "id": 3,
+      "level": "dur"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 4,
+    "name": "ijhqgsf",
+    "description": "qspifqsfyiph",
+    "picture": "qopffu",
+    "species": "gqdoû",
+    "normalizeDate": "2020-06-09 14:54:46",
+    "pottings": {
+      
+    },
+    "cuttings": {
+      
+    },
+    "carves": {
+      
+    },
+    "flowerings": {
+      
+    },
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 5,
+    "name": "s^^dogu",
+    "description": "ôqug",
+    "picture": "q^gu",
+    "species": "gsd$pi",
+    "normalizeDate": "2020-06-09 15:01:05",
+    "pottings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 4,
+        "month": "avril"
+      }
+    ],
+    "carves": [
+      {
+        "id": 10,
+        "month": "octobre"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 10,
+        "month": "octobre"
+      },
+      {
+        "id": 12,
+        "month": "décembre"
+      }
+    ],
+    "watering": {
+      "id": 2,
+      "frequency": "occasionnel",
+      "timeFrequency": 604800
+    },
+    "sunshine": {
+      "id": 3,
+      "exposure": "ombre"
+    },
+    "difficulty": {
+      "id": 2,
+      "level": "moyen"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 6,
+    "name": "qfpihy",
+    "description": "qpg",
+    "picture": "piiqhdg",
+    "species": "qdgpih",
+    "normalizeDate": "2020-06-09 15:07:45",
+    "pottings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 4,
+        "month": "avril"
+      }
+    ],
+    "carves": [
+      {
+        "id": 10,
+        "month": "octobre"
+      },
+      {
+        "id": 12,
+        "month": "décembre"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 10,
+        "month": "octobre"
+      }
+    ],
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 7,
+    "name": "qsfôh",
+    "description": "*qoogh",
+    "picture": "*qdpfh",
+    "species": "qdph",
+    "normalizeDate": "2020-06-09 15:09:02",
+    "pottings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 1,
+        "month": "janvier"
+      }
+    ],
+    "carves": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 3,
+        "month": "mars"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 4,
+        "month": "avril"
+      }
+    ],
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 8,
+    "name": "ijhqgsf",
+    "description": "qgqgds",
+    "picture": "qjljdhfl",
+    "species": "sdf",
+    "normalizeDate": "2020-06-09 15:13:12",
+    "pottings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 4,
+        "month": "avril"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "carves": [
+      {
+        "id": 3,
+        "month": "mars"
+      },
+      {
+        "id": 4,
+        "month": "avril"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": null,
+    "category": null
+  },
+  {
+    "id": 9,
+    "name": "ôqshf",
+    "description": "piqhgf",
+    "picture": "^*oqdhg",
+    "species": "ôqsgj",
+    "normalizeDate": "2020-06-10 10:10:31",
+    "pottings": [
+      {
+        "id": 3,
+        "month": "mars"
+      },
+      {
+        "id": 11,
+        "month": "novembre"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 2,
+        "month": "février"
+      },
+      {
+        "id": 3,
+        "month": "mars"
+      }
+    ],
+    "carves": [
+      {
+        "id": 4,
+        "month": "avril"
+      },
+      {
+        "id": 10,
+        "month": "octobre"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 3,
+        "month": "mars"
+      }
+    ],
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": {
+      "plante_type": "indoor"
+    },
+    "category": {
+      "categories": "décoratives"
+    }
+  },
+  {
+    "id": 10,
+    "name": "plante",
+    "description": "test",
+    "picture": "telechargement-5ee1f268d8f4f-jpeg",
+    "species": "sdf",
+    "normalizeDate": "2020-06-11 08:59:20",
+    "pottings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "carves": [
+      {
+        "id": 3,
+        "month": "mars"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 10,
+        "month": "octobre"
+      }
+    ],
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": {
+      "plante_type": "indoor"
+    },
+    "category": {
+      "categories": "décoratives"
+    }
+  },
+  {
+    "id": 11,
+    "name": "ijhqgsf",
+    "description": "fsdfsd",
+    "picture": "telechargement-5ee1f2ef436f5.jpeg",
+    "species": "sdf",
+    "normalizeDate": "2020-06-11 09:01:35",
+    "pottings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "cuttings": [
+      {
+        "id": 2,
+        "month": "février"
+      }
+    ],
+    "carves": [
+      {
+        "id": 1,
+        "month": "janvier"
+      }
+    ],
+    "flowerings": [
+      {
+        "id": 1,
+        "month": "janvier"
+      }
+    ],
+    "watering": {
+      "id": 1,
+      "frequency": "fréquent",
+      "timeFrequency": 259200
+    },
+    "sunshine": {
+      "id": 1,
+      "exposure": "soleil"
+    },
+    "difficulty": {
+      "id": 1,
+      "level": "facile"
+    },
+    "type": {
+      "plante_type": "indoor"
+    },
+    "category": {
+      "categories": "décoratives"
+    }
+  }
+]
