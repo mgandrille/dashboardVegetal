@@ -47,7 +47,11 @@
                     </select>
                 </div>
 
+                <button @click.prevent="$emit('get-params', parameters)">Rechercher</button>
+
             </div>
+
+            
         </form>
 
     </div>
@@ -57,20 +61,10 @@
 export default {
     name: 'Filtrage',
 
-    created() {
-        this.$http.post('/api/search', {
-            type: 'value',
-            difficulty: 'value',
-            sunshine: 'value',
-            watering: 'value'
-            })
-
-            .then(function (response) {
-            console.log(response);
-            })
-            .catch(function (error) {
-            console.log(error);
-            });
+    data() {
+        return {
+            parameters: 'test'
+        }
     }
 }
 </script>

@@ -4,7 +4,7 @@
             <div class="row">
                 <!-- left-side banner -->
                 <div class="filtrage col-lg-2 position-fixed">
-					<Filtrage/>
+					<Filtrage v-on:get-params="searchParams = $event"/>
 				</div>
 
                 <!-- main content -->
@@ -53,7 +53,8 @@ export default {
 
 	data() {
 		return {
-			plants: []
+			plants: [],
+			searchParams: ''
 		}
 	},
 
