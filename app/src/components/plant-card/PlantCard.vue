@@ -1,5 +1,5 @@
 <template>
-    <div class="card m-2 m-lg-5 col-12 col-md-auto" v-bind:class="{ arrosage : isArrose}" style="width: 18rem;">
+    <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
                 v-bind:src="'http://localhost:8888/uploads/pictures/' + plantSrcImg"

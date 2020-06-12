@@ -13,8 +13,9 @@
                         <h2 class="mb-3">Prochain arrosage</h2>
                         <div class="row bg-primary justify-content-center">
                             <ul>
-                                <li class="text-light" v-for="items in apiResponse" :key="items.id" v-bind:class="{ arrosage: items.isArrosed }">
-                                    {{items.name}} : {{items.watering}}
+                                <li class="text-light" v-for="plant in plants" :key="plant.id" v-bind:class="{ arrosage: plant.isArrosed }">
+                                    {{plant.name}} : {{ plant.watering.id }} / {{plant.watering.timeFrequency}}
+                                    <!-- {{ plant }} -->
                                 </li>
                             </ul>
                         </div>
@@ -52,22 +53,30 @@ import Filtrage from "../../components/Filtrage.vue";
 export default {
     name: "Dashboard",
     components: {
-		PlantCard,
+    PlantCard,
         Meteo,
         Filtrage
     },
     data() {
         return {
-            apiResponse: [
-                { id: 1, name: 'plante1', watering: 'fréquent', timeFrequency: 259200, isArrosed: true },
-                { id: 2, name: 'plante2', watering: 'occasionnel', timeFrequency: 604800, isArrosed: false  },
-                { id: 3, name: 'plante3', watering: 'peu fréquent', timeFrequency: 1814400, isArrosed: false}
-            ],
-
-        }
+            plants: [],
+    }
     },
+    created() {
+        this.$http.get('api/plantes')
+        .then((result) => {
+            this.plants = result.data;
 
-
+            this.plants.forEach(plant => {
+                let dateArrosage = plant.watering.DERNIERARROSAGE + plant.watering.timeFrequency
+                let date = Date.now();
+                console.log(date);
+                if (dateArrosage >= date) {
+                    return plant.isArrosed = true
+                };
+            });
+        });
+    },
 };
 
 </script>
