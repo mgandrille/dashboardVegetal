@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <div class="container pt-5">
+        <div class="container-fluid bg-light pt-5">
             <p class="float-right">
                 <a href="#top">Back to top</a>
             </p>
