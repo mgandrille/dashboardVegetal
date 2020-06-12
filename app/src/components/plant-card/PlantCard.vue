@@ -2,13 +2,13 @@
     <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
-                src="https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png"
+                v-bind:src="'http://localhost:8888/uploads/pictures/' + plantSrcImg"
                 class="card-img-top p-3"
                 alt="image"
             />
             <div class="d-flex flex-column card-body">
-                <h5 class="card-title">Nom plante</h5>
-                <p class="card-text">Description</p>
+                <slot name="plant-name"></slot>
+                <slot name="plant-description"></slot>
             </div>
         </div>
 
@@ -21,7 +21,9 @@
 
 <script>
 export default {
-    name: "PlantCard"
+    name: "PlantCard",
+
+    props: ['plantSrcImg']
 };
 </script>
 

@@ -55,7 +55,23 @@
 
 <script>
 export default {
+    name: 'Filtrage',
 
+    created() {
+        this.$http.post('/api/search', {
+            type: 'value',
+            difficulty: 'value',
+            sunshine: 'value',
+            watering: 'value'
+            })
+
+            .then(function (response) {
+            console.log(response);
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+    }
 }
 </script>
 
