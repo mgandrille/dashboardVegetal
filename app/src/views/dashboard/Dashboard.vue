@@ -12,8 +12,11 @@
                     <div class="col-lg-9">
                         <h2 class="mb-3">Prochain arrosage</h2>
                         <div class="row bg-primary justify-content-center">
-                            <PlantCard />
-                            <PlantCard />
+                            <ul>
+                                <li class="text-light" v-for="items in apiResponse" :key="items.id" v-bind:class="{ arrosage: items.isArrosed }">
+                                    {{items.name}} : {{items.watering}}
+                                </li>
+                            </ul>
                         </div>
 
                         <div class="row">
@@ -52,8 +55,21 @@ export default {
 		PlantCard,
         Meteo,
         Filtrage
-    }
+    },
+    data() {
+        return {
+            apiResponse: [
+                { id: 1, name: 'plante1', watering: 'fréquent', timeFrequency: 259200, isArrosed: true },
+                { id: 2, name: 'plante2', watering: 'occasionnel', timeFrequency: 604800, isArrosed: false  },
+                { id: 3, name: 'plante3', watering: 'peu fréquent', timeFrequency: 1814400, isArrosed: false}
+            ],
+
+        }
+    },
+
+
 };
+
 </script>
 
 

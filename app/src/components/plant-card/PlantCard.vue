@@ -1,5 +1,5 @@
 <template>
-    <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
+    <div class="card m-2 m-lg-5 col-12 col-md-auto" v-bind:class="{ arrosage : isArrose}" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
                 src="https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png"
@@ -22,6 +22,7 @@
 <script>
 export default {
     name: "PlantCard"
+
 };
 </script>
 
