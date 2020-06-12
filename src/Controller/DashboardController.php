@@ -91,4 +91,5 @@ class DashboardController extends AbstractController
 
         return $this->redirectToRoute('dashboard_index');
     }
+
 }

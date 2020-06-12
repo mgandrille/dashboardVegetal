@@ -43,6 +43,7 @@ class DashboardRepository extends ServiceEntityRepository
             ->select('count(m.id) as c')
             ->groupBy('d.id')
             ->orderBy('c', 'DESC')
+            ->setMaxResults(2)
             ->getQuery()
             ->getResult()
             ;
