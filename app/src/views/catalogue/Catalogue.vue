@@ -16,7 +16,9 @@
 
 					<div class="title row mt-5 p-3">
 						<div class="col-lg-12 d-flex flex-wrap justify-content-center">
-                            <PlantCard v-for="plant in plants" :key="plant.id" :plantSrcImg="plant.picture">
+                            <PlantCard 	v-for="plant in plants" 
+										:key="plant.id" 
+										:plantSrcImg="plant.picture">
 								<template v-slot:plant-name>
 									<h5 class="card-title">{{ plant.name }}</h5>
 								</template>
@@ -55,8 +57,8 @@ export default {
 		}
 	},
 
-	created() {
-		this.$http.get('http://localhost:8888/plantes.json')
+	mounted() {
+		this.$http.get('api/plantes')
 			.then((result) => {
 				this.plants = result.data;
 			})

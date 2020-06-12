@@ -14,7 +14,7 @@
 
 		<footer class="m-2 text-right">
                 <a href="#" class="btn btn-primary ml-auto">Voir</a>
-                <a href="#" class="btn btn-primary ml-auto">Ajouter +</a>
+                <a href="#" class="btn btn-primary ml-auto" @click="addAction(1)">Ajouter +</a>
         </footer>
     </div>
 </template>
@@ -22,8 +22,7 @@
 <script>
 export default {
     name: "PlantCard",
-
-    props: ['plantSrcImg']
+    props: ['plantSrcImg', 'addAction']
 };
 </script>
 
