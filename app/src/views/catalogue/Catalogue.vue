@@ -57,7 +57,7 @@ export default {
 		}
 	},
 
-	mounted() {
+	created() {
 		this.$http.get('api/plantes')
 			.then((result) => {
 				this.plants = result.data;
