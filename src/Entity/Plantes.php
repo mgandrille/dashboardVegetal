@@ -63,7 +63,7 @@ class Plantes
 
     /**
      * @ORM\ManyToMany(targetEntity=Potting::class, mappedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $pottings;
 
