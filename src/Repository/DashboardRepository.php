@@ -36,6 +36,19 @@ class DashboardRepository extends ServiceEntityRepository
     }
     */
 
+    public function findBigger(){
+        
+        return $this->createQueryBuilder('d')
+            ->innerJoin('d.plantes', 'm')
+            ->select('count(m.id) as c')
+            ->groupBy('d.id')
+            ->orderBy('c', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Dashboard
     {

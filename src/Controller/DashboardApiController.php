@@ -3,20 +3,18 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\DashboardRepository;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Annotation\Groups;
-use App\Entity\User;
+use Symfony\Component\Routing\Annotation\Route;
 
 
-class UserApiController extends AbstractController
+class DashboardApiController extends AbstractController
 {
     private $serializer;
 
@@ -31,19 +29,14 @@ class UserApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/user", name="api_user")
+     * @Route("/api/bigdash", name="api_bigdash")
      */
-    public function index(UserRepository $userRepository){
+    public function findBigDash(DashboardRepository $dashboardRepository){
 
-        if($this->getUser()){
+        $dash = $dashboardRepository->findBigger();
 
-            $user = $this->getUser();
+        $data = $this->serializer->normalize($dash, null);
 
-            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard']);
-
-            return new JsonResponse($data);
-        }
-        
-        return $this->redirectToRoute('plantes_index');
+        return new JsonResponse($data);
     }
 }

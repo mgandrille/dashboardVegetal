@@ -44,12 +44,12 @@ class PlantesApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/oneplante")
+     * @Route("/api/plantes/{id}")
      */
-    public static function findOne(Plantes $plante){
+    public function findOne(Plantes $plante){
+        // Find one plant with id and return Json
 
-        $data = $this->serializer->normalize($plante, null);
-
+        $data = $this->serializer->normalize($plante, null, ['groups'   => 'all_plantes']);
         return new JsonResponse($data);
     }
 
