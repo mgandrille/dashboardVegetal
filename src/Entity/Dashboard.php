@@ -6,6 +6,7 @@ use App\Repository\DashboardRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=DashboardRepository::class)
@@ -16,16 +17,19 @@ class Dashboard
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("dashboard")
      */
     private $id;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="dashboard", cascade={"persist", "remove"})
+     * @Groups("dashboard")
      */
     private $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Plantes::class, inversedBy="dashboards")
+     * @Groups("dashboard")
      */
     private $plantes;
 

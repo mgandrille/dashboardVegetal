@@ -17,13 +17,13 @@ class Watering
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("all_plantes")
+     * @Groups({"all_plantes", "dashboard"})  
      */
     private $frequency;
 
@@ -31,6 +31,11 @@ class Watering
      * @ORM\OneToMany(targetEntity=Plantes::class, mappedBy="watering")
      */
     private $id_plante;
+
+    /**
+     * @Groups({"all_plantes", "dashboard"})  
+     */
+    private $timeFrequency;
 
     public function __construct()
     {
@@ -83,5 +88,24 @@ class Watering
         }
 
         return $this;
+    }
+
+    public function getTimeFrequency(){
+        // return watering frequency with timestamp (3d, 1 week and 3 weeks)
+
+        switch ($this->getId()){
+
+            case 1 : 
+            return 259200;
+            break;
+
+            case 2 :
+            return 604800;
+            break;
+
+            case 3 :
+            return 1814400;
+            break;
+        }
     }
 }

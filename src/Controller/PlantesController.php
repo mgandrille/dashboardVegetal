@@ -69,13 +69,11 @@ class PlantesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/admin", name="plantes_show", methods={"GET"})
+     * @Route("/{id}", name="plantes_show", methods={"GET"})
      */
     public function show(Plantes $plante): Response
     {
-        return $this->render('plantes/show.html.twig', [
-            'plante' => $plante,
-        ]);
+        return PlantesApiController::findOne($plante);
     }
 
     /**
