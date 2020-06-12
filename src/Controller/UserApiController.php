@@ -34,6 +34,7 @@ class UserApiController extends AbstractController
      * @Route("/api/user", name="api_user")
      */
     public function index(UserRepository $userRepository){
+        // if user is connected, find the associated dashboard
 
         if($this->getUser()){
 
@@ -43,7 +44,7 @@ class UserApiController extends AbstractController
 
             return new JsonResponse($data);
         }
-        
+
         return $this->redirectToRoute('plantes_index');
     }
 }

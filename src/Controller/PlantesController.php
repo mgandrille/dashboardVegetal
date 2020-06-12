@@ -110,4 +110,5 @@ class PlantesController extends AbstractController
 
         return $this->redirectToRoute('plantes_index');
     }
+    
 }
