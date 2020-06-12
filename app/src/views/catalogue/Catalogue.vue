@@ -12,20 +12,18 @@
                     
                     <div class="searchbar row p-3 justify-content-center">
                             <BarreRecherche />
-							<h1>{{ plants }}</h1>
                     </div>
 
 					<div class="title row mt-5 p-3">
 						<div class="col-lg-12 d-flex flex-wrap justify-content-center">
-							<!-- faire un v-for -->
-                            <PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
-							<PlantCard />
+                            <PlantCard v-for="plant in plants" :key="plant.id" :plantSrcImg="plant.picture">
+								<template v-slot:plant-name>
+									<h5 class="card-title">{{ plant.name }}</h5>
+								</template>
+								<template v-slot:plant-description>
+									<p class="card-text">{{ plant.description }}</p>
+								</template>
+							</PlantCard>
 						</div>
                     </div>
 
