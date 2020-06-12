@@ -33,20 +33,17 @@ class UserApiController extends AbstractController
     /**
      * @Route("/api/user", name="api_user")
      */
-    public static function index(){
-
-        dd($this->getUser());
+    public function index(UserRepository $userRepository){
 
         if($this->getUser()){
 
+            $user = $this->getUser();
+
+            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard']);
+
+            return new JsonResponse($data);
         }
-
-        $userApi = new UserApiController();
-
-        $data = $userApi->serializer->normalize($user, null, ['groups' => 'dashboard']);
-
-        $response = new JsonResponse($data);
         
-        return $response;
+        return $this->redirectToRoute('plantes_index');
     }
 }
