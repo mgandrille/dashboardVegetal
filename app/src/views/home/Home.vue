@@ -18,20 +18,20 @@
                     <div class="content row p-3">
                         <div class="col-lg-12">
                             <p>Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs. Vous venez d'acquérir une plante ? 
-                                <a href="#">Inscrivez-vous</a> pour créer votre dashboard.</p>
+                                <router-link :to="{path: '/authentification/inscription'}">Inscrivez-vous</router-link> pour créer votre dashboard.</p>
                         </div>
                     </div>
 
                     <div class="row p-3">
                         <div class="col-lg-12">
-                            <h2>Voir les derniers dashboard créés</h2>
+                            <h2>Voir un exemple de dashboard</h2>
+                            <p>Découvrez comment nos utilisateurs entretiennent leurs plantes grâce à Plantboard. </p>
                         </div>
                     </div>
 
-                    <div class="apperçu row p-3 justify-content-center justify-content-md-around">
-                        <!-- Attention, infos en dur. Faire un v-for pour afficher les 2 derniers dashboard de la bdd-->
-                        <PlantCardHome />
-                        <PlantCardHome />
+                    <div class="apperçu row p-3 justify-content-center justify-content-md-around">                        <PlantCardHome />
+                        <PlantCardHome v-for="(dashboard, index) in dashboards" :key="index" :dashboard="dashboard">
+                        </PlantCardHome>
                     </div>
                 </main>
             </div>
@@ -44,15 +44,29 @@
 
 
 <script>
-import Footer from '../../components/Footer.vue';
 import PlantCardHome from '../../components/plant-card/PlantCardHome.vue';
 
 export default {
     name: "Home",
     components : {
-        Footer,
         PlantCardHome
+    },
+
+    data() {
+        return {
+            dashboards: [
+                {id: 1, userProfil : 'Richard', plantsNb: 12},
+                {id: 2, userProfil : 'Rosa', plantsNb: 25}
+            ]
+        }
     }
+
+    // created() {
+    //     this.$http.get('/api/bigdash')
+    //         .then((result) => {
+    //             this.dashboards = result.data;
+    //         })
+	// }
 };
 </script>
 

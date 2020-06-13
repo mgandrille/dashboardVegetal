@@ -7,7 +7,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse bg-light navbar-light" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto text-capitalize">
 
                     <li class="nav-item">     <!-- LIEN VERS LA PAGE CATALOGUE -->
@@ -27,7 +27,7 @@
                                 <i class="fa fa-leaf"></i>
                                 mon dashboard
                             </router-link>
-                            <router-link :to="{ path: '/deconnection' }" class="dropdown-item text-secondary" href="#">
+                            <router-link :to="{ path: '/authentification/deconnexion' }" class="dropdown-item text-secondary" href="#">
                                 <i class="fa fa-sign-out-alt"></i>
                                 déconnection
                             </router-link>
