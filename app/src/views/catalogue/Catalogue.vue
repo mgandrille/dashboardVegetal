@@ -18,6 +18,7 @@
 
                     <div class="title row mt-5 p-3">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                            <div class="loader" v-if="loading">Loading </div>
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
@@ -83,15 +84,21 @@ export default {
             searchParams: "",
             page: 1,
             perPage: 10,
-            pages: []
+            pages: [],
+            loading: false
         };
     },
 
     methods: {
         getPlants() {
-            this.$http.get("api/plantes").then(result => {
+            this.loading = true;
+            this.$http.get("api/plantes")
+            .then(result => {
                 this.plants = result.data;
-            });
+            })
+            .finally(() => {
+                this.loading = false;
+            })
         },
 
         setPages() {
