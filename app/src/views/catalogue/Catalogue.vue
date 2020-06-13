@@ -9,16 +9,95 @@
 
                 <!-- main content -->
                 <main
-                id="top-page"
-                    class="main-content col-lg-10 offset-lg-2 container-lg bg-light" 
+                    id="top-page"
+                    class="main-content col-lg-10 offset-lg-2 container-lg bg-light"
                 >
                     <div class="searchbar row p-3 justify-content-center">
                         <BarreRecherche />
                     </div>
 
+					<div class="loader row justify-content-center align-items-center" v-if="loading" style="height: 50%">
+                                <svg
+									class="col-12"
+                                    viewBox="0 0 100 100"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="128px"
+                                    height="128px"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    style="width:auto;height:25%;animation-play-state:start"
+                                >
+                                    <g
+                                        class="ldl-scale"
+                                        style="transform-origin:50% 50% 0px;transform:rotate(0deg) scale(0.8);animation-play-state:start"
+                                    >
+                                        <g style="animation-play-state:start">
+                                            <path
+                                                stroke-miterlimit="10"
+                                                stroke-linecap="round"
+                                                stroke-width="3.5"
+                                                stroke="#333"
+                                                fill="none"
+                                                d="M35.5 72.6c1.8-20 13.7-38.7 31.1-48.8"
+                                                style="stroke:rgb(51, 51, 51);animation-play-state:start"
+                                            />
+                                            <path
+                                                stroke-miterlimit="10"
+                                                stroke-width="3.5"
+                                                stroke="#333"
+                                                fill="#abbd81"
+                                                d="M71.4 34.8c-8.7 2.5-17.5-2.1-19-6.8S56.3 14.7 65 12.3s25 5.3 25 5.3-9.8 14.7-18.6 17.2z"
+                                                style="stroke:rgb(51, 51, 51);fill:rgb(171, 189, 129);animation-play-state:start"
+                                            />
+                                        </g>
+                                        <g style="animation-play-state:start">
+                                            <path
+                                                stroke-miterlimit="10"
+                                                stroke-linecap="round"
+                                                stroke-width="3.5"
+                                                stroke="#333"
+                                                fill="none"
+                                                d="M43 48.2c1.7-4.7.3-9.2-1.7-13.3-1.9-4.1-5.2-7.5-9.2-9.6"
+                                                style="stroke:rgb(51, 51, 51);animation-play-state:start"
+                                            />
+                                            <path
+                                                stroke-miterlimit="10"
+                                                stroke-width="3.5"
+                                                stroke="#333"
+                                                fill="#abbd81"
+                                                d="M33.5 12.2c4.6 3.5 5 10.5 2.7 13.6s-9.3 4.4-13.9.9-5.7-16.2-5.7-16.2 12.3-1.8 16.9 1.7z"
+                                                style="stroke:rgb(51, 51, 51);fill:rgb(171, 189, 129);animation-play-state:start"
+                                            />
+                                        </g>
+                                        <path
+                                            stroke-miterlimit="10"
+                                            stroke-width="3.5"
+                                            stroke="#333"
+                                            fill="#66503a"
+                                            d="M73.8 78.6c0-2.1-.9-4.1-2.3-5.5-1.8-2.1-4.4-3.4-7.4-3.4h-.5c-1.7-5.8-7-10-13.3-10-1.7 0-3.3.3-4.8.9-2.3-4.5-6.9-7.6-12.2-7.6-7.6 0-13.7 6.1-13.7 13.7 0 1.5.2 2.9.7 4.2h-.4-.1-.1c-5.2 0-9.5 4.3-9.5 9.5v.2c0 5.1 4.1 9.3 9.3 9.3h43.2c2.9 0 5.6-.8 7.8-2.7 2.2-2 3.5-4.9 3.5-7.8V79c-.2-.2-.2-.3-.2-.4z"
+                                            style="stroke:rgb(51, 51, 51);fill:rgb(102, 80, 58);animation-play-state:start"
+                                        />
+                                        <metadata
+                                            xmlns:d="https://loading.io/stock/"
+                                            style="animation-play-state:paused"
+                                        >
+                                            <d:name style="animation-play-state:start">leaf</d:name>
+
+                                            <d:tags
+                                                style="animation-play-state:start"
+                                            >leaf,plant,leaves,tree,bud,burgreen,shoot,sprout,stem,grow,newbie,tender</d:tags>
+
+                                            <d:license style="animation-play-state:start">by</d:license>
+
+                                            <d:slug style="animation-play-state:start">k3swyk</d:slug>
+                                        </metadata>
+                                    </g>
+                                    <!-- generated by https://loading.io/ -->
+                                </svg>
+                            </div>
+
                     <div class="title row mt-5 p-3" v-if="plants.length">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
-                            <div class="loader" v-if="loading">Loading </div>
+                            
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
@@ -34,7 +113,10 @@
                         </div>
                     </div>
 
-                     <div class="title row mt-5 p-3" v-else>{{ errorMsg }}</div>
+                    <div
+                        class="title row mt-5 p-3"
+                        v-else-if="searchParams.length && !plants.length"
+                    >{{ errorMsg }}</div>
                 </main>
                 <div class="clearfix btn-group col-md-2 offset-md-5" v-if="plants.length">
                     <button
@@ -58,8 +140,6 @@
                         v-if="page < pages.length"
                         class="btn btn-primary"
                     >next</button>
-
-                   
                 </div>
             </div>
         </div>
@@ -90,38 +170,48 @@ export default {
             perPage: 10,
             pages: [],
             loading: false,
-            errorMsg: 'plante non trouvée'
+            errorMsg: "plante non trouvée"
         };
     },
 
     methods: {
         getPlants() {
-            this.loading = true;
-            this.$http.get("api/plantes")
-            .then(result => {
-                this.plants = result.data;
-            })
-            .finally(() => {
-                this.loading = false;
-            })
+			this.loading = true;
+			
+            this.$http
+                .get("api/plantes")
+                .then(result => {
+                    this.plants = result.data;
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
         },
 
         getFiltredPlants() {
-            this.loading = true;
-            this.$http.get("api/plantes/search?type=" + this.searchParams.type +
-            "&watering=" + this.searchParams.water +
-            "&sunshine=" + this.searchParams.sunshine +
-            "&difficulty=" +  + this.searchParams.difficulty)
-            .then(result => {
-                this.plants = result.data;
-            })
-            .catch(() => {
-                this.plants = [];
-                this.searchParams.filter = false;
-            })
-            .finally(() => {
-                this.loading = false;
-            })
+			this.loading = true;
+			
+            this.$http
+                .get(
+                    "api/plantes/search?type=" +
+                        this.searchParams.type +
+                        "&watering=" +
+                        this.searchParams.water +
+                        "&sunshine=" +
+                        this.searchParams.sunshine +
+                        "&difficulty=" +
+                        +this.searchParams.difficulty
+                )
+                .then(result => {
+                    this.plants = result.data;
+                })
+                .catch(() => {
+                    this.plants = [];
+                    this.searchParams.filter = false;
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
         },
 
         setPages() {
@@ -143,9 +233,12 @@ export default {
 
     computed: {
         displayedPlants() {
-            if(this.searchParams.filter === true) {
-                this.getFiltredPlants();
+            if (this.searchParams != "") {
+                if (this.searchParams.filter === true) {
+                    this.getFiltredPlants();
+                }
             }
+
             return this.paginate(this.plants);
         }
     },
