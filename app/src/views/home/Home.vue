@@ -44,13 +44,11 @@
 
 
 <script>
-import Footer from '../../components/Footer.vue';
 import PlantCardHome from '../../components/plant-card/PlantCardHome.vue';
 
 export default {
     name: "Home",
     components : {
-        Footer,
         PlantCardHome
     },
 
