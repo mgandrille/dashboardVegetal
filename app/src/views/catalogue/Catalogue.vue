@@ -10,13 +10,13 @@
                 <!-- main content -->
                 <main
                 id="top-page"
-                    class="main-content col-lg-10 offset-lg-2 container-lg bg-light"
+                    class="main-content col-lg-10 offset-lg-2 container-lg bg-light" 
                 >
                     <div class="searchbar row p-3 justify-content-center">
                         <BarreRecherche />
                     </div>
 
-                    <div class="title row mt-5 p-3">
+                    <div class="title row mt-5 p-3" v-if="plants.length">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <div class="loader" v-if="loading">Loading </div>
                             <PlantCard
@@ -33,8 +33,10 @@
                             </PlantCard>
                         </div>
                     </div>
+
+                     <div class="title row mt-5 p-3" v-else>{{ errorMsg }}</div>
                 </main>
-                <div class="clearfix btn-group col-md-2 offset-md-5">
+                <div class="clearfix btn-group col-md-2 offset-md-5" v-if="plants.length">
                     <button
                         type="button"
                         class="btn btn-primary"
@@ -56,6 +58,8 @@
                         v-if="page < pages.length"
                         class="btn btn-primary"
                     >next</button>
+
+                   
                 </div>
             </div>
         </div>
@@ -85,7 +89,8 @@ export default {
             page: 1,
             perPage: 10,
             pages: [],
-            loading: false
+            loading: false,
+            errorMsg: 'plante non trouvée'
         };
     },
 
@@ -95,6 +100,24 @@ export default {
             this.$http.get("api/plantes")
             .then(result => {
                 this.plants = result.data;
+            })
+            .finally(() => {
+                this.loading = false;
+            })
+        },
+
+        getFiltredPlants() {
+            this.loading = true;
+            this.$http.get("api/plantes/search?type=" + this.searchParams.type +
+            "&watering=" + this.searchParams.water +
+            "&sunshine=" + this.searchParams.sunshine +
+            "&difficulty=" +  + this.searchParams.difficulty)
+            .then(result => {
+                this.plants = result.data;
+            })
+            .catch(() => {
+                this.plants = [];
+                this.searchParams.filter = false;
             })
             .finally(() => {
                 this.loading = false;
@@ -120,6 +143,9 @@ export default {
 
     computed: {
         displayedPlants() {
+            if(this.searchParams.filter === true) {
+                this.getFiltredPlants();
+            }
             return this.paginate(this.plants);
         }
     },
@@ -127,6 +153,10 @@ export default {
     watch: {
         plants() {
             this.setPages();
+        },
+
+        searchParams() {
+            this.searchParams;
         }
     },
 
