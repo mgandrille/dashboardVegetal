@@ -7,40 +7,39 @@
 
                 <!-- main content -->
                 <main class="main-content col-lg-5 offset-lg-7 container-lg bg-light">
-                    
                     <div class="title row mt-5 p-3">
                         <div class="col-lg-12">
-                            <h2>Name</h2>
+                            <h2>{{ plant.name }}</h2>
                         </div>
                     </div>
 
                     <div class="content row p-3">
                         <div class="col-lg-12">
-							<p>Description</p>
-							<hr>
+                            <p>{{ plant.description }}</p>
+                            <hr />
                             <ul>
-								<li>Difficulté :</li>
-								<li>Espèce :</li>
-								<li>Catégorie :</li>
-								<li>Type : </li>
-								<li>Floraison : </li>
-							</ul>
+                                <li>Difficulté : {{ plant.difficulty }}</li>
+                                <li>Espèce : {{ plant.species }}</li>
+                                <li>Catégorie : {{ plant.category }}</li>
+                                <li>Type : {{ plant.type }}</li>
+                                <li>Floraison : {{ plant.flowerings }}</li>
+                            </ul>
                         </div>
                     </div>
                 </main>
             </div>
 
-			<footer class="row footer-detail position-fixed fixed-bottom">
-				<div class="col-12">
-					<ul class="text-light">
-						<li>Arrosage :</li>
-						<li>Ensoleillement :</li>
-						<li>Boutage :</li>
-						<li>Rempotage :</li>
-						<li>Taille :</li>
-					</ul>
-				</div>
-			</footer>
+            <footer class="row footer-detail position-fixed fixed-bottom">
+                <div class="col-12">
+                    <ul class="text-light">
+                        <li>Arrosage : {{ plant.watering }}</li>
+                        <li>Ensoleillement : {{ plant.sunshine.exposure }}</li>
+                        <li>Boutage : {{ plant.cuttings }}</li>
+                        <li>Rempotage : {{ plant.pottings }}</li>
+                        <li>Taille : {{ plant.carves }}</li>
+                    </ul>
+                </div>
+            </footer>
         </div>
     </div>
 </template>
@@ -50,9 +49,27 @@
 
 
 <script>
-
 export default {
-    name: "Detail"
+    name: "Detail",
+    data() {
+        return {
+            plant: []
+        };
+    },
+
+    methods: {
+        getPlant() {
+            this.$http
+                .get("api/plantes/" + this.$route.params.id)
+                .then(result => {
+                    this.plant = result.data;
+                });
+        }
+    },
+
+    created() {
+        this.getPlant();
+    }
 };
 </script>
 
