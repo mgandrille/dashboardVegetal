@@ -36,7 +36,7 @@ Vue.use(VueRouter)
     component: Dashboard
   },
   {
-    path: '/detail/:id',
+    path: '/plante/detail/:id',
     name: 'Detail',
     component: Detail
   },
