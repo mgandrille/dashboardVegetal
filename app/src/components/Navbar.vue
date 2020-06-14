@@ -32,7 +32,7 @@
                                 déconnection
                             </router-link>
                         <!-- **** Sinon :  **** -->
-                            <router-link :to="{ path: '/authentification/connection' }" class="dropdown-item text-secondary" href="#">
+                            <router-link :to="{ path: '/authentification/connexion' }" class="dropdown-item text-secondary" href="#">
                                 <i class="fa fa-user"></i>
                                 connection
                             </router-link>
