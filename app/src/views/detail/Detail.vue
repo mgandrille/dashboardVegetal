@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner mettre le style en dynamique-->
-                <div class="banner col-lg-7 position-fixed"></div>
+                <div class="banner col-lg-7"></div>
 
                 <!-- main content -->
                 <main class="main-content col-lg-5 offset-lg-7 container-lg bg-light">
@@ -28,65 +28,62 @@
                     </div>
                 </main>
             </div>
-
-            <footer class="footer-detail fixed-bottom p-3">
-                <div class="row informations text-light">
-
-                    <div class="col-md-4">
-                        <div class="col-md-auto">
-                            <h4>
-                                Arrosage :
-                                <span>Fréquent</span>
-                            </h4>
-                        </div>
-
-                        <hr>
-
-                        <div class="col-md-auto">
-                            <h4>
-                                Ensoleillement :
-                                <span>Fort</span>
-                            </h4>
-                        </div>
-
-                        <hr>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="col-md-auto">
-                            <h4>
-                                Boutage :
-                                <span>Mai</span>
-                            </h4>
-                        </div>
-
-                        <hr>
-
-                        <div class="col-md-auto">
-                            <h4>
-                                Rempotage :
-                                <span>Avril</span>
-                            </h4>
-                        </div>
-
-                        <hr>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="col-md-auto">
-                            <h4>
-                                Taille :
-                                <span>Juin</span>
-                            </h4>
-                        </div>
-
-                        <hr>
-                    </div>
-
-                </div>
-            </footer>
-
         </div>
+
+        <footer class="footer-detail px-3 pt-3 container-fluid">
+            <div class="row informations text-light col-12">
+                <div class="col-md-4">
+                    <div class="col-md-auto">
+                        <h4>
+                            Arrosage :
+                            <span>Fréquent</span>
+                        </h4>
+                    </div>
+
+                    <hr />
+
+                    <div class="col-md-auto">
+                        <h4>
+                            Ensoleillement :
+                            <span>Fort</span>
+                        </h4>
+                    </div>
+
+                    <hr class="d-md-none" />
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-auto">
+                        <h4>
+                            Boutage :
+                            <span>Mai</span>
+                        </h4>
+                    </div>
+
+                    <hr />
+
+                    <div class="col-md-auto">
+                        <h4>
+                            Rempotage :
+                            <span>Avril</span>
+                        </h4>
+                    </div>
+
+                    <hr class="d-md-none" />
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-auto">
+                        <h4>
+                            Taille :
+                            <span>Juin</span>
+                        </h4>
+                    </div>
+
+                    <hr />
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
 
