@@ -14,7 +14,7 @@
 		120%;
 
 	@media (min-width: $lg-breakpoint) {
-		height: 100vh;
+		min-height: calc(100vh - 75px);
 		background-size: 150%,
 			120%;	
 		background-position: right top, 
