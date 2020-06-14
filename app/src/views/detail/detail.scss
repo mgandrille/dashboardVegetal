@@ -10,7 +10,7 @@
 	background-position: center center;
 
 	@media (min-width: $lg-breakpoint) {
-		min-height: calc(100vh - 150px - 75px);
+		min-height: calc(100vh - 75px - 75px);
 	}
 }
 

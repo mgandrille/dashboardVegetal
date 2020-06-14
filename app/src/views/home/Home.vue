@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner -->
-                <div class="banner col-lg-4 position-fixed"></div>
+                <div class="banner col-lg-4 position-fixed "></div>
 
                 <!-- main content -->
                 <main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
                     
-                    <div class="title row mt-5 p-3">
+                    <div class="title row p-3">
                         <div class="col-lg-12">
                             <p>Suivez l'évolution de vos plantes avec</p>
                             <h1>PlantBoard</h1>
@@ -29,13 +29,17 @@
                         </div>
                     </div>
 
-                    <div class="apperçu row p-3 justify-content-center justify-content-md-around">                        <PlantCardHome />
+                    <div class="apperçu row p-3 justify-content-center justify-content-md-around mb-5">                        <PlantCardHome />
                         <PlantCardHome v-for="(dashboard, index) in dashboards" :key="index" :dashboard="dashboard">
                         </PlantCardHome>
                     </div>
+
+                    <Footer/>
                 </main>
             </div>
         </div>
+
+        
     </div>
 </template>
 
@@ -45,11 +49,13 @@
 
 <script>
 import PlantCardHome from '../../components/plant-card/PlantCardHome.vue';
+import Footer from '../../components/Footer.vue';
 
 export default {
     name: "Home",
     components : {
-        PlantCardHome
+        PlantCardHome,
+        Footer
     },
 
     data() {
