@@ -5,13 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\ArrosedRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 
 
 /**
  * @Route("/arrosed")
+ * @Security("is_granted('ROLE_USER')", statusCode=401, message="Not authenticated.")
  */
 class ArrosedController extends AbstractController
 {

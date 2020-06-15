@@ -86,8 +86,6 @@ class DashboardController extends AbstractController
     public function addPlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
         // Add one plant in dashboard, parameters = GET for ID dashboard, POST for ID plant
 
-        // if($request->request->get('plante_id')){
-
             $planteId = $plante_id; 
 
             // Find plante with ID for add into dashboard
@@ -102,7 +100,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
             return new Response('', Response::HTTP_CREATED);
-        // }
+
     }
 
     /**

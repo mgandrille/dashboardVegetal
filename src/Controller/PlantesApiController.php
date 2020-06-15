@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Plantes;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/api")
@@ -38,11 +37,9 @@ class PlantesApiController extends AbstractController
 
     /**
      * @Route("/plantes", name="api_plantes")
-     * @Security("is_granted('ROLE_USER')", statusCode=401, message="Not authenticated.")
      */
     public function index(PlantesRepository $plantesrepository){
         // Find all plants and return Json
-
         $plantes = $plantesrepository->findAll();
 
         $data = $this->serializer->normalize($plantes, null, ['groups' => 'all_plantes']);
@@ -54,9 +51,10 @@ class PlantesApiController extends AbstractController
     /**
      * @Route("/plantes/search")
      */
-    public function search(Request $request, PlantesRepository $plantesrepository){
 
-        // Search with GET parameters, init var with $request if exists, empty if not
+     public function search(Request $request, PlantesRepository $plantesrepository){
+        // Search with GET parameters, init with $request if exists, empty if not
+
 
         ($request->query->get('name')) ? $name = $request->query->get('name') : $name = '';
 
@@ -119,11 +117,8 @@ class PlantesApiController extends AbstractController
      */
     public function findOne(Plantes $plante){
         // Find one plant with id and return Json
-
         $data = $this->serializer->normalize($plante, null, ['groups'   => 'all_plantes']);
 
         return new JsonResponse($data);
     }
-
-
 }

@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import About from '../views/about/About.vue'
 import Home from '../views/home/Home.vue'
-import Authentification from '../views/authentification/Authentification.vue'
 import Login from '../views/authentification/Login.vue'
+import Register from '../views/authentification/Register.vue'
 import Catalogue from '../views/catalogue/Catalogue.vue'
 import Dashboard from '../views/dashboard/Dashboard.vue'
 import Detail from '../views/detail/Detail.vue'
@@ -23,8 +23,8 @@ Vue.use(VueRouter)
   },
   {
     path: '/authentification/inscription',
-    name: 'Authentification',
-    component: Authentification
+    name: 'Register',
+    component: Register
   },
   {
     path: '/catalogue',
@@ -32,7 +32,7 @@ Vue.use(VueRouter)
     component: Catalogue
   },
   {
-    path: '/dashboard/:id',
+    path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
   },
