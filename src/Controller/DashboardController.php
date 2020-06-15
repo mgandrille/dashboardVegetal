@@ -81,17 +81,17 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/add/{id}", name="dashboard_add", methods={"GET", "POST"})
+     * @Route("/add/{id}/{plante_id}", name="dashboard_add")
      */
-    public function addPlante(Dashboard $dashboard, PlantesRepository $planteRepository){
+    public function addPlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
         // Add one plant in dashboard, parameters = GET for ID dashboard, POST for ID plant
-        if($request->request->get('plante_id')){
 
-            $planteId = $request->request->get('plante_id');
+            $planteId = $plante_id; 
 
             // Find plante with ID for add into dashboard
             $newPlante = $planteRepository->find($planteId);
 
+            $dashboard = $dashboardRepository->find($id);
             $dashboard->addPlante($newPlante);
             $newArrosed = new Arrosed($newPlante, $dashboard);
 
@@ -100,7 +100,7 @@ class DashboardController extends AbstractController
             $entityManager->flush();
 
             return new Response('', Response::HTTP_CREATED);
-        }
+
     }
 
     /**

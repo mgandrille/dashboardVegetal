@@ -51,8 +51,10 @@ class PlantesApiController extends AbstractController
     /**
      * @Route("/plantes/search")
      */
+
      public function search(Request $request, PlantesRepository $plantesrepository){
         // Search with GET parameters, init with $request if exists, empty if not
+
 
         ($request->query->get('name')) ? $name = $request->query->get('name') : $name = '';
 
@@ -108,7 +110,7 @@ class PlantesApiController extends AbstractController
 
         return $response;
 
-     }
+    }
 
     /**
      * @Route("/plantes/{id}")
