@@ -26,7 +26,10 @@
                         <div class="card-body">
                           <h5 class="card-title">Carlyne</h5>
                           <p class="card-text">Ancienne graphiste, nouvellement développeuse web, elle s'éclate en front</p>
-                          <p class="card-text"><small class="text-muted">Ses réseaux sociaux :</small></p>
+                          <p class="card-text"><small class="text-muted">Ses réseaux sociaux : 
+                            <a href="https://github.com/carlyne"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/carlyne-lapierre/"><i class="fab fa-linkedin"></i></a>
+                            </small></p>
                         </div>
                       </div>
                       <div class="card">
@@ -34,7 +37,10 @@
                         <div class="card-body">
                           <h5 class="card-title">Marie</h5>
                           <p class="card-text">Fraichement débarquée dans le développement web, elle aide à la gestion de projet</p>
-                          <p class="card-text"><small class="text-muted">Ses réseaux sociaux :</small></p>
+                          <p class="card-text"><small class="text-muted">Ses réseaux sociaux : 
+                            <a href="https://github.com/mgandrille"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/marie-gandrille/"><i class="fab fa-linkedin"></i></a>
+                            </small></p>
                         </div>
                       </div>
                       <div class="card">
@@ -42,7 +48,10 @@
                         <div class="card-body">
                           <h5 class="card-title">Théau</h5>
                           <p class="card-text">Depuis sa découverte du développement web, rien ne saurait le détourner du back</p>
-                          <p class="card-text"><small class="text-muted">Ses réseaux sociaux :</small></p>
+                          <p class="card-text"><small class="text-muted">Ses réseaux sociaux : 
+                            <a href="https://github.com/FatalTio"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/th%C3%A9au-roffat/"><i class="fab fa-linkedin"></i></a>
+                            </small></p>
                         </div>
                       </div>
                     </div>
