@@ -122,6 +122,7 @@ class Plantes
 
     /**
      * @ORM\OneToMany(targetEntity=Arrosed::class, mappedBy="plante")
+     * @Groups("dashboard")
      */
     private $arroseds;
 

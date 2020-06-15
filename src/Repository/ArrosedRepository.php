@@ -36,6 +36,19 @@ class ArrosedRepository extends ServiceEntityRepository
     }
     */
 
+    public function findTheGood($dashId, $planteId)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.plante = :planteId')
+            ->setParameter('planteId', $planteId)
+            ->andWhere('a.dashboard = :dashId')
+            ->setParameter('dashId', $dashId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Arrosed
     {
