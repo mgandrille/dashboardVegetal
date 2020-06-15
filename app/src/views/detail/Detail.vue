@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner mettre le style en dynamique-->
-                <div class="banner col-lg-7" style="background-image: url('http://localhost:8888/uploads/pictures/' + plant.picture +')'"></div>
+                <div class="banner col-lg-7" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }"></div>
 
                 <!-- main content -->
                 <main class="main-content col-lg-5 offset-lg-7 container-lg bg-light">
@@ -22,7 +22,7 @@
                                 <li>Espèce : {{ plant.species }}</li>
                                 <li>Catégorie : {{ plant.category.categories }}</li>
                                 <li>Type : {{ plant.type.plante_type }}</li>
-                                <li>Floraison : <span class="text-capitalize" v-for="(plant, index) in plant.flowerings" :key="index"> {{ plant.month }} - </span> </li>
+                                <li>Floraison : <span class="text-capitalize" v-for="(plant, index) in plant.flowerings" :key="index"> - {{ plant.month }} </span> </li>
                             </ul>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Bouturage :
-                            <span class="text-capitalize" v-for="(plant, index) in plant.cuttings" :key="index"> {{ plant.month }} - </span>
+                            <span class="text-capitalize" v-for="(plant, index) in plant.cuttings" :key="index"> - {{ plant.month }} </span>
                         </h4>
                     </div>
 
@@ -65,7 +65,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Rempotage :
-                            <span class="text-capitalize" v-for="(plant, index) in plant.pottings" :key="index"> {{ plant.month }} - </span>
+                            <span class="text-capitalize" v-for="(plant, index) in plant.pottings" :key="index"> - {{ plant.month }} </span>
                         </h4>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Taille :
-                            <span class="text-capitalize" v-for="(plant, index) in plant.carves" :key="index"> {{ plant.month }} - </span>
+                            <span class="text-capitalize" v-for="(plant, index) in plant.carves" :key="index"> - {{ plant.month }} </span>
                         </h4>
                     </div>
 
