@@ -37,7 +37,7 @@ class DashboardRepository extends ServiceEntityRepository
     */
 
     public function findBigger(){
-        // find two biggers dashboards with number of plants (count(m.id)) ans dashboard ID (d.id)
+        // Find two biggers dashboards with number of plants (count(m.id)) ans dashboard ID (d.id)
         return $this->createQueryBuilder('d')
             ->innerJoin('d.plantes', 'p')
             ->select('count(p.id) as c, d.id')
