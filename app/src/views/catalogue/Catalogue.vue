@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner -->
-                <div class="filtrage col-lg-2 position-fixed">
+                <div class="filtrage col-lg-2">
                     <Filtrage v-on:get-params="searchParams = $event" />
                 </div>
 
@@ -173,7 +173,7 @@ export default {
     data() {
         return {
             plants: [],
-            searchParams: "",
+            searchParams: {},
             page: 1,
             perPage: 10,
             pages: [],
