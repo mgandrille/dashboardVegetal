@@ -36,7 +36,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Arrosage :
-                            <span>Fréquent</span>
+                            <span>{{plante.watering}}</span>
                         </h4>
                     </div>
 
@@ -45,7 +45,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Ensoleillement :
-                            <span>Fort</span>
+                            <span>{{plante.sunshine}}</span>
                         </h4>
                     </div>
 
@@ -55,8 +55,8 @@
                 <div class="col-md-4">
                     <div class="col-md-auto">
                         <h4>
-                            Boutage :
-                            <span>Mai</span>
+                            Bouturage :
+                            <span>{{plante.cutting}}</span>
                         </h4>
                     </div>
 
@@ -65,7 +65,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Rempotage :
-                            <span>Avril</span>
+                            <span>{plante.potting}</span>
                         </h4>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Taille :
-                            <span>Juin</span>
+                            <span>{{plante.carve}}</span>
                         </h4>
                     </div>
 
