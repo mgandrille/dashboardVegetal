@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import About from '../views/about/About.vue'
 import Home from '../views/home/Home.vue'
 import Authentification from '../views/authentification/Authentification.vue'
+import Login from '../views/authentification/Login.vue'
 import Catalogue from '../views/catalogue/Catalogue.vue'
 import Dashboard from '../views/dashboard/Dashboard.vue'
 import Detail from '../views/detail/Detail.vue'
@@ -17,8 +18,8 @@ Vue.use(VueRouter)
   },
   {
     path: '/authentification/connexion',
-    name: 'Authentification',
-    component: Authentification
+    name: 'Login',
+    component: Login
   },
   {
     path: '/authentification/inscription',

@@ -21,6 +21,7 @@ use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use App\Controller\UserApiController;
 use App\Repository\UserRepository;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class FormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
@@ -32,13 +33,20 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $authorizationChecker;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager, 
+        UrlGeneratorInterface $urlGenerator, 
+        CsrfTokenManagerInterface $csrfTokenManager, 
+        UserPasswordEncoderInterface $passwordEncoder,
+        AuthorizationCheckerInterface $authorizationChecker
+    ) {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
+        $this->authorizationChecker = $authorizationChecker;
     }
 
     public function supports(Request $request)
@@ -98,8 +106,12 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
             return new RedirectResponse($targetPath);
         }
 
+        if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return new RedirectResponse($this->urlGenerator->generate('plantes_index'));
+        }
+
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('plantes_index'));
+        return new RedirectResponse($this->urlGenerator->generate('app_index', ['_fragment' => '/catalogue']));
     }
 
     protected function getLoginUrl()

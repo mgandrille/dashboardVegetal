@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Plantes;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/api")
@@ -37,6 +38,7 @@ class PlantesApiController extends AbstractController
 
     /**
      * @Route("/plantes", name="api_plantes")
+     * @Security("is_granted('ROLE_USER')", statusCode=401, message="Not authenticated.")
      */
     public function index(PlantesRepository $plantesrepository){
         // Find all plants and return Json
