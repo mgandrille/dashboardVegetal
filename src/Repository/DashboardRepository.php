@@ -40,7 +40,7 @@ class DashboardRepository extends ServiceEntityRepository
         
         return $this->createQueryBuilder('d')
             ->innerJoin('d.plantes', 'm')
-            ->select('count(m.id) as c')
+            ->select('count(m.id) as c, d.id')
             ->groupBy('d.id')
             ->orderBy('c', 'DESC')
             ->setMaxResults(2)
