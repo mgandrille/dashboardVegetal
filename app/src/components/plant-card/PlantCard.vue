@@ -2,7 +2,7 @@
     <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
-                v-bind:src="'http://localhost:8888/uploads/pictures/' + plantSrcImg"
+                v-bind:src="'http://localhost:8888/uploads/pictures/' + plantItem.pictures"
                 class="card-img-top p-3"
                 alt="image"
             />
@@ -13,8 +13,8 @@
         </div>
 
 		<footer class="m-2 text-right">
-                <a href="#" class="btn btn-primary ml-auto">Voir</a>
-                <a href="#" class="btn btn-primary ml-auto" @click="addPlant(plant.id)">Ajouter +</a>
+                <router-link :to="{ path: 'plante/detail/' + plantItem.id }" class="btn btn-primary ml-auto" >Voir</router-link>
+                <a href="#" class="btn btn-primary ml-auto" @click="addPlant">Ajouter +</a>
         </footer>
     </div>
 </template>

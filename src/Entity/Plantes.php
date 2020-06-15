@@ -120,6 +120,12 @@ class Plantes
      */
     private $dashboards;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Arrosed::class, mappedBy="plante")
+     * @Groups("dashboard")
+     */
+    private $arroseds;
+
     public function __construct()
     {
         $this->pottings = new ArrayCollection();
@@ -128,6 +134,7 @@ class Plantes
         $this->flowerings = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->dashboards = new ArrayCollection();
+        $this->arroseds = new ArrayCollection();
     }
 
 
@@ -400,6 +407,37 @@ class Plantes
         if ($this->dashboards->contains($dashboard)) {
             $this->dashboards->removeElement($dashboard);
             $dashboard->removePlante($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Arrosed[]
+     */
+    public function getArroseds(): Collection
+    {
+        return $this->arroseds;
+    }
+
+    public function addArrosed(Arrosed $arrosed): self
+    {
+        if (!$this->arroseds->contains($arrosed)) {
+            $this->arroseds[] = $arrosed;
+            $arrosed->setPlante($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArrosed(Arrosed $arrosed): self
+    {
+        if ($this->arroseds->contains($arrosed)) {
+            $this->arroseds->removeElement($arrosed);
+            // set the owning side to null (unless already changed)
+            if ($arrosed->getPlante() === $this) {
+                $arrosed->setPlante(null);
+            }
         }
 
         return $this;

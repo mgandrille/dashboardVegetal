@@ -32,9 +32,16 @@ class Dashboard
      */
     private $plantes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Arrosed::class, mappedBy="dashboard")
+     * @Groups({"dashboard"})
+     */
+    private $arroseds;
+
     public function __construct()
     {
         $this->plantes = new ArrayCollection();
+        $this->arroseds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +82,37 @@ class Dashboard
     {
         if ($this->plantes->contains($plante)) {
             $this->plantes->removeElement($plante);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Arrosed[]
+     */
+    public function getArroseds(): Collection
+    {
+        return $this->arroseds;
+    }
+
+    public function addArrosed(Arrosed $arrosed): self
+    {
+        if (!$this->arroseds->contains($arrosed)) {
+            $this->arroseds[] = $arrosed;
+            $arrosed->setDashboard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArrosed(Arrosed $arrosed): self
+    {
+        if ($this->arroseds->contains($arrosed)) {
+            $this->arroseds->removeElement($arrosed);
+            // set the owning side to null (unless already changed)
+            if ($arrosed->getDashboard() === $this) {
+                $arrosed->setDashboard(null);
+            }
         }
 
         return $this;
