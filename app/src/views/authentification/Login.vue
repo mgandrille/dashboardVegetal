@@ -9,9 +9,9 @@
 				<main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
 					<div class="title row mt-5 p-3">
                         <div class="col-lg-12">
-                            <p>Rejoignez-nous</p>
+                            <p>Super ! Vous êtes de retour</p>
 							<!-- v-if afficher connexion ou inscription -->
-                            <h1>Authentification</h1>
+                            <h1>Connexion</h1>
                         </div>
                     </div>
 
