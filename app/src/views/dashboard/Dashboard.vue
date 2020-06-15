@@ -14,6 +14,7 @@
                         <div class="row bg-primary justify-content-center">
                             <PlantCard />
                             <PlantCard />
+                            {{userLogged.roles}}
                         </div>
 
                         <div class="row">
@@ -52,6 +53,16 @@ export default {
 		PlantCard,
         Meteo,
         Filtrage
+    },
+
+    data() {
+        return {
+            userLogged: []
+        }
+    },
+
+    mounted() {
+        this.userLogged = this.$store.state.userLogged;
     }
 };
 </script>
