@@ -29,6 +29,18 @@ class DashboardApiController extends AbstractController
     }
 
     /**
+     * @Route("/api/dashboards")
+     */
+    public function allDashboard(DashboardRepository $dashboardRepository){
+
+        $dash = $dashboardRepository->findAll();
+
+        $data = $this->serializer->normalize($dash, null, ['groups' => 'dashboard', 'all_plantes']);
+
+        return new JsonResponse($data);
+    }
+
+    /**
      * @Route("/api/bigdash", name="api_bigdash")
      */
     public function findBigDash(DashboardRepository $dashboardRepository){
@@ -37,6 +49,8 @@ class DashboardApiController extends AbstractController
         $dash = $dashboardRepository->findBigger();
 
         $data = $this->serializer->normalize($dash, null);
+
+        dd($data);
 
         return new JsonResponse($data);
     }

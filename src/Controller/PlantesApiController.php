@@ -67,35 +67,47 @@ class PlantesApiController extends AbstractController
 
         if($request->query->get('watering')){
             // If search with watering filter
-            $watering = intval($request->query->get('watering'));
-            $result->andWhere('p.watering = :watering')->setParameter('watering', $watering);
+            if($request->query->get('watering') !== ''){
+                // If not empty
+                $watering = intval($request->query->get('watering'));
+                $result->andWhere('p.watering = :watering')->setParameter('watering', $watering);
+            }
         }
 
         if($request->query->get('type')){
             // If search with type filter
-            $type = intval($request->query->get('type'));
-            $resutl->andWhere('p.type = :type')->setParameter('type', $type);
+            if($request->query->get('type') !== ''){
+                // If not empty
+                $type = intval($request->query->get('type'));
+                $resutl->andWhere('p.type = :type')->setParameter('type', $type);
+            }
         }
 
         if($request->query->get('difficulty')){
             // If search with difficulty filter
-            $difficulty = intval($request->query->get('difficulty'));
-            $result->andWhere('p.difficulty = :difficulty')->setParameter('difficulty', $difficulty);
-
+            if($request->query->get('difficulty') !== ''){
+                // If not empty
+                $difficulty = intval($request->query->get('difficulty'));
+                $result->andWhere('p.difficulty = :difficulty')->setParameter('difficulty', $difficulty);
+            }
         }
 
         if($request->query->get('sunshine')){
             // If search with sunshine filter
-            $sunshine = intval($request->query->get('sunshine'));
-            $result->andWhere('p.sunshine = :sunshine')->setParameter('sunshine', $sunshine);
-
+            if($request->query->get('difficulty') !== ''){
+                // If not empty
+                $sunshine = intval($request->query->get('sunshine'));
+                $result->andWhere('p.sunshine = :sunshine')->setParameter('sunshine', $sunshine);
+            }
         }
 
         $searchResult = $result->getQuery()->getResult();
 
         $data = $this->serializer->normalize($searchResult, null, ['groups' => 'all_plantes']);
 
+        // Convert Json (search return an array)
         $response = new Response(json_encode($data));
+        // application json for the return Json
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
