@@ -21,7 +21,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
