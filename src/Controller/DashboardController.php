@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PlantesRepository;
+use App\Entity\Arrosed;
 
 /**
  * @Route("/dashboard")
@@ -95,7 +96,11 @@ class DashboardController extends AbstractController
             ]);
 
             $dashboard->addPlante($newPlante);
-            $dashboard->getDoctrine()->getManager()->flush();
+            $newArrosed = new Arrosed($newPlante, $dashboard);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newArrosed);
+            $entityManager->flush();
 
             return new Response(200);
         }
