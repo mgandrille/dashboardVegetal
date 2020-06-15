@@ -36,7 +36,6 @@ class UserApiController extends AbstractController
      */
     public function index(UserRepository $userRepository){
         // if user is connected, find the associated dashboard
-
         if($this->getUser()){
 
             $user = $this->getUser();

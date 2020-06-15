@@ -36,6 +36,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @ORM\Column(type="string", length=180, name="email")
      * @Groups({"dashboard"})
      */
     private $email;
