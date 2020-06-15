@@ -75,7 +75,7 @@ class PlantesApiController extends AbstractController
             if($request->query->get('type') !== ''){
                 // If not empty
                 $type = intval($request->query->get('type'));
-                $resutl->andWhere('p.type = :type')->setParameter('type', $type);
+                $result->andWhere('p.type = :type')->setParameter('type', $type);
             }
         }
 

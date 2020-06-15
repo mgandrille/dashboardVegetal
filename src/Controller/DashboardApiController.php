@@ -51,10 +51,7 @@ class DashboardApiController extends AbstractController
         
         for($i=0; $i<count($dash); $i++){
             // browse $dash (array) for find the ID of two biggers dashboards
-            $findDash = $dashboardRepository->findBy([
-                //find the dashboard with ID
-                'id'    => $dash[$i]['id']
-            ]);
+            $findDash = $dashboardRepository->find($dash[$i]['id']);
             // Pull the Dashboard (object) in array
             $dashArray[] = $findDash;
         }

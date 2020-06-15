@@ -91,9 +91,7 @@ class DashboardController extends AbstractController
             $planteId = $request->request->get('plante_id');
 
             // Find plante with ID for add into dashboard
-            $newPlante = $planteRepository->findOneBy([
-                'id'    => $planteId
-            ]);
+            $newPlante = $planteRepository->find($planteId);
 
             $dashboard->addPlante($newPlante);
             $newArrosed = new Arrosed($newPlante, $dashboard);
