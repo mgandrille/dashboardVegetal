@@ -9,20 +9,20 @@
                 <main class="main-content col-lg-5 offset-lg-7 container-lg bg-light">
                     <div class="title row mt-5 p-3">
                         <div class="col-lg-12">
-                            <h2>Ficcus</h2>
+                            <h2>{{ plant.name }}</h2>
                         </div>
                     </div>
 
                     <div class="content row p-3">
                         <div class="col-lg-12">
-                            <p>Description</p>
+                            <p>{{ plant.description }}</p>
                             <hr />
                             <ul>
-                                <li>Difficulté : Difficile</li>
-                                <li>Espèce : Plantosous</li>
-                                <li>Catégorie : Plantimus</li>
-                                <li>Type : Planticus</li>
-                                <li>Floraison : Juillet</li>
+                                <li>Difficulté : {{ plant.difficulty }}</li>
+                                <li>Espèce : {{ plant.species }}</li>
+                                <li>Catégorie : {{ plant.category }}</li>
+                                <li>Type : {{ plant.type }}</li>
+                                <li>Floraison : {{ plant.flowerings }}</li>
                             </ul>
                         </div>
                     </div>
@@ -93,7 +93,26 @@
 
 <script>
 export default {
-    name: "Detail"
+    name: "Detail",
+    data() {
+        return {
+            plant: []
+        };
+    },
+
+    methods: {
+        getPlant() {
+            this.$http
+                .get("api/plantes/" + this.$route.params.id)
+                .then(result => {
+                    this.plant = result.data;
+                });
+        }
+    },
+
+    created() {
+        this.getPlant();
+    }
 };
 </script>
 
