@@ -32,7 +32,7 @@ Vue.use(VueRouter)
     component: Catalogue
   },
   {
-    path: '/dashboard/:id',
+    path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
   },

@@ -65,6 +65,14 @@ export default {
                 {id: 2, userProfil : 'Rosa', plantsNb: 25}
             ]
         }
+    },
+
+    created() {
+
+            this.$http.get('api/user')
+                .then((result) => {
+                    this.$store.state.userLogged = result.data
+            });
     }
 
     // created() {
