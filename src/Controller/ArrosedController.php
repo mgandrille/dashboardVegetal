@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\ArrosedRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ArrosedController extends AbstractController
 {
     /**
-     * @Route("/change", methods={POST})
+     * @Route("/change", methods={"POST"})
      */
     public function changeArrosed(ArrosedRepository $arrosedRepository)
     {    

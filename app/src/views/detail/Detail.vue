@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner mettre le style en dynamique-->
-                <div class="banner col-lg-7"></div>
+                <div class="banner col-lg-7" style="background-image: url('http://localhost:8888/uploads/pictures/' + plant.picture +')'"></div>
 
                 <!-- main content -->
                 <main class="main-content col-lg-5 offset-lg-7 container-lg bg-light">
@@ -17,12 +17,12 @@
                         <div class="col-lg-12">
                             <p>{{ plant.description }}</p>
                             <hr />
-                            <ul>
-                                <li>Difficulté : {{ plant.difficulty }}</li>
+                            <ul class="text-capitalize">
+                                <li>Difficulté : {{ plant.difficulty.level }}</li>
                                 <li>Espèce : {{ plant.species }}</li>
-                                <li>Catégorie : {{ plant.category }}</li>
-                                <li>Type : {{ plant.type }}</li>
-                                <li>Floraison : {{ plant.flowerings }}</li>
+                                <li>Catégorie : {{ plant.category.categories }}</li>
+                                <li>Type : {{ plant.type.plante_type }}</li>
+                                <li>Floraison : <span class="text-capitalize" v-for="(plant, index) in plant.flowerings" :key="index"> {{ plant.month }} - </span> </li>
                             </ul>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Arrosage :
-                            <span>{{plante.watering}}</span>
+                            <span class="text-capitalize">{{ plant.watering.frequency }}</span>
                         </h4>
                     </div>
 
@@ -45,7 +45,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Ensoleillement :
-                            <span>{{plante.sunshine}}</span>
+                            <span class="text-capitalize">{{ plant.sunshine.exposure }}</span>
                         </h4>
                     </div>
 
@@ -56,7 +56,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Bouturage :
-                            <span>{{plante.cutting}}</span>
+                            <span class="text-capitalize" v-for="(plant, index) in plant.cuttings" :key="index"> {{ plant.month }} - </span>
                         </h4>
                     </div>
 
@@ -65,7 +65,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Rempotage :
-                            <span>{plante.potting}</span>
+                            <span class="text-capitalize" v-for="(plant, index) in plant.pottings" :key="index"> {{ plant.month }} - </span>
                         </h4>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div class="col-md-auto">
                         <h4>
                             Taille :
-                            <span>{{plante.carve}}</span>
+                            <span class="text-capitalize" v-for="(plant, index) in plant.carves" :key="index"> {{ plant.month }} - </span>
                         </h4>
                     </div>
 

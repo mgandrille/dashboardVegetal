@@ -54,7 +54,7 @@ class PlantesApiController extends AbstractController
     /**
      * @Route("/plantes/search")
      */
-     public function search(Request $request, PlantesRepository $plantesrepository){
+    public function search(Request $request, PlantesRepository $plantesrepository){
 
         // Search with GET parameters, init var with $request if exists, empty if not
 
@@ -79,7 +79,7 @@ class PlantesApiController extends AbstractController
             if($request->query->get('type') !== ''){
                 // If not empty
                 $type = intval($request->query->get('type'));
-                $resutl->andWhere('p.type = :type')->setParameter('type', $type);
+                $result->andWhere('p.type = :type')->setParameter('type', $type);
             }
         }
 
@@ -112,7 +112,7 @@ class PlantesApiController extends AbstractController
 
         return $response;
 
-     }
+    }
 
     /**
      * @Route("/plantes/{id}")
