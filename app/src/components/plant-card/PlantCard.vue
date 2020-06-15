@@ -14,7 +14,7 @@
 
 		<footer class="m-2 text-right">
                 <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
-                <a href="#" class="btn btn-primary ml-auto" @click="addPlant">Ajouter +</a>
+                <a href="#" class="btn btn-primary ml-auto" @click="addPlant()" v-bind:class="{ disabled: plant.isDisabled }">Ajouter +</a>
         </footer>
     </div>
 </template>
@@ -25,17 +25,24 @@ export default {
     props: ['plantSrcImg', 'plant'],
 
     methods:{
-        addPlant(plant) {
-            this.$http.post('dashboard/add/2', { plant: plant })
+        addPlant() {
+            this.$http.get('dashboard/add/2/' + this.plant.id)
             .then(() => {
-                console.log( plant.name + 'ajouté');
+                isDisabled()
             })
+        },
+
+// *****  A REVOIR EN FONCTION DU DASHBOARD  ******
+        isDisabled() {
+            if (this.plant.id == dashboard.plante_id) {
+                return plant.isDisabled = true
+            }
         }
 
     },
 
     created() {
-
+        
     }
 
 };
