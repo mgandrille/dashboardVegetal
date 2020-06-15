@@ -29,7 +29,7 @@
                         </div>
                     </div>
 
-                    <div class="apperçu row p-3 justify-content-center justify-content-md-around mb-5">                        <PlantCardHome />
+                    <div class="apperçu row p-3 justify-content-center justify-content-md-around mb-5">                        
                         <PlantCardHome v-for="(dashboard, index) in dashboards" :key="index" :dashboard="dashboard">
                         </PlantCardHome>
                     </div>

@@ -2,7 +2,7 @@
     <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
-                v-bind:src="'http://localhost:8888/uploads/pictures/' + plantItem.pictures"
+                v-bind:src="'http://localhost:8888/uploads/pictures/' + plantItem.picture"
                 class="card-img-top p-3"
                 alt="image"
             />
