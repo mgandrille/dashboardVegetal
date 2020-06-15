@@ -3,27 +3,56 @@
 .banner {	
 	margin-top: $navbar-height;
 	min-height: $banner-height;
-	background-image: url('https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png');
+	background-image: url('http://localhost:8888/uploads/pictures/Euphorbia-5ee4c91d1c504.jpeg');
 	background-color: white;
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: cover;
 	background-position: center center;
+	position: inherit;
 
 	@media (min-width: $lg-breakpoint) {
-		min-height: calc(100vh - 150px - 75px);
+		min-height: calc(100vh - 140px - 75px);
+		position: fixed;
 	}
 }
 
 .main-content {
-	margin-top: $banner-height;
-	min-height: 100vh;
+	height: auto;
 	@media (min-width: $lg-breakpoint) {
-		margin-top: $navbar-height;	
+		margin-top: $navbar-height;
+		min-height: 100vh;
+	}
+
+	.content {
+		margin-bottom: 20px;
+		@media (min-width: $lg-breakpoint) {
+			margin-bottom: 0;
+		}
 	}
 }
 
 footer {
 	z-index: 200;
-	height: 150px;
+	height: auto;
 	background-color: $main-color;
+
+	@media (min-width: $lg-breakpoint) {
+		height: 140px;
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+	}
 }
+
+.list-group-item {
+	background-color: transparent;
+}
+
+.informations {
+	span {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+}
+
+

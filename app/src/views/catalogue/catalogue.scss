@@ -6,11 +6,17 @@
 
 	@media (min-width: $lg-breakpoint) {
 		height: 100vh;
+		position: fixed;
+		flex-direction: column;
+	}
+
+	.form-group {
+		margin-bottom: 0;
 	}
 }
 
 .main-content {
-	margin-top: $banner-height;
+	margin-top: 0;
 	min-height: 100vh;
 	
 	@media (min-width: $lg-breakpoint) {

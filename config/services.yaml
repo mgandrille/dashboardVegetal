@@ -25,7 +25,7 @@ services:
 
     App\Service\FileUploader:
         arguments:
-            $targetDirectory: '../public/uploads/pictures'
+            $targetDirectory: '../app/assets/img'
             
         # parameters:
         #     picture_directory: '%dash%/public/uploads/pictures'

@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use App\Entity\Dashboard;
 
 class RegistrationController extends AbstractController
 {
@@ -43,6 +44,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            $newDashboard = new Dashboard();
+            $user->setDashboard($newDashboard);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

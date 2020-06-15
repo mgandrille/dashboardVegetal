@@ -14,6 +14,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\User;
+use App\Repository\DashboardRepository;
 
 
 class UserApiController extends AbstractController
@@ -34,16 +35,17 @@ class UserApiController extends AbstractController
      * @Route("/api/user", name="api_user")
      */
     public function index(UserRepository $userRepository){
+        // if user is connected, find the associated dashboard
 
         if($this->getUser()){
 
             $user = $this->getUser();
 
-            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard']);
+            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard','all_plantes']);
 
             return new JsonResponse($data);
         }
-        
+
         return $this->redirectToRoute('plantes_index');
     }
 }

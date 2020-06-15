@@ -12,12 +12,17 @@
                     <div class="col-lg-9">
                         <h2 class="mb-3">Prochain arrosage</h2>
                         <div class="row bg-primary justify-content-center">
+
                             <ul>
                                 <li class="text-light" v-for="plant in plants" :key="plant.id" v-bind:class="{ arrosage: plant.isArrosed }">
                                     {{plant.name}} : {{ plant.watering.id }} / {{plant.watering.timeFrequency}}
                                     <!-- {{ plant }} -->
                                 </li>
                             </ul>
+
+            
+                            {{userLogged.roles}}
+
                         </div>
 
                         <div class="row">
@@ -57,11 +62,19 @@ export default {
         Meteo,
         Filtrage
     },
+
+
     data() {
         return {
             plants: [],
-    }
+            userLogged: []
+        }
     },
+
+    mounted() {
+        this.userLogged = this.$store.state.userLogged;
+    },
+    
     created() {
         this.$http.get('api/plantes')
         .then((result) => {

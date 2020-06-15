@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\PlantesRepository;
+use App\Entity\Arrosed;
 
 /**
  * @Route("/dashboard")
@@ -76,6 +78,32 @@ class DashboardController extends AbstractController
             'dashboard' => $dashboard,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/add/{id}", name="dashboard_add", methods={"GET", "POST"})
+     */
+    public function addPlante(Dashboard $dashboard, PlantesRepository $planteRepository){
+        // Add one plant in dashboard, parameters = GET for ID dashboard, POST for ID plant
+
+        if($request->request->get('plante_id')){
+
+            $planteId = $request->request->get('plante_id');
+
+            // Find plante with ID for add into dashboard
+            $newPlante = $planteRepository->findOneBy([
+                'id'    => $planteId
+            ]);
+
+            $dashboard->addPlante($newPlante);
+            $newArrosed = new Arrosed($newPlante, $dashboard);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newArrosed);
+            $entityManager->flush();
+
+            return new Response(200);
+        }
     }
 
     /**

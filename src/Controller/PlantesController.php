@@ -74,7 +74,9 @@ class PlantesController extends AbstractController
      */
     public function show(Plantes $plante): Response
     {
-        // return PlantesApiController::findOne($plante);
+        return $this->render('plantes/show.html.twig',[
+            'plante'    => $plante
+        ]);
     }
 
     /**
@@ -110,4 +112,5 @@ class PlantesController extends AbstractController
 
         return $this->redirectToRoute('plantes_index');
     }
+    
 }

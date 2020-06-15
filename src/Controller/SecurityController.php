@@ -9,6 +9,18 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+
+    /**
+     * @Route("/api/login", name="app_api_login")
+     */
+    public function apiLogin(AuthenticationUtils $authenticationUtils): Response 
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/api_login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+    }
+
     /**
      * @Route("/login", name="app_login")
      */
