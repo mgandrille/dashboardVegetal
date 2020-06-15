@@ -18,13 +18,8 @@
 						<div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard 	v-for="plant in plants" 
 										:key="plant.id" 
-										:plantSrcImg="plant.picture">
-								<template v-slot:plant-name>
-									<h5 class="card-title">{{ plant.name }}</h5>
-								</template>
-								<template v-slot:plant-description>
-									<p class="card-text">{{ plant.description }}</p>
-								</template>
+										:plantSrcImg="plant.picture"
+										:plant="plant">
 							</PlantCard>
 						</div>
                     </div>

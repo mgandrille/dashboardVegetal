@@ -7,14 +7,14 @@
                 alt="image"
             />
             <div class="d-flex flex-column card-body">
-                <slot name="plant-name"></slot>
-                <slot name="plant-description"></slot>
+                <h5 class="card-title">{{ plant.name }}</h5>
+                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
             </div>
         </div>
 
 		<footer class="m-2 text-right">
                 <a href="#" class="btn btn-primary ml-auto">Voir</a>
-                <a href="#" class="btn btn-primary ml-auto" @click="addAction(1)">Ajouter +</a>
+                <a href="#" class="btn btn-primary ml-auto" @click="addPlant(plant.id)">Ajouter +</a>
         </footer>
     </div>
 </template>
@@ -22,7 +22,22 @@
 <script>
 export default {
     name: "PlantCard",
-    props: ['plantSrcImg', 'addAction']
+    props: ['plantSrcImg', 'plant'],
+
+    methods:{
+        addPlant(plant) {
+            this.$http.post('dashboard/add/1', { plant: plant })
+            .then(() => {
+                console.log( plant.name + 'ajouté');
+            })
+        }
+
+    },
+
+    created() {
+
+    }
+
 };
 </script>
 
