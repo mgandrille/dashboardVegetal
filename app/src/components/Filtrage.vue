@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container h-100 w-100">
 
         <div class="container my-5">
             <h4 class="my-3"><i class="fa fa-search"></i> Filtrer les plantes :</h4>
