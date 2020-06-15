@@ -59,31 +59,33 @@ class PlantesApiController extends AbstractController
         // Search with GET parameters, init var with $request if exists, empty if not
 
         ($request->query->get('name')) ? $name = $request->query->get('name') : $name = '';
+
+        // Create search query with string, empty string if user don't search with search bar
         $result = $plantesrepository->createQueryBuilder('p')
                                     ->where('p.name LIKE :name OR p.species LIKE :name')
                                     ->setParameter('name', '%'.$name.'%');
 
         if($request->query->get('watering')){
-
+            // If search with watering filter
             $watering = intval($request->query->get('watering'));
             $result->andWhere('p.watering = :watering')->setParameter('watering', $watering);
         }
 
         if($request->query->get('type')){
-
+            // If search with type filter
             $type = intval($request->query->get('type'));
             $resutl->andWhere('p.type = :type')->setParameter('type', $type);
         }
 
         if($request->query->get('difficulty')){
-
+            // If search with difficulty filter
             $difficulty = intval($request->query->get('difficulty'));
             $result->andWhere('p.difficulty = :difficulty')->setParameter('difficulty', $difficulty);
 
         }
 
         if($request->query->get('sunshine')){
-
+            // If search with sunshine filter
             $sunshine = intval($request->query->get('sunshine'));
             $result->andWhere('p.sunshine = :sunshine')->setParameter('sunshine', $sunshine);
 
@@ -91,9 +93,12 @@ class PlantesApiController extends AbstractController
 
         $searchResult = $result->getQuery()->getResult();
 
-        $data = $this->serializer->normalize($searchResult, null);
+        $data = $this->serializer->normalize($searchResult, null, ['groups' => 'all_plantes']);
 
-        return new JsonResponse($searchResult);
+        $response = new Response(json_encode($data));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
 
      }
 
