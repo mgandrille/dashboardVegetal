@@ -104,13 +104,8 @@
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
                                 :plantItem="plant"
+								:plant="plant"
                             >
-                                <template v-slot:plant-name>
-                                    <h5 class="card-title">{{ plant.name }}</h5>
-                                </template>
-                                <template v-slot:plant-description>
-                                    <p class="card-text">{{ plant.description.substring(0, 255) }}</p>
-                                </template>
                             </PlantCard>
                         </div>
                     </div>
