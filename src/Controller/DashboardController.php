@@ -86,10 +86,8 @@ class DashboardController extends AbstractController
     public function addPlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
         // Add one plant in dashboard, parameters = GET for ID dashboard, POST for ID plant
 
-            $planteId = $plante_id; 
-
             // Find plante with ID for add into dashboard
-            $newPlante = $planteRepository->find($planteId);
+            $newPlante = $planteRepository->find($plante_id);
 
             $dashboard = $dashboardRepository->find($id);
             $dashboard->addPlante($newPlante);
