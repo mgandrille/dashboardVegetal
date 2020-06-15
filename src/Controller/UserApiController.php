@@ -14,6 +14,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\User;
+use App\Repository\DashboardRepository;
 
 
 class UserApiController extends AbstractController
@@ -40,7 +41,7 @@ class UserApiController extends AbstractController
 
             $user = $this->getUser();
 
-            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard']);
+            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard','all_plantes']);
 
             return new JsonResponse($data);
         }
