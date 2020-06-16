@@ -20,8 +20,8 @@
                     v-model="params.typeSelected"
                 >
                     <option selected>choisir...</option>
-                    <option value="indoor">intérieur</option>
-                    <option value="outdoor">extérieur</option>
+                    <option value="1">intérieur</option>
+                    <option value="2">extérieur</option>
                 </select>
             </div>
 
@@ -92,7 +92,7 @@ export default {
     name: "Filtrage",
 
     data() {
-        return {
+                return {
             params: {
                 typeSelected: "choisir...",
                 waterSelected: "choisir...",
@@ -105,7 +105,7 @@ export default {
     methods: {
         getParams(param) {
             if (param === "choisir...") {
-                return "null";
+                return null;
             }
 
             return param;

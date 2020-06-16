@@ -15,7 +15,7 @@
         </div>
 
 		<footer class="m-2 text-right">
-                <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
+                <router-link :to="{ path: '/plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
                 <a href="#" class="btn btn-primary ml-auto" @click="addPlant()" v-bind:class="{ disabled: plant.isDisabled }">Ajouter +</a>
         </footer>
     </div>
@@ -28,7 +28,7 @@ export default {
 
     methods:{
         addPlant() {
-            this.$http.get('dashboard/add/2/' + this.plant.id)
+            this.$http.get('dashboard/add/1/' + this.plant.id)
             .then(() => {
                 isDisabled()
             })
