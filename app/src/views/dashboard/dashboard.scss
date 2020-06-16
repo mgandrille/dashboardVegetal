@@ -10,10 +10,22 @@
 }
 
 .main-content {
-	margin-top: $banner-height;
+	margin-top: 0;
 	min-height: 100vh;
 	
 	@media (min-width: $lg-breakpoint) {
-		margin-top: $navbar-height;	
+		margin-top: 0;	
+	}
+}
+
+.username {
+	color: $main-color;
+}
+
+h2 {
+	text-align: center;
+
+	@media (min-width: $lg-breakpoint) {
+		text-align: left;	
 	}
 }

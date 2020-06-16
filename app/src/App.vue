@@ -19,6 +19,13 @@ export default {
     name: "App",
     components : {
         Navbar
+    },
+
+    created() {
+        this.$http.get('api/user')
+            .then((result) => {
+                this.$store.state.userLogged = result.data
+        });
     }
-};
+}
 </script>

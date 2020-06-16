@@ -67,7 +67,7 @@ export default {
         }
     },
 
-    created() {
+    mounted() {
 
             this.$http.get('api/user')
                 .then((result) => {
