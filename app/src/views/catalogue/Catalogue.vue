@@ -13,7 +13,7 @@
                     class="main-content col-lg-10 offset-lg-2 container-lg bg-light p-3"
                 >
                     <div class="searchbar row p-3 justify-content-center">
-                        <BarreRecherche />
+                        <BarreRecherche v-on:get-name-param="searchbarParams = $event"/>
                     </div>
 
                     <div
@@ -169,7 +169,15 @@ export default {
     data() {
         return {
             plants: [],
-            searchParams: {},
+            searchParams: {
+                type: 'null',
+                water: 'null',
+                sunshine: 'null',
+                difficulty: 'null'
+            },
+            searchbarParams: {
+                name: 'null'
+            },
             page: 1,
             perPage: 10,
             pages: [],
@@ -206,19 +214,23 @@ export default {
                         this.searchParams.sunshine +
                         "&difficulty=" +
                         this.searchParams.difficulty +
-                        "&name=null"
+                        "&name=" +
+                        this.searchbarParams.name
                 )
                 .then(result => {
                     this.plants = result.data;
                 }).then(() => {
                     this.searchParams.filter = false;
+                     this.searchbarParams.filter = false;
                 })
                 .then(() => {
                     this.searchParams.filter = false;
+                    this.searchbarParams.filter = false;
                 })
                 .catch(() => {
                     this.plants = [];
                     this.searchParams.filter = false;
+                    this.searchbarParams.filter = false;
                 })
                 .finally(() => {
                     this.loading = false;
@@ -253,7 +265,7 @@ export default {
     computed: {
         displayedPlants() {
             if (this.searchParams != "") {
-                if (this.searchParams.filter === true) {
+                if (this.searchParams.filter === true || this.searchbarParams.filter === true) {
                     this.getFiltredPlants();
                 }
             }
@@ -269,6 +281,10 @@ export default {
 
         searchParams() {
             this.searchParams;
+        },
+
+                searchbarParams() {
+            this.searchbarParams;
         }
     },
 
