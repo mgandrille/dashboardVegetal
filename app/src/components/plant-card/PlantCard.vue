@@ -14,7 +14,7 @@
 
 		<footer class="m-2 text-right">
                 <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
-                <a href="#" class="btn btn-primary ml-auto" @click="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</a>
+                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
         </footer>
     </div>
 </template>
@@ -44,7 +44,7 @@ export default {
         addPlant() {
             this.$http.get('dashboard/add/' + this.userLogged.dashboard.id + '/' + this.plant.id)
             .then(() => {
-                this.isDisabled()
+                return this.disable = true
             })
         },
     },
