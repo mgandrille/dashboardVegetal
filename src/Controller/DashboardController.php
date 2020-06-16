@@ -108,7 +108,25 @@ class DashboardController extends AbstractController
             
             return new Response('', Response::HTTP_CREATED);
         }
+    }
 
+    /**
+     * @Route("/remove/{id}/{plante_id}")
+     */
+    public function removePlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
+
+        // Find plante with ID for add into dashboard
+        $planteToDelete = $planteRepository->find($plante_id);
+        // Find dashboard with ID
+        $dashboard = $dashboardRepository->find($id);
+
+        $dashboard->removePlante($planteToDelete);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($dashboard);
+        $entityManager->flush();
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     /**
