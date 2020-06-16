@@ -1,0 +1,25 @@
+@import '../../variables-styles.scss';
+
+.filtrage {
+	margin-top: $navbar-height;
+	min-height: $banner-height;
+
+	@media (min-width: $lg-breakpoint) {
+		height: 100vh;
+		position: fixed;
+		flex-direction: column;
+	}
+
+	.form-group {
+		margin-bottom: 0;
+	}
+}
+
+.main-content {
+	margin-top: 0;
+	min-height: 100vh;
+	
+	@media (min-width: $lg-breakpoint) {
+		margin-top: $navbar-height;	
+	}
+}

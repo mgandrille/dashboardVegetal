@@ -1,0 +1,119 @@
+<template>
+    <div class="detail">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left-side banner mettre le style en dynamique-->
+                <div class="banner col-lg-7" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }"></div>
+
+                <!-- main content -->
+                <main class="main-content col-lg-5 offset-lg-7 container-lg bg-light">
+                    <div class="title row mt-5 p-3">
+                        <div class="col-lg-12">
+                            <h2>{{ plant.name }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="content row p-3">
+                        <div class="col-lg-12">
+                            <p>{{ plant.description }}</p>
+                            <hr />
+                            <ul class="text-capitalize">
+                                <li>Difficulté : {{ plant.difficulty.level }}</li>
+                                <li>Espèce : {{ plant.species }}</li>
+                                <li>Catégorie : {{ plant.category.categories }}</li>
+                                <li>Type : {{ plant.type.plante_type }}</li>
+                                <li>Floraison : <span class="text-capitalize" v-for="(plant, index) in plant.flowerings" :key="index"> - {{ plant.month }} </span> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <footer class="footer-detail px-3 pt-3 container-fluid">
+            <div class="row informations text-light col-12">
+                <div class="col-md-4">
+                    <div class="col-md-auto">
+                        <h4>
+                            Arrosage :
+                            <span class="text-capitalize">{{ plant.watering.frequency }}</span>
+                        </h4>
+                    </div>
+
+                    <hr />
+
+                    <div class="col-md-auto">
+                        <h4>
+                            Ensoleillement :
+                            <span class="text-capitalize">{{ plant.sunshine.exposure }}</span>
+                        </h4>
+                    </div>
+
+                    <hr class="d-md-none" />
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-auto">
+                        <h4>
+                            Bouturage :
+                            <span class="text-capitalize" v-for="(plant, index) in plant.cuttings" :key="index"> - {{ plant.month }} </span>
+                        </h4>
+                    </div>
+
+                    <hr />
+
+                    <div class="col-md-auto">
+                        <h4>
+                            Rempotage :
+                            <span class="text-capitalize" v-for="(plant, index) in plant.pottings" :key="index"> - {{ plant.month }} </span>
+                        </h4>
+                    </div>
+
+                    <hr class="d-md-none" />
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-auto">
+                        <h4>
+                            Taille :
+                            <span class="text-capitalize" v-for="(plant, index) in plant.carves" :key="index"> - {{ plant.month }} </span>
+                        </h4>
+                    </div>
+
+                    <hr />
+                </div>
+            </div>
+        </footer>
+    </div>
+</template>
+
+
+<style scoped lang="scss" src="./detail.scss"></style>
+
+
+<script>
+export default {
+    name: "Detail",
+    data() {
+        return {
+            plant: []
+        };
+    },
+
+    methods: {
+        getPlant() {
+            this.$http
+                .get("api/plantes/" + this.$route.params.id)
+                .then(result => {
+                    this.plant = result.data;
+                });
+        }
+    },
+
+    created() {
+        this.getPlant();
+    }
+};
+</script>
+
+

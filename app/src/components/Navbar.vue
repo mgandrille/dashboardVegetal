@@ -1,20 +1,20 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
-            <a class="navbar-brand text-capitalize" href="#"><i class="fa fa-leaf"></i>  dashboard végétal</a>
-<!-- **** Ajouter lien vers la page d'accueil **** -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed fixed-top" id="top">
+
+            <router-link :to="{ path: '/' }" class="navbar-brand text-capitalize"><i class="fa fa-leaf"></i>  dashboard végétal </router-link>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse bg-light navbar-light" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto text-capitalize">
 
-                    <li class="nav-item">     <!-- BOUTTON CATALOGUE -->
-                        <a class="nav-link" href="#">catalogue</a>
-<!-- **** Ajouter lien vers la page de catalogue **** -->
+                    <li class="nav-item">     <!-- LIEN VERS LA PAGE CATALOGUE -->
+                        <router-link :to="{ path: '/catalogue' }" class="nav-link">catalogue</router-link>
                     </li>
 
-                    <li class="nav-item dropdown">   <!-- BOUTTON CONNECTION -->
+                    <li class="nav-item dropdown">   <!-- BOUTTON DE CONNECTION -->
                         <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <!-- **** Si l'utilisateur est connecté : afficher prénom **** -->
                             bienvenue <span class="text-primary font-weight-bold">  PRENOM  </span> !
@@ -23,33 +23,28 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <!-- **** Si l'utilisateur est connecté :  **** -->
-                            <a class="dropdown-item text-secondary" href="#">
-<!-- **** Ajouter lien vers la page du dashboard **** -->
+                            <router-link :to="{ path: '/dashboard', params: {id: 123 } }" class="dropdown-item text-secondary">
                                 <i class="fa fa-leaf"></i>
                                 mon dashboard
-                            </a>
-                            <a class="dropdown-item text-secondary" href="#">
-<!-- **** Ajouter lien vers la page de déconnection **** -->
-                                <i class="fa fa-sign-out"></i>
+                            </router-link>
+                            <router-link :to="{ path: '/authentification/deconnexion' }" class="dropdown-item text-secondary" href="#">
+                                <i class="fa fa-sign-out-alt"></i>
                                 déconnection
-                            </a>
+                            </router-link>
                         <!-- **** Sinon :  **** -->
-                            <a class="dropdown-item text-secondary" href="#">
-<!-- **** Ajouter lien vers la page de connection **** -->
+                            <router-link :to="{ path: '/authentification/connexion' }" class="dropdown-item text-secondary" href="#">
                                 <i class="fa fa-user"></i>
                                 connection
-                            </a>
-                            <a class="dropdown-item text-secondary" href="#">
-<!-- **** Ajouter lien vers la page de création de compte **** -->
+                            </router-link>
+                            <router-link :to="{ path: '/authentification/inscription' }" class="dropdown-item text-secondary" href="#">
                                 <i class="fa fa-user-plus"></i>
                                 créer un compte
-                            </a>                        
+                            </router-link>                        
                         </div>
                     </li>
 
-                    <li class="nav-item">     <!-- BOUTTON CONTACT / A PROPOS -->
-                        <a class="nav-link" href="#">à propos / contact</a>
-<!-- **** Ajouter lien vers la page de contact **** -->
+                    <li class="nav-item">     <!-- LIEN VERS LA PAGE CONTACT / A PROPOS -->
+                        <router-link :to="{ path: '/about' }" class="nav-link">à propos / contact</router-link>
                     </li>
 
                 </ul>
@@ -75,6 +70,10 @@ export default {
 </script>
 
 
-<style>
+<style scoped lang="scss">
+    @import '../variables-styles.scss';
 
+    nav {
+        height: $navbar-height;
+    }
 </style>

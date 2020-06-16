@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Service\FileUploader;
+use App\Repository\DashboardRepository;
 
 /**
  * @Route("/plantes")
@@ -27,9 +28,9 @@ class PlantesController extends AbstractController
     /**
      * @Route("/index/admin", name="plantes_index", methods={"GET"})
      */
-    public function index(PlantesRepository $plantesRepository): Response
+    public function index(PlantesRepository $plantesRepository, DashboardRepository $dashboardrepository): Response
     {
-        
+
         return $this->render('plantes/index.html.twig', [
             'plantes' => $plantesRepository->findAll(),
         ]);
@@ -69,12 +70,12 @@ class PlantesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/admin", name="plantes_show", methods={"GET"})
+     * @Route("/{id}", name="plantes_show", methods={"GET"})
      */
     public function show(Plantes $plante): Response
     {
-        return $this->render('plantes/show.html.twig', [
-            'plante' => $plante,
+        return $this->render('plantes/show.html.twig',[
+            'plante'    => $plante
         ]);
     }
 
@@ -111,4 +112,5 @@ class PlantesController extends AbstractController
 
         return $this->redirectToRoute('plantes_index');
     }
+    
 }

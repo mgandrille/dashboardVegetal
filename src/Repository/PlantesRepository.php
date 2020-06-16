@@ -36,6 +36,27 @@ class PlantesRepository extends ServiceEntityRepository
     }
     */
 
+    // public function searchSystem(   ?string $name, 
+    //                                 ?int $sunshine, 
+    //                                 ?int $difficulty, 
+    //                                 ?int $type, 
+    //                                 ?int $watering){
+
+    //     return $this->createQueryBuilder('p')
+    //         ->where('p.name LIKE :name OR p.species LIKE :name')
+    //         ->andWhere('p.watering = :watering')
+    //         ->andWhere('p.type = :type')
+    //         ->andWhere('p.difficulty = :difficulty')
+    //         ->andWhere('p.sunshine = :sunshine')
+    //         ->setParameter('name', '%'.$name.'%')
+    //         ->setParameter('watering', $watering)
+    //         ->setParameter('type', $type)
+    //         ->setParameter('difficulty', $difficulty)
+    //         ->setParameter('sunshine', $sunshine)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
+
     /*
     public function findOneBySomeField($value): ?Plantes
     {

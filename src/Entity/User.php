@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,19 +19,26 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("dashboard")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"dashboard"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"dashboard"})
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="string", length=180, name="email")
+     * @Groups({"dashboard"})
+     */
     private $email;
 
     /**
@@ -38,8 +47,6 @@ class User implements UserInterface
      */
     private $password;
 
-    private $image;
-
     /**
      * @ORM\Column(type="boolean")
      */
@@ -47,8 +54,14 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Dashboard::class, mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"dashboard"})
      */
     private $dashboard;
+
+    public function __construct()
+    {
+        $this->dashboard = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,16 +154,6 @@ class User implements UserInterface
     {
         $this->isVerified = $isVerified;
 
-        return $this;
-    }
-
-    public function getImage(){
-        return $this->image;
-    }
-
-    public function setImage($image){
-
-        $this->image = $image;
         return $this;
     }
 
