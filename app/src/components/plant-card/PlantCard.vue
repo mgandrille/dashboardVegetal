@@ -2,19 +2,21 @@
     <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
-                v-bind:src="'http://localhost:8888/uploads/pictures/' + plantItem.picture"
+
+                v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
+                
                 class="card-img-top p-3"
                 alt="image"
             />
             <div class="d-flex flex-column card-body">
-                <slot name="plant-name"></slot>
-                <slot name="plant-description"></slot>
+                <h5 class="card-title">{{ plant.name }}</h5>
+                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
             </div>
         </div>
 
 		<footer class="m-2 text-right">
-                <router-link :to="{ path: 'plante/detail/' + plantItem.id }" class="btn btn-primary ml-auto" >Voir</router-link>
-                <a href="#" class="btn btn-primary ml-auto" @click="addPlant">Ajouter +</a>
+                <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
+                <a href="#" class="btn btn-primary ml-auto" @click="addPlant()" v-bind:class="{ disabled: plant.isDisabled }">Ajouter +</a>
         </footer>
     </div>
 </template>
@@ -22,19 +24,29 @@
 <script>
 export default {
     name: "PlantCard",
-    props: ['plantItem'],
+    props: ['plantSrcImg', 'plant'],
 
-    methods: {
-        addPlant: () => {
-            this.$http.post('/user/dashboard/edit', {
-                name: this.plantItem.name,
-                species: this.plantItem.species
+    methods:{
+        addPlant() {
+            this.$http.get('dashboard/add/2/' + this.plant.id)
+            .then(() => {
+                isDisabled()
             })
-            .then(function (response) {
-            console.log(response);
-            })
+        },
+
+// *****  A REVOIR EN FONCTION DU DASHBOARD  ******
+        isDisabled() {
+            if (this.plant.id == dashboard.plante_id) {
+                return plant.isDisabled = true
+            }
         }
+
+    },
+
+    created() {
+        
     }
+
 };
 </script>
 

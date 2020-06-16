@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 
+
 /**
  * @Route("/arrosed")
  * @Security("is_granted('ROLE_USER')", statusCode=401, message="Not authenticated.")

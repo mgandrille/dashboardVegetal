@@ -95,7 +95,7 @@ class DashboardController extends AbstractController
 
             // Find plante with ID for add into dashboard
             $newPlante = $planteRepository->find($plante_id);
-            // Find dashboard wit ID
+            // Find dashboard with ID
             $dashboard = $dashboardRepository->find($id);
                         
             $dashboard->addPlante($newPlante);
