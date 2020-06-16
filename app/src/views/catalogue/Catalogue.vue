@@ -103,7 +103,6 @@
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
-                                :plantItem="plant"
 								:plant="plant"
                             >
                             </PlantCard>
@@ -203,7 +202,8 @@ export default {
                         "&sunshine=" +
                         this.searchParams.sunshine +
                         "&difficulty=" +
-                        +this.searchParams.difficulty
+                        this.searchParams.difficulty +
+                        "&name=null"
                 )
                 .then(result => {
                     this.plants = result.data;
