@@ -103,7 +103,6 @@
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
-                                :plantItem="plant"
 								:plant="plant"
                                 :userLogged="userLogged"
                                 :userPlantes="userLogged.dashboard.plantes"
@@ -191,7 +190,7 @@ export default {
                 })
                 .finally(() => {
                     this.loading = false;
-                });
+            });
         },
 
         getFiltredPlants() {
@@ -206,10 +205,13 @@ export default {
                         "&sunshine=" +
                         this.searchParams.sunshine +
                         "&difficulty=" +
-                        +this.searchParams.difficulty
+                        this.searchParams.difficulty +
+                        "&name=null"
                 )
                 .then(result => {
                     this.plants = result.data;
+                }).then(() => {
+                    this.searchParams.filter = false;
                 })
                 .catch(() => {
                     this.plants = [];

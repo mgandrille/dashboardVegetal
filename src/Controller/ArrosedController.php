@@ -7,6 +7,10 @@ use App\Repository\ArrosedRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Plantes;
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\PlantesRepository;
+use App\Repository\DashboardRepository;
 
 
 
@@ -32,6 +36,24 @@ class ArrosedController extends AbstractController
         $entityManager->persist($newArrosed);
         $entityManager->flush();
 
-        return new Response(200);
+        return new Response('', Response::HTTP_CREATED);
+    }
+
+    /**
+     * @Route("/isarrosed/{id}/{plante_id}")
+     */
+    public function isArrosed(  PlantesRepository $planteRepository, 
+                                DashboardRepository $dashboardRepository,
+                                ArrosedRepository $arrosedRepository,
+                                Request $request)
+    {
+        $planteToArrose = $planteRepository->find($plante_id);
+        $dashboardToUpdate = $dashboardRepository->find($id);
+
+        $arrosedToUpdate = $arrosedRepository->findTheGood($id, $plante_id);
+
+        $arrosedToUpdate->setArrosedAt(new \DateTime());
+
+        return new Response('', Response::HTTP_CREATED);
     }
 }
