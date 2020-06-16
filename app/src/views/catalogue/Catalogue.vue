@@ -213,6 +213,9 @@ export default {
                 }).then(() => {
                     this.searchParams.filter = false;
                 })
+                .then(() => {
+                    this.searchParams.filter = false;
+                })
                 .catch(() => {
                     this.plants = [];
                     this.searchParams.filter = false;
