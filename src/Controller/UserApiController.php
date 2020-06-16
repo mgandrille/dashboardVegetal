@@ -45,6 +45,11 @@ class UserApiController extends AbstractController
             return new JsonResponse($data);
         }
 
+        else {
+            $data = [];
+            return new JsonResponse($data);
+        }
+
         return $this->redirectToRoute('plantes_index');
     }
 }
