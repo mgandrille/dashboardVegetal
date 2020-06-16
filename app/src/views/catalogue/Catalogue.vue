@@ -208,6 +208,9 @@ export default {
                 .then(result => {
                     this.plants = result.data;
                 })
+                .then(() => {
+                    this.searchParams.filter = false;
+                })
                 .catch(() => {
                     this.plants = [];
                     this.searchParams.filter = false;

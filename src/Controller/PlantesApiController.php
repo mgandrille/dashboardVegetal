@@ -97,7 +97,7 @@ class PlantesApiController extends AbstractController
 
         if($request->query->get('sunshine')){
             // If search with sunshine filter
-            if($request->query->get('difficulty') != 'null'){
+            if($request->query->get('sunshine') != 'null'){
                 // If not empty
                 $sunshine = intval($request->query->get('sunshine'));
                 $result->andWhere('p.sunshine = :sunshine')->setParameter('sunshine', $sunshine);
