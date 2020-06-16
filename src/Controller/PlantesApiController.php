@@ -55,14 +55,13 @@ class PlantesApiController extends AbstractController
      public function search(Request $request, PlantesRepository $plantesrepository){
         // Search with GET parameters, init with $request if exists, empty if not
 
-
-        // ($request->query->get('name')) ? $name = $request->query->get('name') : $name = '';
-
-        // Create search query with string, empty string if user don't search with search bar
+        // Create search query
         $result = $plantesrepository->createQueryBuilder('p');
 
         if($request->query->get('name')) {
+            // if search with string exists
             if($request->query->get('name') != 'null'){
+                // if not null
                 $result->where('p.name LIKE :name OR p.species LIKE :name')
                 ->setParameter('name', '%' . $request->query->get('name') . '%');
             }
