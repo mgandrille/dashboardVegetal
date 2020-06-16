@@ -35,7 +35,7 @@ export default {
 	},
 
 	mounted() {
-		this.$http.get('/api/register')
+		this.$http.get('/register')
 			.then(result => this.registerForm = result.data)
 		}
 };
