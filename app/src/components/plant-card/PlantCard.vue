@@ -1,5 +1,5 @@
 <template>
-    <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
+    <div :class="classes" @mouseover="hoverOver" @mouseout="hoverOut" class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
                 v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
@@ -32,7 +32,8 @@ export default {
     data() {
         return {
             disable: false,
-            inDashboard: false
+            inDashboard: false,
+            classes: []
         }
     },
 
@@ -47,6 +48,12 @@ export default {
                 this.isDisabled()
             })
         },
+        hoverOver(){
+            this.classes.push('animated')
+        },
+        hoverOut(){
+            this.classes = []
+        }
     },
 
     computed: {
