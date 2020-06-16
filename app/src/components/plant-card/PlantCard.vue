@@ -2,9 +2,7 @@
     <div class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
-
                 v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
-                
                 class="card-img-top p-3"
                 alt="image"
             />
@@ -16,7 +14,7 @@
 
 		<footer class="m-2 text-right">
                 <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
-                <a href="#" class="btn btn-primary ml-auto" @click="addPlant()" v-bind:class="{ disabled: plant.isDisabled }">Ajouter +</a>
+                <a href="#" class="btn btn-primary ml-auto" @click="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</a>
         </footer>
     </div>
 </template>
@@ -24,27 +22,43 @@
 <script>
 export default {
     name: "PlantCard",
-    props: ['plantSrcImg', 'plant'],
+    props: [
+        'plantSrcImg', 
+        'plant',
+        'userLogged',
+        'userPlantes'
+    ],
 
-    methods:{
-        addPlant() {
-            this.$http.get('dashboard/add/2/' + this.plant.id)
-            .then(() => {
-                isDisabled()
-            })
-        },
-
-// *****  A REVOIR EN FONCTION DU DASHBOARD  ******
-        isDisabled() {
-            if (this.plant.id == dashboard.plante_id) {
-                return plant.isDisabled = true
-            }
+    data() {
+        return {
+            disable: false,
+            inDashboard: false
         }
-
     },
 
     created() {
-        
+        this.isDisabled();
+    },
+
+    methods:{
+        addPlant() {
+            this.$http.get('dashboard/add/' + this.userLogged.dashboard.id + '/' + this.plant.id)
+            .then(() => {
+                this.isDisabled()
+            })
+        },
+    },
+
+    computed: {
+        isDisabled: function() {
+            this.userPlantes.forEach(plante => {
+                if (this.plant.id === plante.id) {
+                    this.inDashboard = true;
+                    return this.disable = true
+                }
+            });
+        }
+
     }
 
 };

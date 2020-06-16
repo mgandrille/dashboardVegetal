@@ -105,6 +105,8 @@
                                 :key="index"
                                 :plantItem="plant"
 								:plant="plant"
+                                :userLogged="userLogged"
+                                :userPlantes="userLogged.dashboard.plantes"
                             >
                             </PlantCard>
                         </div>
@@ -173,7 +175,8 @@ export default {
             perPage: 10,
             pages: [],
             loading: false,
-            errorMsg: "plante non trouvée"
+            errorMsg: "plante non trouvée",
+            userLogged: []
         };
     },
 
@@ -266,7 +269,24 @@ export default {
 
     created() {
         this.getPlants();
-    }
+
+        this.$http.get('api/user')
+            .then((result) => {
+                this.$store.state.userLogged = result.data
+        })
+            .then(() => {
+                // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
+                if(this.$store.state.userLogged.length < 1) {
+                    this.userLogged = null;
+                }
+                // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
+                else {
+                    this.userLogged = this.$store.state.userLogged;
+                    console.log(this.userLogged);
+                }
+            });
+        }
+
 };
 </script>
 
