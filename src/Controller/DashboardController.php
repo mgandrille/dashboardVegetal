@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PlantesRepository;
 use App\Entity\Arrosed;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/dashboard")
@@ -19,6 +20,7 @@ class DashboardController extends AbstractController
 {
     /**
      * @Route("/", name="dashboard_index", methods={"GET"})
+     * IsGranted("ROLE_ADMIN")
      */
     public function index(DashboardRepository $dashboardRepository): Response
     {
@@ -29,6 +31,7 @@ class DashboardController extends AbstractController
 
     /**
      * @Route("/new", name="dashboard_new", methods={"GET","POST"})
+     * IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -52,6 +55,7 @@ class DashboardController extends AbstractController
 
     /**
      * @Route("/{id}", name="dashboard_show", methods={"GET"})
+     * IsGranted("ROLE_ADMIN")
      */
     public function show(Dashboard $dashboard): Response
     {
@@ -62,6 +66,7 @@ class DashboardController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="dashboard_edit", methods={"GET","POST"})
+     * IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Dashboard $dashboard): Response
     {
@@ -84,25 +89,31 @@ class DashboardController extends AbstractController
      * @Route("/add/{id}/{plante_id}", name="dashboard_add")
      */
     public function addPlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
-        // Add one plant in dashboard, parameters = GET for ID dashboard, POST for ID plant
+        // Add one plant in dashboard, parameters = GET for ID dashboardand plant ID
+
+        if($this->getUser()->getDashboard()->getId() == $id){
 
             // Find plante with ID for add into dashboard
             $newPlante = $planteRepository->find($plante_id);
+            // Find dashboard wit ID
             $dashboard = $dashboardRepository->find($id);
-            
+                        
             $dashboard->addPlante($newPlante);
+            // Init arrosage with actual Datetime (in construct Arrosed)
             $newArrosed = new Arrosed($newPlante, $dashboard);
-
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newArrosed);
             $entityManager->flush();
-
+            
             return new Response('', Response::HTTP_CREATED);
+        }
 
     }
 
     /**
      * @Route("/{id}", name="dashboard_delete", methods={"DELETE"})
+     * IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Dashboard $dashboard): Response
     {

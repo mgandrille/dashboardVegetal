@@ -37,6 +37,8 @@
             </tbody>
         </table>
 
+        <img class="mx-auto" src="{{ asset('../public/uploads/pictures/'~plante.picture) }}"><br>
+
         <a href="{{ path('plantes_index') }}">back to list</a>
 
         <a href="{{ path('plantes_edit', {'id': plante.id}) }}">edit</a>

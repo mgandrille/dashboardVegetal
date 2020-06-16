@@ -63,7 +63,7 @@ class PlantesApiController extends AbstractController
 
         if($request->query->get('watering')){
             // If search with watering filter
-            if($request->query->get('watering') !== ''){
+            if($request->query->get('watering') !== null){
                 // If not empty
                 $watering = intval($request->query->get('watering'));
                 $result->andWhere('p.watering = :watering')->setParameter('watering', $watering);
@@ -72,7 +72,7 @@ class PlantesApiController extends AbstractController
 
         if($request->query->get('type')){
             // If search with type filter
-            if($request->query->get('type') !== ''){
+            if($request->query->get('type') !== null){
                 // If not empty
                 $type = intval($request->query->get('type'));
                 $result->andWhere('p.type = :type')->setParameter('type', $type);
@@ -81,7 +81,7 @@ class PlantesApiController extends AbstractController
 
         if($request->query->get('difficulty')){
             // If search with difficulty filter
-            if($request->query->get('difficulty') !== ''){
+            if($request->query->get('difficulty') !== null){
                 // If not empty
                 $difficulty = intval($request->query->get('difficulty'));
                 $result->andWhere('p.difficulty = :difficulty')->setParameter('difficulty', $difficulty);
@@ -90,7 +90,7 @@ class PlantesApiController extends AbstractController
 
         if($request->query->get('sunshine')){
             // If search with sunshine filter
-            if($request->query->get('difficulty') !== ''){
+            if($request->query->get('difficulty') !== null){
                 // If not empty
                 $sunshine = intval($request->query->get('sunshine'));
                 $result->andWhere('p.sunshine = :sunshine')->setParameter('sunshine', $sunshine);
