@@ -36,7 +36,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.$http.get('/api/login')
+		this.$http.get('/login')
 			.then(result => this.loginForm = result.data);
 	}
 };
