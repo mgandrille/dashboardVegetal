@@ -10,7 +10,6 @@
             </div>
 
             <div class="col-lg-9 mt-3">
-
                 <div class="col-12">
                     <h2 class="mb-3">Prochain arrosage</h2>
                     <p>Voici les plantes à entretenir en priorité</p>
@@ -32,9 +31,7 @@
                 <hr />
 
                 <div class="col-12">
-                    <h2 class="mb-3">
-                        <span class="username">{{userLogged.roles}}</span>Toutes vos plantes
-                    </h2>
+                    <h2 class="mb-3">Toutes vos plantes</h2>
                     <p>Un apperçu de toutes les plantes que vous avez</p>
                     <div class="row flex-wrap col-lg-12 mb-3">
                         <PlantCard />
@@ -84,22 +81,22 @@ export default {
             })
             .then(() => {
                 this.userLogged = this.$store.state.userLogged;
+                this.plants =  this.userLogged.dashboard
             });
+            // .then(() => {
 
-        this.$http.get("api/plantes").then(result => {
-            this.plants = result.data;
-
-            this.plants.forEach(plant => {
-                let dateArrosage =
-                    plant.watering.DERNIERARROSAGE +
-                    plant.watering.timeFrequency;
-                let date = Date.now();
-                console.log(date);
-                if (dateArrosage >= date) {
-                    return (plant.isArrosed = true);
-                }
-            });
-        });
+            //         this.plants.forEach(plant => {
+            //             let dateArrosage =
+            //                 plant.watering.DERNIERARROSAGE +
+            //                 plant.watering.timeFrequency;
+            //             let date = Date.now();
+            //             console.log(date);
+            //             if (dateArrosage >= date) {
+            //                 return (plant.isArrosed = true);
+            //             }
+            //         });
+            //     });
+            // });
     }
 };
 </script>
