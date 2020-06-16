@@ -26,7 +26,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <span v-if="userLogged"> 
-                                <router-link :to="{ path: '/dashboard', params: {id: 123 } }" class="dropdown-item text-secondary">
+                                <router-link :to="{ path: `/dashboard/${userLogged.dashboard.id}` }" class="dropdown-item text-secondary">
                                     <i class="fa fa-leaf"></i>
                                     mon dashboard
                                 </router-link>
