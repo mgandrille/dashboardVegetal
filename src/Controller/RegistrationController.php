@@ -47,15 +47,14 @@ class RegistrationController extends AbstractController
 
             $newDashboard = new Dashboard();
             $user->setDashboard($newDashboard);
-
+  
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('229e5fa8e1-e09d95@inbox.mailtrap.io', 'DashBoard'))
+                    ->from(new Address('a256006f42-5b1aa1@inbox.mailtrap.io', 'DashBoard'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
