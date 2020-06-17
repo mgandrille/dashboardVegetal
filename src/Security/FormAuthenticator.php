@@ -89,7 +89,9 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-            return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        $cred = $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+
+        return $cred;
     }
 
     /**

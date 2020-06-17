@@ -21,15 +21,26 @@ class SecurityController extends AbstractController
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
+      
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        if($error){
-            $error = new UserApiController();
-            $errorMsg = $error->errorJson();
-        }
+        // if($error){
+        //     return $this->render('_partials/loginError.html.twig', [
+        //         'errors'      => 'test'
+        //     ]);
+        // }
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        // if(!$this->getUser()){
+        //     if($error){
+        //         return $this->addFlash('error', 'erreur');
+        //     }
+        //     return $this->render('security/login.html.twig');
+        // }
+        return $this->render('security/login.html.twig', [
+            'last_username'  => $lastUsername,
+            'error'         => $error
+        ]);
     }
 
     /**
