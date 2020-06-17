@@ -40,6 +40,8 @@
                                 v-for="(plant, index) in plants"
                                 :key="index"
 								:plant="plant"
+                                :inDashboard="inDashboard"
+                                :dashboard="userLogged"
                             >
                             </PlantCard>
                         </div>
@@ -75,7 +77,8 @@ export default {
     data() {
         return {
             plants: [],
-            userLogged: []
+            userLogged: [],
+            inDashboard: true,
         };
     },
 
@@ -87,23 +90,28 @@ export default {
             })
             .then(() => {
                 this.userLogged = this.$store.state.userLogged;
-                this.plants =  this.userLogged.dashboard.plantes
-            });
-            // .then(() => {
+                this.plants =  this.userLogged.dashboard.plantes;
+                this.inDashboard = true;
+                this.plants.forEach(plant => {
+                    let dateArrosage =
+                        plant.arroseds.convertTimestamp +
+                        plant.watering.timeFrequency;
+                    console.log('date arrosage : ' + dateArrosage);
+                    let date = Date.now();
+                    console.log('aujourdhui : ' + date);
+                    if (dateArrosage >= date) {
+                        return (plant.isArrosed = true);
+                        this.$http.get("/arrosed/isArrosed/" + this.dashboard.id + "/" + this.plant.id)
+                    }
+                });
 
-            //         this.plants.forEach(plant => {
-            //             let dateArrosage =
-            //                 plant.watering.DERNIERARROSAGE +
-            //                 plant.watering.timeFrequency;
-            //             let date = Date.now();
-            //             console.log(date);
-            //             if (dateArrosage >= date) {
-            //                 return (plant.isArrosed = true);
-            //             }
-            //         });
-            //     });
-            // });
+            })
+            .then(() => {
+            });
+
     }
+        
+
 };
 </script>
 
