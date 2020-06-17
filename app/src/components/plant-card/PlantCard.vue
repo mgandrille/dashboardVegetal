@@ -1,28 +1,27 @@
 <template>
-    <router-link :to="{ path: 'plante/detail/' + plant.id }">
-        <div :class="classes" @mouseover="hoverOver" @mouseout="hoverOut" class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
-            <div class="d-flex flex-md-column">
-                <img
-                    v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
-                    class="card-img-top p-3"
-                    alt="image"
-                />
-                <div class="d-flex flex-column card-body">
-                    <div class="alert alert-success alert-dismissible fade show d-none" v-bind:class="{ 'd-block': isAlert }" role="alert">
-                        La plante a été ajoutée à votre Dashboard !
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <h5 class="card-title">{{ plant.name }}</h5>
-                    <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
+
+<router-link :to="{ path: '../plante/detail/' + plant.id }" tag="div">
+    <div :class="classes" @mouseover="hoverOver" @mouseout="hoverOut" class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
+        <div class="d-flex flex-md-column">
+            <img
+                v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
+                class="card-img-top p-3"
+                alt="image"
+            />
+            <div class="d-flex flex-column card-body">
+                <div class="alert alert-success alert-dismissible fade show d-none" v-bind:class="{ 'd-block': isAlert }" role="alert">
+                    La plante a été ajoutée à votre Dashboard !
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
                 </div>
             </div>
-
-            <footer class="m-2 text-right">
-                    <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
-            </footer>
-        </div>
+            
+		<footer class="m-2 text-right">
+                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
+        </footer>
+    </div>
     </router-link>
 </template>
 
