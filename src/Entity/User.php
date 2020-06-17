@@ -54,7 +54,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Dashboard::class, mappedBy="user", cascade={"persist", "remove"})
-     * @Groups({"dashboard"})
+     *
      */
     private $dashboard;
 
