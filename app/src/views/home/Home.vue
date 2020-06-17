@@ -76,12 +76,12 @@ export default {
                 });
     },
 
-    // created() {
-    //     this.$http.get('/api/bigdash')
-    //         .then((result) => {
-    //             this.dashboards = result.data;
-    //         })
-	// }
+    created() {
+        this.$http.get('/api/bigdash')
+            .then((result) => {
+                this.dashboards = result.data;
+            })
+	}
 };
 </script>
 
