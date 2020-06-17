@@ -107,7 +107,7 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         }
 
         if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
-            return new RedirectResponse($this->urlGenerator->generate('plantes_index'));
+            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
