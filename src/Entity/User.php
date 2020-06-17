@@ -19,25 +19,25 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("dashboard")
+     * @Groups({"dashboard", "user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"dashboard"})
+     * @Groups({"dashboard", "user"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"dashboard"})
+     * @Groups({"dashboard", "user"})
      */
     private $roles = [];
 
     /**
      * @ORM\Column(type="string", length=180, name="email")
-     * @Groups({"dashboard"})
+     * @Groups({"dashboard", "user"})
      */
     private $email;
 
@@ -54,7 +54,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Dashboard::class, mappedBy="user", cascade={"persist", "remove"})
-     * @Groups({"dashboard"})
+     * @Groups({"user"})
      */
     private $dashboard;
 

@@ -17,13 +17,13 @@ class Watering
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $frequency;
 
@@ -33,7 +33,7 @@ class Watering
     private $id_plante;
 
     /**
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $timeFrequency;
 

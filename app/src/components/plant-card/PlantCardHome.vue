@@ -7,9 +7,9 @@
 		<div class="d-flex flex-md-column">
 			<img src="http://localhost:8888/uploads/pictures/telechargement-5ee1f2ef436f5.jpeg" class="card-img-top p-3" alt="image">
 			<div class="d-flex flex-column card-body">
-				<h5 class="card-title">Créé par : {{ dashboard.userProfil }}</h5>
-				<p class="card-text">{{ dashboard.plantsNb }} plantes ajoutées</p>
-				<!-- <a href="#" class="btn btn-primary ml-auto">Voir</a> -->
+				<h5 class="card-title">Créé par : {{ dashboard.user.username }}</h5>
+				<p class="card-text">{{ dashboard.plantes.length }} plantes ajoutées</p>
+				<router-link :to="{ path: `/dashboard/${dashboard.id}` }" class="btn btn-primary ml-auto">Voir</router-link>
 			</div>
 		</div>
 	</div>

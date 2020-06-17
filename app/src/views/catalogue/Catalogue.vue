@@ -13,7 +13,7 @@
                     class="main-content col-lg-10 offset-lg-2 container-lg bg-light p-3"
                 >
                     <div class="searchbar row p-3 justify-content-center">
-                        <BarreRecherche v-on:get-name-param="searchbarParams = $event"/>
+                        <BarreRecherche v-on:get-name-param="searchbarParams = $event" />
                     </div>
 
                     <div
@@ -98,30 +98,41 @@
                         </svg>
                     </div>
 
-                    <div class="title row mt-5 p-3" v-if="plants.length">
+                    <div class="title row mt-5 p-3" v-if="userLogged.username">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
-								:plant="plant"
+                                :plant="plant"
                                 :userLogged="userLogged"
                                 :userPlantes="userLogged.dashboard.plantes"
-                            >
-                            </PlantCard>
+                            ></PlantCard>
+                        </div>
+                    </div>
+                    <div class="title row mt-5 p-3" v-else>
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                            <PlantCard
+                                v-for="(plant, index) in displayedPlants"
+                                :key="index"
+                                :plant="plant"
+                            ></PlantCard>
                         </div>
                     </div>
 
-                    <div
+                    <!-- <div
                         class="title row mt-5 p-3"
-                        v-else-if="searchParams.length && !plants.length"
-                    >{{ errorMsg }}</div>
-
+                        
+                    >{{ errorMsg }}</div>-->
 
                     <!-- ***
                     Pagination
                     ***-->
-                    <div class="row col-12 justify-content-end" v-scroll-to="'#top-page'" v-if="plants.length">
-                        <div class="clearfix btn-group " >
+                    <div
+                        class="row col-12 justify-content-end"
+                        v-scroll-to="'#top-page'"
+                        v-if="plants.length"
+                    >
+                        <div class="clearfix btn-group">
                             <button
                                 type="button"
                                 class="btn btn-primary"
@@ -170,13 +181,15 @@ export default {
         return {
             plants: [],
             searchParams: {
-                type: 'null',
-                water: 'null',
-                sunshine: 'null',
-                difficulty: 'null'
+                type: "null",
+                water: "null",
+                sunshine: "null",
+                difficulty: "null",
+                filter: false
             },
             searchbarParams: {
-                name: 'null'
+                name: "null",
+                filter: false
             },
             page: 1,
             perPage: 10,
@@ -189,15 +202,8 @@ export default {
 
     methods: {
         getPlants() {
-            this.loading = true;
-
-            this.$http
-                .get("api/plantes")
-                .then(result => {
-                    this.plants = result.data;
-                })
-                .finally(() => {
-                    this.loading = false;
+            this.$http.get("api/plantes").then(result => {
+                this.plants = result.data;
             });
         },
 
@@ -219,9 +225,11 @@ export default {
                 )
                 .then(result => {
                     this.plants = result.data;
-                }).then(() => {
+                })
+                .then(() => {
+                    this.paginate(this.plants);
                     this.searchParams.filter = false;
-                     this.searchbarParams.filter = false;
+                    this.searchbarParams.filter = false;
                 })
                 .then(() => {
                     this.searchParams.filter = false;
@@ -264,13 +272,15 @@ export default {
 
     computed: {
         displayedPlants() {
-            if (this.searchParams != "") {
-                if (this.searchParams.filter === true || this.searchbarParams.filter === true) {
-                    this.getFiltredPlants();
-                }
+            if (
+                this.searchParams.filter === true ||
+                this.searchbarParams.filter === true
+            ) {
+                this.pages = [];
+                this.getFiltredPlants();
+            } else {
+                return this.paginate(this.plants);
             }
-
-            return this.paginate(this.plants);
         }
     },
 
@@ -283,31 +293,23 @@ export default {
             this.searchParams;
         },
 
-                searchbarParams() {
+        searchbarParams() {
             this.searchbarParams;
         }
     },
 
     created() {
-        this.getPlants();
-
-        this.$http.get('api/user')
-            .then((result) => {
-                this.$store.state.userLogged = result.data
-        })
+        this.$http
+            .get("api/plantes")
+            .then(result => {
+                this.plants = result.data;
+            })
             .then(() => {
-                // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
-                if(this.$store.state.userLogged.length < 1) {
-                    this.userLogged = null;
-                }
-                // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
-                else {
-                    this.userLogged = this.$store.state.userLogged;
-                    console.log(this.userLogged);
-                }
+                this.$http.get("api/user").then(result => {
+                    this.userLogged = result.data;
+                });
             });
-        }
-
+    }
 };
 </script>
 
