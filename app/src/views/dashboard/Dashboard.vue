@@ -4,7 +4,7 @@
             <div class="col-12 mt-3">
                 <h2>
                     Bonjour
-                    <span class="username">{{userLogged.username}}</span>, voici vos plantes :
+                    <span class="username">{{userLogged.username}}</span>, voici vos plantes : {{$route.params.id}}
                 </h2>
                 <hr />
             </div>
@@ -34,7 +34,7 @@
                     <h2 class="mb-3">Toutes vos plantes</h2>
                     <p>Un apperçu de toutes les plantes que vous avez</p>
 
-                    <div class="title row mt-5 p-3" v-if="plants.length">
+                    <div class="title row mt-5 p-3" v-if="plants.length && userLogged.length > 0">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in plants"
@@ -42,6 +42,19 @@
 								:plant="plant"
                                 :inDashboard="inDashboard"
                                 :dashboard="userLogged"
+                                :userLogged="userLogged"
+                            >
+                            </PlantCard>
+                        </div>
+                    </div>
+
+                    <div class="title row mt-5 p-3" v-else-if="plants.length">
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                            <PlantCard
+                                v-for="(plant, index) in plants"
+                                :key="index"
+								:plant="plant"
+                                :inDashboard="inDashboard"
                             >
                             </PlantCard>
                         </div>
@@ -86,27 +99,44 @@ export default {
         this.$http
             .get("api/user")
             .then(result => {
-                this.$store.state.userLogged = result.data;
+                this.userLogged = result.data;
             })
             .then(() => {
-                this.userLogged = this.$store.state.userLogged;
-                this.plants =  this.userLogged.dashboard.plantes;
+                let currentDashboard = this.$route.params.id;
+
+                if(this.userLogged.length > 0 && this.userLogged.dashboard.id === currentDashboard) {
+                    this.plants = this.userLogged.dashboard.plantes;
+                } else {
+                    this.$http.get('api/dashboards').then((result) => {
+                        let dashboardPlants = result.data;
+
+                        dashboardPlants.forEach(dash => {
+                            if (dash.id == this.$route.params.id) {
+                                return this.plants = dash.plantes
+                            }
+                        })
+                    })
+                }
+
+                
                 this.inDashboard = true;
+
                 this.plants.forEach(plant => {
                     let dateArrosage =
                         plant.arroseds.convertTimestamp +
                         plant.watering.timeFrequency;
+                        
                     console.log('date arrosage : ' + dateArrosage);
+
                     let date = Date.now();
                     console.log('aujourdhui : ' + date);
+
                     if (dateArrosage >= date) {
                         return (plant.isArrosed = true);
                         this.$http.get("/arrosed/isArrosed/" + this.dashboard.id + "/" + this.plant.id)
                     }
                 });
 
-            })
-            .then(() => {
             });
 
     }

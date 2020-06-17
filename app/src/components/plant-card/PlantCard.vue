@@ -75,7 +75,7 @@ export default {
 
     methods: {
         addPlant() {
-            if (this.userLogged != undefined && this.userPlantes != undefined) {
+            if (this.userLogged != undefined || this.userPlantes != undefined) {
                 this.$http
                     .get(
                         "dashboard/add/" +
@@ -105,7 +105,7 @@ export default {
 
     computed: {
         isDisabled: function() {
-            if (this.userLogged != undefined && this.userPlantes != undefined) {
+            if (this.userLogged != undefined || this.userPlantes != undefined) {
                 this.userPlantes.forEach(plante => {
                     if (this.plant.id === plante.id) {
                         this.inDashboard = true;
