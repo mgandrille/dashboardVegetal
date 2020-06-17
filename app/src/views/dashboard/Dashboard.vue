@@ -41,6 +41,7 @@
                                 :key="index"
 								:plant="plant"
                                 :inDashboard="inDashboard"
+                                :dashboard="userLogged"
                             >
                             </PlantCard>
                         </div>

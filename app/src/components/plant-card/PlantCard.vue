@@ -20,6 +20,7 @@
 
 		<footer class="m-2 text-right">
                 <router-link :to="{ path: '../plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
+                <button class="btn btn-primary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-block': inDashboard }">Supprimer</button>
                 <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }">Ajouter +</button>
         </footer>
     </div>
@@ -33,7 +34,8 @@ export default {
         'plant',
         'userLogged',
         'userPlantes',
-        'inDashboard'
+        'inDashboard',
+        'dashboard'
     ],
 
     data() {
@@ -47,6 +49,7 @@ export default {
 
     created() {
         this.isDisabled();
+        
     },
 
     methods:{
@@ -56,12 +59,20 @@ export default {
                 return [this.isAlert = true, this.disable = true]
             })
         },
+        deletePlant() {
+            this.$http.get('dashboard/remove/' + this.dashboard.id + '/' + this.plant.id)
+            .then(() => {
+                console.log('plante supprimée');
+                window.location.reload();
+            })
+        },
         hoverOver(){
             this.classes.push('animated')
         },
         hoverOut(){
             this.classes = []
-        }
+        },
+
     },
 
     computed: {
