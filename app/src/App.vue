@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- <Navbar :userLogged="userLogged"/> -->
-        <Navbar />
+
         <router-view/>
         
         
