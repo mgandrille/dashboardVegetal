@@ -21,7 +21,7 @@
 		<footer class="my-2 text-right">
                 <router-link :to="{ path: '../plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
                 <button class="btn btn-primary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
-                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }">Ajouter +</button>
+                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }" :disabled="disable">Ajouter +</button>
         </footer>
     </div>
 </template>
