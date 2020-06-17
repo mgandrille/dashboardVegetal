@@ -67,9 +67,6 @@
 
 export default {
     name: "Navbar",
-    components: {
-        BarreRecherche
-    },
     props: [
         "userLogged"
     ]
