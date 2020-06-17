@@ -61,10 +61,7 @@ export default {
 
     data() {
         return {
-            dashboards: [
-                {id: 1, userProfil : 'Richard', plantsNb: 12},
-                {id: 2, userProfil : 'Rosa', plantsNb: 25}
-            ]
+            dashboards: []
         }
     },
 
@@ -77,14 +74,14 @@ export default {
                 .then(() => {
                     console.log(this.$store.state.userLogged)
                 });
-    }
+    },
 
-    // created() {
-    //     this.$http.get('/api/bigdash')
-    //         .then((result) => {
-    //             this.dashboards = result.data;
-    //         })
-	// }
+    created() {
+        this.$http.get('/api/bigdash')
+            .then((result) => {
+                this.dashboards = result.data;
+            })
+	}
 };
 </script>
 
