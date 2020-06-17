@@ -1,5 +1,5 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed fixed-top" id="top">
+        <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light position-fixed fixed-top" id="top">
 
             <router-link :to="{ path: '/' }" class="navbar-brand text-capitalize"><i class="fa fa-leaf"></i>  dashboard végétal </router-link>
 
@@ -7,7 +7,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse bg-light navbar-light" id="navbarSupportedContent">
+            <div class="d-flex justify-content-md-end collapse navbar-collapse bg-light navbar-light" id="navbarSupportedContent">
                 <ul class="navbar-nav container text-capitalize d-flex justify-content-md-around mx-4">
 
                     <li class="nav-item">     <!-- LIEN VERS LA PAGE CATALOGUE -->
