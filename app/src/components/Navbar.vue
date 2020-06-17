@@ -54,7 +54,7 @@
 
                 </ul>
             
-                
+                <BarreRecherche/>
 
             </div>
 
@@ -63,10 +63,13 @@
 
 
 <script>
-// import BarreRecherche from '../components/BarreRecherche.vue';
+import BarreRecherche from '../components/BarreRecherche.vue';
 
 export default {
     name: "Navbar",
+        components: {
+        BarreRecherche
+    },
     props: [
         "userLogged"
     ]
