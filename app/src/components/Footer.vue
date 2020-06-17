@@ -6,7 +6,7 @@
             <p class="font-italic ml-2 col-md-auto m-md-0 p-0">&copy; WF3 équipe 2020 - Carlyne, Marie et Théau</p>
         </div>
         
-        <a class="col-md-2 text-center text-md-right" href="#top">Back to top</a>
+        <a class="col-md-2 text-center text-md-right"  href="" v-scroll-to="'#top'">Back to top</a>
     </footer>
 
 </template>
