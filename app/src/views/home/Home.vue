@@ -17,9 +17,24 @@
                     </div>
 
                     <div class="content row p-3">
-                        <div class="col-lg-12">
-                            <p>Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs. Vous venez d'acquérir une plante ? 
-                                <router-link :to="{path: '/authentification/inscription'}">Inscrivez-vous</router-link> pour créer votre dashboard.</p>
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="text-primary mb-5">Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs.</h3>
+
+                            <div v-if="userLogged" class="text-capitalize mb-3">
+                                <router-link :to="{ path: `/dashboard/${userLogged.dashboard.id}` }" class="btn btn-lg btn-primary text-light" tag="btn">
+                                    <i class="fa fa-leaf"></i>
+                                    aller sur mon dashboard
+                                    <i class="fa fa-leaf"></i>
+                                </router-link>
+                            </div>
+                            
+                            <div v-else>
+                            <p>Vous venez d'acquérir une plante ? Venez créer votre dashboard !</p>
+                                <router-link :to="{path: '/authentification/inscription'}" class="btn btn-lg btn-secondary text-light" tag="btn">
+                                    <i class="fa fa-leaf"></i> Inscrivez-vous <i class="fa fa-leaf"></i>
+                                </router-link> 
+                            </div>
+                            
                         </div>
                     </div>
 
@@ -61,7 +76,8 @@ export default {
 
     data() {
         return {
-            dashboards: []
+            dashboards: [],
+            userLogged: []
         }
     },
 
@@ -77,6 +93,16 @@ export default {
     },
 
     created() {
+        this.$http
+            .get("api/user")
+            .then(result => {
+                if(Object.keys(result.data).length) {
+                    this.userLogged = result.data;
+                } else {
+                    this.userLogged = null;
+                }
+        }),
+
         this.$http.get('/api/bigdash')
             .then((result) => {
                 this.dashboards = result.data;
