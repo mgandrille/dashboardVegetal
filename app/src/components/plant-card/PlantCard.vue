@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{ path: '../plante/detail/' + plant.id }" tag="div">
+    <router-link :to="{ path: '../plante/detail/' + plant.id }">
         <div
             :class="classes"
             @mouseover="hoverOver"
