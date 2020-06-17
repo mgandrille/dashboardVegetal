@@ -22,7 +22,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $categories;
 

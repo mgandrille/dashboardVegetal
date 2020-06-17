@@ -22,31 +22,31 @@ class Plantes
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"all_plantes", "dashboard"})     
+     * @Groups({"all_plantes", "dashboard", "user"})     
      * */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $species;
 
@@ -57,7 +57,7 @@ class Plantes
 
 
     /**
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $normalizeDate;
 
@@ -69,49 +69,49 @@ class Plantes
 
     /**
      * @ORM\ManyToMany(targetEntity=Cutting::class, mappedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $cuttings;
 
     /**
      * @ORM\ManyToMany(targetEntity=Carve::class, mappedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $carves;
 
     /**
      * @ORM\ManyToMany(targetEntity=Flowering::class, mappedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $flowerings;
 
     /**
      * @ORM\ManyToOne(targetEntity=Watering::class, inversedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $watering;
 
     /**
      * @ORM\ManyToOne(targetEntity=Sunshine::class, inversedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $sunshine;
 
     /**
      * @ORM\ManyToOne(targetEntity=Difficulty::class, inversedBy="id_plante")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $difficulty;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="plante_id")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="plante_id")
-     * @Groups({"all_plantes", "dashboard"})  
+     * @Groups({"all_plantes", "dashboard", "user"})  
      */
     private $category;
 
@@ -122,7 +122,7 @@ class Plantes
 
     /**
      * @ORM\OneToMany(targetEntity=Arrosed::class, mappedBy="plante")
-     * @Groups("dashboard")
+     * @Groups({"dashboard", "dashboard", "user"})
      */
     private $arroseds;
 
