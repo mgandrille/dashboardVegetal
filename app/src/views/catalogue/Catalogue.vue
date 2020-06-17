@@ -21,7 +21,7 @@
                         v-if="loading"
                         style="height: 50%"
                     >
-                        <svg
+                         <svg
                             class="col-12"
                             viewBox="0 0 100 100"
                             xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@
                         </svg>
                     </div>
 
-                    <div class="title row mt-5 p-3" v-if="userLogged.username">
+                    <div class="title row mt-2 p-3" v-if="userLogged.username && plantLenght > 0">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
@@ -109,7 +109,7 @@
                             ></PlantCard>
                         </div>
                     </div>
-                    <div class="title row mt-5 p-3" v-else>
+                    <div class="title row mt-2 p-3" v-else>
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
@@ -119,10 +119,11 @@
                         </div>
                     </div>
 
-                    <!-- <div
-                        class="title row mt-5 p-3"
-                        
-                    >{{ errorMsg }}</div>-->
+                    <div v-if="notFind" class="title row p-3">
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                            <NoResult :message="'Aucune plante ne correspond à votre recherche'" />
+                        </div>
+                    </div>
 
                     <!-- ***
                     Pagination
@@ -168,13 +169,15 @@
 import BarreRecherche from "../../components/BarreRecherche.vue";
 import PlantCard from "../../components/plant-card/PlantCard.vue";
 import Filtrage from "../../components/Filtrage.vue";
+import NoResult from "../../components/NoResult.vue";
 
 export default {
     name: "Catalogue",
     components: {
         BarreRecherche,
         PlantCard,
-        Filtrage
+        Filtrage,
+        NoResult
     },
 
     data() {
@@ -195,17 +198,14 @@ export default {
             perPage: 10,
             pages: [],
             loading: false,
-            errorMsg: "plante non trouvée",
+            notFind: false,
             userLogged: []
         };
     },
 
     methods: {
-        getPlants() {
-            this.$http.get("api/plantes").then(result => {
-                this.plants = result.data;
-            });
-        },
+
+        
 
         getFiltredPlants() {
             this.loading = true;
@@ -224,7 +224,12 @@ export default {
                         this.searchbarParams.name
                 )
                 .then(result => {
-                    this.plants = result.data;
+                    if(Object.keys(result.data).length > 0) {
+                        this.plants = result.data;
+                    } else {
+                        this.notFind = true;
+                        this.plants = [];
+                    }
                 })
                 .then(() => {
                     this.paginate(this.plants);
@@ -281,7 +286,9 @@ export default {
             } else {
                 return this.paginate(this.plants);
             }
-        }
+        },
+
+       
     },
 
     watch: {
@@ -299,6 +306,8 @@ export default {
     },
 
     created() {
+        this.loading = true;
+
         this.$http
             .get("api/plantes")
             .then(result => {
@@ -308,6 +317,8 @@ export default {
                 this.$http.get("api/user").then(result => {
                     this.userLogged = result.data;
                 });
+            }).finally(() => {
+                this.loading = false
             });
     }
 };
