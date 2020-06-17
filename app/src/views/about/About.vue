@@ -22,7 +22,7 @@
 
                     <div class="card-deck">
                       <div class="card">
-                        <img class="card-img-top" src="http://localhost:8888/uploads/img/carlyne.jpg" alt="Card image cap">
+                        <img @mouseover="hoverOver" @mouseout="hoverOut"  class="card-img-top" :src="sourceC" alt="Card image cap">
                         <div class="card-body">
                           <h5 class="card-title">Carlyne</h5>
                           <p class="card-text">Ancienne graphiste, nouvellement développeuse web, elle s'éclate en front</p>
@@ -33,10 +33,10 @@
                         </div>
                       </div>
                       <div class="card">
-                        <img class="card-img-top" src="http://localhost:8888/uploads/img/marie.jpg" alt="Card image cap">
+                        <img @mouseover="hoverOverM" @mouseout="hoverOutM" class="card-img-top" :src="sourceM" alt="Card image cap">
                         <div class="card-body">
                           <h5 class="card-title">Marie</h5>
-                          <p class="card-text">Fraichement débarquée dans le développement web, elle aide à la gestion de projet</p>
+                          <p class="card-text">Fraichement débarquée dans le développement web, elle sublime la connexion front et back ainsi que la gestion de projet</p>
                           <p class="card-text"><small class="text-muted">Ses réseaux sociaux : 
                             <a href="https://github.com/mgandrille"><i class="fab fa-github"></i></a>
                             <a href="https://www.linkedin.com/in/marie-gandrille/"><i class="fab fa-linkedin"></i></a>
@@ -44,7 +44,7 @@
                         </div>
                       </div>
                       <div class="card">
-                        <img class="card-img-top" src="http://localhost:8888/uploads/img/theau.jpg" alt="Card image cap">
+                        <img @mouseover="hoverOverT" @mouseout="hoverOutT" class="card-img-top" :src="sourceT" alt="Card image cap">
                         <div class="card-body">
                           <h5 class="card-title">Théau</h5>
                           <p class="card-text">Depuis sa découverte du développement web, rien ne saurait le détourner du back</p>
@@ -79,7 +79,36 @@ export default {
         PlantCardHome,
         Footer
     },
+    data(){
+        return {
+            sourceC: "http://localhost:8888/uploads/img/carlyne.jpg",
+            sourceM: "http://localhost:8888/uploads/img/marie.jpg",
+            sourceT: "http://localhost:8888/uploads/img/theau.jpg"
+        };
+    },
 
+    methods: {
+        hoverOver(){
+            this.sourceC = "http://localhost:8888/uploads/img/carlyne2.jpg"
+        },
+        hoverOut(){
+            this.sourceC = "http://localhost:8888/uploads/img/carlyne.jpg"
+        },
+
+        hoverOverM(){
+            this.sourceM = "http://localhost:8888/uploads/img/marie.gif"
+        },
+        hoverOutM(){
+            this.sourceM = "http://localhost:8888/uploads/img/marie.jpg"
+        },
+
+        hoverOverT(){
+            this.sourceT = "http://localhost:8888/uploads/img/giphy.gif"
+        },
+        hoverOutT(){
+            this.sourceT = "http://localhost:8888/uploads/img/theau.jpg"
+        }
+    }
 
 };
 </script>
