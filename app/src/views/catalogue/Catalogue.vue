@@ -221,7 +221,7 @@ export default {
                     this.plants = result.data;
                 }).then(() => {
                     this.searchParams.filter = false;
-                     this.searchbarParams.filter = false;
+                    this.searchbarParams.filter = false;
                 })
                 .then(() => {
                     this.searchParams.filter = false;

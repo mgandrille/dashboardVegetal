@@ -8,10 +8,11 @@
                 <!-- main content -->
                 <main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
                     
-                    <div class="title row p-3">
+                    <div id="top" class="title row p-3">
                         <div class="col-lg-12">
                             <p>Suivez l'évolution de vos plantes avec</p>
                             <h1>PlantBoard</h1>
+                            <hr>
                         </div>
                     </div>
 
