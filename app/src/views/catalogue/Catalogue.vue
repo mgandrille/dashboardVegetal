@@ -104,8 +104,8 @@
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
                                 :plant="plant"
-                                :userLogged="'test'"
-                                :userPlantes="'test'"
+                                :userLogged="userLogged"
+                                :userPlantes="userLogged.dashboard.plantes"
                             ></PlantCard>
                         </div>
                     </div>
@@ -302,26 +302,6 @@ export default {
                         this.userLogged = result.data;
                     })
                 });
-                
-                // .then(() => {
-                //     this.$http.get('api/user').then(() => {
-                //         this.$store.state.userLogged = result.datathis.
-                // });
-
-
-            // .then(() => {
-            //     // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
-            //     if(this.$store.state.userLogged.length < 1) {
-            //         this.userLogged = null;
-            //         this.getPlants();
-            //     }
-            //     // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
-            //     else {
-            //         this.userLogged = this.$store.state.userLogged;
-            //         this.getPlants();
-            //         console.log(this.userLogged);
-            //     }
-            // })
         }
 
 };
