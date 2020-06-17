@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class DashboardController extends AbstractController
 {
     /**
-     * @Route("/", name="dashboard_index", methods={"GET"})
+     * @Route("/admin", name="dashboard_index", methods={"GET"})
      * IsGranted("ROLE_ADMIN")
      */
     public function index(DashboardRepository $dashboardRepository): Response
@@ -30,7 +30,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="dashboard_new", methods={"GET","POST"})
+     * @Route("/new/admin", name="dashboard_new", methods={"GET","POST"})
      * IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
@@ -54,7 +54,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="dashboard_show", methods={"GET"})
+     * @Route("/{id}/admin", name="dashboard_show", methods={"GET"})
      * IsGranted("ROLE_ADMIN")
      */
     public function show(Dashboard $dashboard): Response
@@ -65,7 +65,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="dashboard_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit/admin", name="dashboard_edit", methods={"GET","POST"})
      * IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Dashboard $dashboard): Response
@@ -130,7 +130,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="dashboard_delete", methods={"DELETE"})
+     * @Route("/{id}/admin", name="dashboard_delete", methods={"DELETE"})
      * IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Dashboard $dashboard): Response
