@@ -1,6 +1,10 @@
 <template>
 <router-link :to="{ path: `/dashboard/${dashboard.id}` }">
-	<div class="card m-2 col-12 col-md-auto" style="width: 18rem;">
+	<div
+		:class="classes"
+        @mouseover="hoverOver"
+        @mouseout="hoverOut"
+	 	class="card m-2 col-12 col-md-auto" style="width: 18rem;">
 		<div class="card-header d-flex align-items-baseline">
 			<p>Dashboard</p>
 			<div class="separator d-flex align-items-baseline"><div class="align-self-baseline"></div></div>
@@ -19,8 +23,25 @@
 <script>
 export default {
 	name: 'PlantCardHome',
-	props: ['dashboard']
-}
+	props: ['dashboard'],
+
+	data(){
+	return {
+		classes: [],
+		};
+	},
+
+	methods: {
+		hoverOver(){
+			this.classes.push('animated')
+		},
+		hoverOut(){
+			this.classes = []
+		}
+	}
+};
+
+
 </script>
 
 <style scoped lang="scss" src="./plant-card.scss"></style>
