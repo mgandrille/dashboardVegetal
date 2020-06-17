@@ -8,10 +8,14 @@
             </button>
 
             <div class="collapse navbar-collapse bg-light navbar-light" id="navbarSupportedContent">
-                <ul class="navbar-nav container text-capitalize d-flex justify-content-md-between mx-4">
+                <ul class="navbar-nav container text-capitalize d-flex justify-content-md-around mx-4">
 
                     <li class="nav-item">     <!-- LIEN VERS LA PAGE CATALOGUE -->
                         <router-link :to="{ path: '/catalogue' }" class="nav-link">catalogue</router-link>
+                    </li>
+
+                    <li class="nav-item">     <!-- LIEN VERS LA PAGE CONTACT / A PROPOS -->
+                        <router-link :to="{ path: '/about' }" class="nav-link">à propos / contact</router-link>
                     </li>
 
                     <li class="nav-item dropdown">   <!-- BOUTTON DE CONNECTION -->
@@ -20,7 +24,7 @@
                                 bienvenue <span class="text-primary font-weight-bold">  {{ userLogged.username }}  </span> !
                             </span>
                             <span v-else>  
-                                connection
+                                connexion
                             </span>
                             
                         </a>
@@ -32,13 +36,13 @@
                                 </router-link>
                                 <a class="dropdown-item text-secondary" href="http://localhost:8888/logout">
                                     <i class="fa fa-sign-out-alt"></i>
-                                    déconnection
+                                    déconnexion
                                 </a>
                             </span>
                             <span v-else>  
                                 <router-link :to="{ path: '/authentification/connexion' }" class="dropdown-item text-secondary" href="#">
                                     <i class="fa fa-user"></i>
-                                    connection
+                                    se connecter
                                 </router-link>
                                 <router-link :to="{ path: '/authentification/inscription' }" class="dropdown-item text-secondary" href="#">
                                     <i class="fa fa-user-plus"></i>
@@ -48,13 +52,9 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">     <!-- LIEN VERS LA PAGE CONTACT / A PROPOS -->
-                        <router-link :to="{ path: '/about' }" class="nav-link">à propos / contact</router-link>
-                    </li>
-
                 </ul>
             
-                <BarreRecherche/>
+                <!-- <BarreRecherche/> -->
 
             </div>
 
