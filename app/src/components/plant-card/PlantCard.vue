@@ -1,4 +1,5 @@
 <template>
+<router-link :to="{ path: '../plante/detail/' + plant.id }" tag="div">
     <div :class="classes" @mouseover="hoverOver" @mouseout="hoverOut" class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
             <img
@@ -19,10 +20,10 @@
         </div>
 
 		<footer class="m-2 text-right">
-                <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
                 <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
         </footer>
     </div>
+    </router-link>
 </template>
 
 <script>
