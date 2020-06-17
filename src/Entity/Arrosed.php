@@ -34,7 +34,7 @@ class Arrosed
     private $dashboard;
 
     /**
-     * @Groups("dashboard")
+     * @Groups({"dashboard", "user", "all_plantes"})
      */
     private $convertTimestamp;
 

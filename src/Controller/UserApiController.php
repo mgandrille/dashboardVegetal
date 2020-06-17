@@ -40,7 +40,7 @@ class UserApiController extends AbstractController
 
             $user = $this->getUser();
 
-            $data = $this->serializer->normalize($user, null, ['groups' => 'dashboard', 'all_plantes']);
+            $data = $this->serializer->normalize($user, null, ['groups' => 'user']);
 
             return new JsonResponse($data);
         }

@@ -35,7 +35,7 @@ class DashboardApiController extends AbstractController
         //Return all Dashboards in Json
         $dash = $dashboardRepository->findAll();
 
-        $data = $this->serializer->normalize($dash, null, ['groups' => 'dashboard', 'all_plantes']);
+        $data = $this->serializer->normalize($dash, null, ['groups' => 'dashboard']);
 
         return new JsonResponse($data);
     }
@@ -57,7 +57,7 @@ class DashboardApiController extends AbstractController
         }
         
         // normalize the array of objects $dashArray
-        $data = $this->serializer->normalize($dashArray, null, ['groups'    => 'dashboard', 'all_plantes']);
+        $data = $this->serializer->normalize($dashArray, null, ['groups'    => 'dashboard']);
 
         // return a normalize $dashArray in Json
         return new JsonResponse($data);
