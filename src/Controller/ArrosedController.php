@@ -23,7 +23,7 @@ class ArrosedController extends AbstractController
     /**
      * @Route("/change", methods={"POST"})
      */
-    public function changeArrosed(ArrosedRepository $arrosedRepository)
+    public function changeArrosed(ArrosedRepository $arrosedRepository, Request $request)
     {    
         $dashId = $request->request->get('dashboard');
         $planteId = $request->request->get('plante');
