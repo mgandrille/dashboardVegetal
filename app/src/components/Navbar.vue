@@ -64,7 +64,6 @@
 
 <script>
 import BarreRecherche from '../components/BarreRecherche.vue';
-
 export default {
     name: "Navbar",
     components: {
@@ -73,17 +72,13 @@ export default {
     props: [
         "userLogged"
     ]
-
-
 }
 </script>
 
 
 <style scoped lang="scss">
     @import '../variables-styles.scss';
-
     nav {
         height: $navbar-height;
     }
-
 </style>
