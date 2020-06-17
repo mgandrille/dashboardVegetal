@@ -89,7 +89,7 @@ export default {
             }
         },
         deletePlant() {
-            this.$http.get('dashboard/remove/' + this.dashboard.id + '/' + this.plant.id)
+            this.$http.get('dashboard/remove/' + this.userLogged.dashboard.id + '/' + this.plant.id)
             .then(() => {
                 console.log('plante supprimée');
                 window.location.reload();

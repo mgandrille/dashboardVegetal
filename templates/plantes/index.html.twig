@@ -3,6 +3,7 @@
 {% block title %}Plantes index{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>Plantes index</h1>
 
     {% if app.user %}
@@ -47,5 +48,5 @@
         <a href="{{ path('plantes_new') }}">Create new</a>
 
     {% endif %}
-
+</div>
 {% endblock %}

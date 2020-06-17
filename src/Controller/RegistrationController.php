@@ -35,6 +35,10 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        if($form->isSubmitted() && !$form->isValid()){
+            return $this->redirect('http://localhost:8888/#/authentification/inscription', 301);
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             
