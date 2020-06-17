@@ -98,23 +98,23 @@
                         </svg>
                     </div>
 
-                    <div class="title row mt-5 p-3" v-if="plants.length">
+                    <div class="title row mt-5 p-3">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
 								:plant="plant"
-                                :userLogged="userLogged"
-                                :userPlantes="userLogged.dashboard.plantes"
+                                :userLogged="'test'"
+                                :userPlantes="'test'"
                             >
                             </PlantCard>
                         </div>
                     </div>
 
-                    <div
+                    <!-- <div
                         class="title row mt-5 p-3"
-                        v-else-if="searchParams.length && !plants.length"
-                    >{{ errorMsg }}</div>
+                        
+                    >{{ errorMsg }}</div> -->
 
 
                     <!-- ***
@@ -173,10 +173,12 @@ export default {
                 type: 'null',
                 water: 'null',
                 sunshine: 'null',
-                difficulty: 'null'
+                difficulty: 'null',
+                filter: false
             },
             searchbarParams: {
-                name: 'null'
+                name: 'null',
+                filter: false
             },
             page: 1,
             perPage: 10,
@@ -189,16 +191,11 @@ export default {
 
     methods: {
         getPlants() {
-            this.loading = true;
-
             this.$http
                 .get("api/plantes")
                 .then(result => {
                     this.plants = result.data;
-                })
-                .finally(() => {
-                    this.loading = false;
-            });
+                });
         },
 
         getFiltredPlants() {
@@ -220,6 +217,7 @@ export default {
                 .then(result => {
                     this.plants = result.data;
                 }).then(() => {
+                    this.paginate(this.plants);
                     this.searchParams.filter = false;
                     this.searchbarParams.filter = false;
                 })
@@ -243,6 +241,7 @@ export default {
                 this.pages.push(i);
             }
         },
+        
 
         paginate(plants) {
             let page = this.page;
@@ -264,13 +263,14 @@ export default {
 
     computed: {
         displayedPlants() {
-            if (this.searchParams != "") {
-                if (this.searchParams.filter === true || this.searchbarParams.filter === true) {
-                    this.getFiltredPlants();
-                }
+            if (this.searchParams.filter === true || this.searchbarParams.filter === true) {
+                this.pages = [];
+                this.getFiltredPlants();
+            } else {
+                return this.paginate(this.plants);
             }
 
-            return this.paginate(this.plants);
+            
         }
     },
 
@@ -283,29 +283,40 @@ export default {
             this.searchParams;
         },
 
-                searchbarParams() {
+        searchbarParams() {
             this.searchbarParams;
         }
     },
 
     created() {
-        this.getPlants();
+        this.$http
+                .get("api/plantes")
+                .then(result => {
+                    this.plants = result.data;
+                });
 
-        this.$http.get('api/user')
-            .then((result) => {
-                this.$store.state.userLogged = result.data
-        })
-            .then(() => {
-                // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
-                if(this.$store.state.userLogged.length < 1) {
-                    this.userLogged = null;
-                }
-                // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
-                else {
-                    this.userLogged = this.$store.state.userLogged;
-                    console.log(this.userLogged);
-                }
-            });
+        // this.$http.get('api/user')
+        //     .then((result) => {
+        //         if(result.data.status === 500 ) {
+        //             this.getPlants();
+        //         } else {
+        //             this.$store.state.userLogged = result.datathis.
+        //         }
+
+           // })
+            // .then(() => {
+            //     // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
+            //     if(this.$store.state.userLogged.length < 1) {
+            //         this.userLogged = null;
+            //         this.getPlants();
+            //     }
+            //     // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
+            //     else {
+            //         this.userLogged = this.$store.state.userLogged;
+            //         this.getPlants();
+            //         console.log(this.userLogged);
+            //     }
+            // })
         }
 
 };
