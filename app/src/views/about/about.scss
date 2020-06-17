@@ -22,9 +22,13 @@
 	}
 }
 
+.card, .radius, .card-img-top {
+	border-radius: 10px !important;
+}
+
 .main-content {
 	margin-top: $banner-height;
-	min-height: 100vh;
+	min-height: calc(100vh - 75px);
 	@media (min-width: $lg-breakpoint) {
 		margin-top: $navbar-height;	
 	}
