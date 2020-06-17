@@ -17,25 +17,25 @@ class Dashboard
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"dashboard"})
+     * @Groups({"dashboard", "user"})
      */
     private $id;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="dashboard", cascade={"persist", "remove"})
-     * @Groups("dashboard")
+     * @Groups({"dashboard"})
      */
     private $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Plantes::class, inversedBy="dashboards")
-     * @Groups({"dashboard"})
+     * @Groups({"dashboard", "user"})
      */
     private $plantes;
 
     /**
      * @ORM\OneToMany(targetEntity=Arrosed::class, mappedBy="dashboard")
-     * @Groups({"dashboard"})
+     * @Groups({"dashboard", "user"})
      */
     private $arroseds;
 
