@@ -15,4 +15,11 @@ class AppController extends AbstractController
     public function index(PlantesRepository $plantesRepository){
         return $this->render('homepage.html.twig');
     }
+
+    /**
+     * @Route("/admin", name="app_admin")
+     */
+    public function indexAdmin(){
+        return $this->render('admin.html.twig');
+    }
 }
