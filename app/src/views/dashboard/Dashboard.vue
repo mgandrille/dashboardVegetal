@@ -13,18 +13,20 @@
                 <div class="col-12">
                     <h2 class="mb-3">Prochain arrosage</h2>
                     <p>Voici les plantes à entretenir en priorité</p>
-                    <div class="row bg-primary justify-content-center">
-                        <ul>
-                            <li
-                                class="text-light"
-                                v-for="plant in plants"
-                                :key="plant.id"
-                                v-bind:class="{ arrosage: plant.isArrosed }"
+                    <div class="row bg-primary justify-content-center pt-3">
+                        <div v-for="plant in plants" :key="plant.id">
+                            <div class="text-light"
+                                v-if="plant.watering.timeFrequency == 259200"
                             >
-                                {{plant.name}} : {{ plant.watering.id }} / {{plant.watering.timeFrequency}}
-                                <!-- {{ plant }} -->
-                            </li>
-                        </ul>
+                                <h6 class="text-light">A arroser dans : 3 jours</h6>
+                                <PlantCard
+                                    
+                                    :plant="plant"
+                                    
+                                >
+                                </PlantCard>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
