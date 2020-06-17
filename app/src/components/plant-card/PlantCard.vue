@@ -17,7 +17,7 @@
 
                 </div>
             </div>
-            
+        </div>
 		<footer class="m-2 text-right">
                 <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
         </footer>

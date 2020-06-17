@@ -1,7 +1,7 @@
 @import '../../variables-styles.scss';
 
 .banner {	
-	margin-top: 0;
+	margin-top: $navbar-height;
 	min-height: $banner-height;
 	background-color: white;
 	background-repeat: no-repeat;
@@ -10,7 +10,7 @@
 	position: inherit;
 
 	@media (min-width: $lg-breakpoint) {
-		min-height: calc((100vh - 140px) - 35px);
+		min-height: calc((100vh - 140px) - 75px);
 		position: fixed;
 	}
 }
@@ -18,7 +18,7 @@
 .main-content {
 	height: auto;
 	@media (min-width: $lg-breakpoint) {
-		margin-top: 0;
+		margin-top: $navbar-height;
 		min-height: 100vh;
 	}
 
