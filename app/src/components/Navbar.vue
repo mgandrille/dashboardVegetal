@@ -8,13 +8,17 @@
             </button>
 
             <div class="collapse navbar-collapse bg-light navbar-light" id="navbarSupportedContent">
-                <ul class="navbar-nav container text-capitalize d-flex justify-content-md-between mx-4">
+                <ul class="navbar-nav container text-capitalize d-flex justify-content-md-around mx-4">
 
                     <li class="nav-item">     <!-- LIEN VERS LA PAGE CATALOGUE -->
                         <router-link :to="{ path: '/catalogue' }" class="nav-link">catalogue</router-link>
                     </li>
 
-                    <li class="nav-item dropdown">   <!-- BOUTTON DE CONNECTION -->
+                    <li class="nav-item">     <!-- LIEN VERS LA PAGE CONTACT / A PROPOS -->
+                        <router-link :to="{ path: '/about' }" class="nav-link">à propos / contact</router-link>
+                    </li>
+
+                                        <li class="nav-item dropdown">   <!-- BOUTTON DE CONNECTION -->
                         <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span v-if="userLogged"> 
                                 bienvenue <span class="text-primary font-weight-bold">  {{ userLogged.username }}  </span> !
@@ -48,13 +52,9 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">     <!-- LIEN VERS LA PAGE CONTACT / A PROPOS -->
-                        <router-link :to="{ path: '/about' }" class="nav-link">à propos / contact</router-link>
-                    </li>
-
                 </ul>
             
-                <BarreRecherche/>
+                
 
             </div>
 
@@ -63,13 +63,10 @@
 
 
 <script>
-import BarreRecherche from '../components/BarreRecherche.vue';
+// import BarreRecherche from '../components/BarreRecherche.vue';
 
 export default {
     name: "Navbar",
-    components: {
-        BarreRecherche
-    },
     props: [
         "userLogged"
     ]
