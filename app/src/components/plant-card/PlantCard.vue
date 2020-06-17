@@ -1,42 +1,54 @@
 <template>
+    <router-link :to="{ path: '../plante/detail/' + plant.id }" tag="div">
+        <div
+            :class="classes"
+            @mouseover="hoverOver"
+            @mouseout="hoverOut"
+            class="card m-2 m-lg-5 col-12 col-md-auto"
+            style="width: 18rem;"
+        >
+            <div class="d-flex flex-md-column">
+                <img
+                    v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
+                    class="card-img-top p-3"
+                    alt="image"
+                />
+                <div class="d-flex flex-column card-body">
+                    <div
+                        class="alert alert-success alert-dismissible fade show d-none"
+                        v-bind:class="{ 'd-block': isAlert }"
+                        role="alert"
+                    >
+                        La plante a été ajoutée à votre Dashboard !
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="alert"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-<router-link :to="{ path: '../plante/detail/' + plant.id }" tag="div">
-    <div :class="classes" @mouseover="hoverOver" @mouseout="hoverOut" class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
-        <div class="d-flex flex-md-column">
-            <img
-                v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
-                class="card-img-top p-3"
-                alt="image"
-            />
-            <div class="d-flex flex-column card-body">
-                <div class="alert alert-success alert-dismissible fade show d-none" v-bind:class="{ 'd-block': isAlert }" role="alert">
-                    La plante a été ajoutée à votre Dashboard !
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-
+                    <h5 class="card-title">{{ plant.name }}</h5>
+                    <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
                 </div>
-
-                 <h5 class="card-title">{{ plant.name }}</h5>
-                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
             </div>
+            <footer v-if="userLogged != undefined" class="m-2 text-right">
+                <button
+                    class="btn btn-primary ml-auto"
+                    @click.prevent="addPlant()"
+                    v-bind:class="{ disabled: disable }"
+                >Ajouter +</button>
+            </footer>
         </div>
-		<footer class="m-2 text-right">
-                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
-        </footer>
-    </div>
     </router-link>
 </template>
 
 <script>
 export default {
     name: "PlantCard",
-    props: [
-        'plantSrcImg',
-        'plant',
-        'userLogged',
-        'userPlantes'
-    ],
+    props: ["plantSrcImg", "plant", "userLogged", "userPlantes"],
 
     data() {
         return {
@@ -44,40 +56,48 @@ export default {
             inDashboard: false,
             classes: [],
             isAlert: false
-        }
+        };
     },
 
     created() {
         this.isDisabled();
     },
 
-    methods:{
+    methods: {
         addPlant() {
-            this.$http.get('dashboard/add/' + this.userLogged.dashboard.id + '/' + this.plant.id)
-            .then(() => {
-                return [this.isAlert = true, this.disable = true]
-            })
+            if (this.userLogged != undefined && this.userPlantes != undefined) {
+                this.$http
+                    .get(
+                        "dashboard/add/" +
+                            this.userLogged.dashboard.id +
+                            "/" +
+                            this.plant.id
+                    )
+                    .then(() => {
+                        return [(this.isAlert = true), (this.disable = true)];
+                    });
+            }
         },
-        hoverOver(){
-            this.classes.push('animated')
+        hoverOver() {
+            this.classes.push("animated");
         },
-        hoverOut(){
-            this.classes = []
+        hoverOut() {
+            this.classes = [];
         }
     },
 
     computed: {
         isDisabled: function() {
-            this.userPlantes.forEach(plante => {
-                if (this.plant.id === plante.id) {
-                    this.inDashboard = true;
-                    return this.disable = true
-                }
-            });
+            if (this.userLogged != undefined && this.userPlantes != undefined) {
+                this.userPlantes.forEach(plante => {
+                    if (this.plant.id === plante.id) {
+                        this.inDashboard = true;
+                        return (this.disable = true);
+                    }
+                });
+            }
         }
-
     }
-
 };
 </script>
 

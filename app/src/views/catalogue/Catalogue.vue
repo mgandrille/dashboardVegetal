@@ -98,7 +98,7 @@
                         </svg>
                     </div>
 
-                    <div class="title row mt-5 p-3">
+                    <div class="title row mt-5 p-3" v-if="userLogged.username">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
@@ -106,6 +106,15 @@
                                 :plant="plant"
                                 :userLogged="userLogged"
                                 :userPlantes="userLogged.dashboard.plantes"
+                            ></PlantCard>
+                        </div>
+                    </div>
+                    <div class="title row mt-5 p-3" v-else>
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                            <PlantCard
+                                v-for="(plant, index) in displayedPlants"
+                                :key="index"
+                                :plant="plant"
                             ></PlantCard>
                         </div>
                     </div>
@@ -172,14 +181,14 @@ export default {
         return {
             plants: [],
             searchParams: {
-                type: 'null',
-                water: 'null',
-                sunshine: 'null',
-                difficulty: 'null',
+                type: "null",
+                water: "null",
+                sunshine: "null",
+                difficulty: "null",
                 filter: false
             },
             searchbarParams: {
-                name: 'null',
+                name: "null",
                 filter: false
             },
             page: 1,
@@ -193,11 +202,9 @@ export default {
 
     methods: {
         getPlants() {
-            this.$http
-                .get("api/plantes")
-                .then(result => {
-                    this.plants = result.data;
-                });
+            this.$http.get("api/plantes").then(result => {
+                this.plants = result.data;
+            });
         },
 
         getFiltredPlants() {
@@ -218,7 +225,8 @@ export default {
                 )
                 .then(result => {
                     this.plants = result.data;
-                }).then(() => {
+                })
+                .then(() => {
                     this.paginate(this.plants);
                     this.searchParams.filter = false;
                     this.searchbarParams.filter = false;
@@ -243,7 +251,6 @@ export default {
                 this.pages.push(i);
             }
         },
-        
 
         paginate(plants) {
             let page = this.page;
@@ -265,14 +272,15 @@ export default {
 
     computed: {
         displayedPlants() {
-            if (this.searchParams.filter === true || this.searchbarParams.filter === true) {
+            if (
+                this.searchParams.filter === true ||
+                this.searchbarParams.filter === true
+            ) {
                 this.pages = [];
                 this.getFiltredPlants();
             } else {
                 return this.paginate(this.plants);
             }
-
-            
         }
     },
 
@@ -292,18 +300,16 @@ export default {
 
     created() {
         this.$http
-                .get("api/plantes")
-                .then(result => {
-                    this.plants = result.data;
-                })
-                .then(() => {
-                    this.$http.get('api/user')
-                    .then(result => {
-                        this.userLogged = result.data;
-                    })
+            .get("api/plantes")
+            .then(result => {
+                this.plants = result.data;
+            })
+            .then(() => {
+                this.$http.get("api/user").then(result => {
+                    this.userLogged = result.data;
                 });
-        }
-
+            });
+    }
 };
 </script>
 
