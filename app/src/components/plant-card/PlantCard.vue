@@ -1,4 +1,5 @@
 <template>
+
 <router-link :to="{ path: '../plante/detail/' + plant.id }" tag="div">
     <div :class="classes" @mouseover="hoverOver" @mouseout="hoverOut" class="card m-2 m-lg-5 col-12 col-md-auto" style="width: 18rem;">
         <div class="d-flex flex-md-column">
@@ -13,12 +14,10 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <h5 class="card-title">{{ plant.name }}</h5>
-                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
-            </div>
-        </div>
 
+                </div>
+            </div>
+            
 		<footer class="m-2 text-right">
                 <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
         </footer>
