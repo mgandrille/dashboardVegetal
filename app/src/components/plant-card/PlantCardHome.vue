@@ -1,4 +1,5 @@
 <template>
+<router-link :to="{ path: `/dashboard/${dashboard.id}` }">
 	<div class="card m-2 col-12 col-md-auto" style="width: 18rem;">
 		<div class="card-header d-flex align-items-baseline">
 			<p>Dashboard</p>
@@ -9,10 +10,10 @@
 			<div class="d-flex flex-column card-body">
 				<h5 class="card-title">Créé par : {{ dashboard.user.username }}</h5>
 				<p class="card-text">{{ dashboard.plantes.length }} plantes ajoutées</p>
-				<router-link :to="{ path: `/dashboard/${dashboard.id}` }" class="btn btn-primary ml-auto">Voir</router-link>
 			</div>
 		</div>
 	</div>
+	</router-link>
 </template>
 
 <script>

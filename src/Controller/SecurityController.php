@@ -21,22 +21,18 @@ class SecurityController extends AbstractController
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-      
+        
+        if($error){
+            return $this->redirect('http://localhost:8888/#/authentification/connexion', 301);
+        }
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
         // if($error){
         //     return $this->render('_partials/loginError.html.twig', [
         //         'errors'      => 'test'
         //     ]);
         // }
-
-        // if(!$this->getUser()){
-        //     if($error){
-        //         return $this->addFlash('error', 'erreur');
-        //     }
-        //     return $this->render('security/login.html.twig');
-        // }
+        
         return $this->render('security/login.html.twig', [
             'last_username'  => $lastUsername,
             'error'         => $error
