@@ -1,7 +1,6 @@
 <template>
     <div id="app">
-        <!-- <Navbar :userLogged="userLogged"/> -->
-        <Navbar />
+        <Navbar :userLogged="userLogged"/>
         <router-view/>
         
         
@@ -31,16 +30,16 @@ export default {
 
         this.$http.get('api/user')
             .then((result) => {
-                this.$store.state.userLogged = result.data
-        })
+                this.userLogged = result.data;
+            })
             .then(() => {
                 // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
-                if(this.$store.state.userLogged.length < 1) {
+                if(this.userLogged.length < 1) {
                     this.userLogged = null;
                 }
                 // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
                 else {
-                    this.userLogged = this.$store.state.userLogged;
+                    this.userLogged = this.userLogged;
                 }
             });
     }
