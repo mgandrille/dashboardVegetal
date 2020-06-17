@@ -7,38 +7,29 @@
             class="card m-2 m-lg-5 col-12 col-md-auto"
             style="width: 18rem;"
         >
-            <div class="d-flex flex-md-column">
-                <img
-                    v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
-                    class="card-img-top p-3"
-                    alt="image"
-                />
-                <div class="d-flex flex-column card-body">
-                    <div
-                        class="alert alert-success alert-dismissible fade show d-none"
-                        v-bind:class="{ 'd-block': isAlert }"
-                        role="alert"
-                    >
-                        La plante a été ajoutée à votre Dashboard !
-                        <button
-                            type="button"
-                            class="close"
-                            data-dismiss="alert"
-                            aria-label="Close"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <h5 class="card-title">{{ plant.name }}</h5>
-                    <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
+        <div class="d-flex flex-md-column">
+            <img
+                v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
+                class="card-img-top p-3"
+                alt="image"
+            />
+            <div class="d-flex flex-column card-body">
+                <div
+                    class="alert alert-success alert-dismissible fade show d-none"
+                    v-bind:class="{ 'd-block': isAlert }"
+                    role="alert"
+                >
+                    La plante a été ajoutée à votre Dashboard !
                 </div>
+
+                <h5 class="card-title">{{ plant.name }}</h5>
+                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
             </div>
-            
-		<footer v-if="userLogged != undefined" class="my-2 text-right">
-                
-                <button class="btn btn-primary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
-                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }" :disabled="disable">Ajouter +</button>
+        </div>
+
+		<footer v-if="userLogged.id != undefined" class="footer my-2 text-right">
+            <button class="btn btn-primary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
+            <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }" :disabled="isDisable">Ajouter +</button>
         </footer>
     </div>
 
@@ -58,10 +49,9 @@ export default {
         'dashboard'
     ],
 
-
     data() {
         return {
-            disable: false,
+            isDisable: false,
             inDashboard: false,
             classes: [],
             isAlert: false
@@ -69,8 +59,17 @@ export default {
     },
 
     created() {
+        this.$http
+            .get("api/user")
+            .then(result => {
+                if(Object.keys(result.data).length) {
+                    this.userLogged = result.data;
+                } else {
+                    this.userLogged = null;
+                }
+            })
         this.isDisabled();
-        
+
     },
 
     methods: {
@@ -84,7 +83,7 @@ export default {
                             this.plant.id
                     )
                     .then(() => {
-                        return [(this.isAlert = true), (this.disable = true)];
+                        return [(this.isAlert = true), (this.isDisable = true)];
                     });
             }
         },

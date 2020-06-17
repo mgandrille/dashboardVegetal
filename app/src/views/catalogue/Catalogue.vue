@@ -21,7 +21,7 @@
                         v-if="loading"
                         style="height: 50%"
                     >
-                         <svg
+                        <svg
                             class="col-12"
                             viewBox="0 0 100 100"
                             xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +115,7 @@
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
                                 :plant="plant"
+                                :userLogged="userLogged"
                             ></PlantCard>
                         </div>
                     </div>
@@ -205,8 +206,6 @@ export default {
 
     methods: {
 
-        
-
         getFiltredPlants() {
             this.loading = true;
 
@@ -288,7 +287,6 @@ export default {
             }
         },
 
-       
     },
 
     watch: {
