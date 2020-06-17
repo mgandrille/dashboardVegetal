@@ -1,49 +1,58 @@
 <template>
-    <div class="home">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left-side filter -->
-                <div class="filtrage col-lg-2 position-fixed">
-                    <Filtrage/>
+    <div class="home container-fluid">
+        <main class="main-content row bg-light p-3">
+            <div class="col-12 mt-3">
+                <h2>
+                    Bonjour
+                    <span class="username">{{userLogged.username}}</span>, voici vos plantes :
+                </h2>
+                <hr />
+            </div>
+
+            <div class="col-lg-9 mt-3">
+                <div class="col-12">
+                    <h2 class="mb-3">Prochain arrosage</h2>
+                    <p>Voici les plantes à entretenir en priorité</p>
+                    <div class="row bg-primary justify-content-center">
+                        <ul>
+                            <li
+                                class="text-light"
+                                v-for="plant in plants"
+                                :key="plant.id"
+                                v-bind:class="{ arrosage: plant.isArrosed }"
+                            >
+                                {{plant.name}} : {{ plant.watering.id }} / {{plant.watering.timeFrequency}}
+                                <!-- {{ plant }} -->
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- main content -->
-                <main class="main-content row col-lg-10 offset-lg-2 container-lg bg-light col-12">
-                    <div class="col-lg-9">
-                        <h2 class="mb-3">Prochain arrosage</h2>
-                        <div class="row bg-primary justify-content-center">
+                <hr />
 
-                            <ul>
-                                <li class="text-light" v-for="plant in plants" :key="plant.id" v-bind:class="{ arrosage: plant.isArrosed }">
-                                    {{plant.name}} : {{ plant.watering.id }} / {{plant.watering.timeFrequency}}
-                                    <!-- {{ plant }} -->
-                                </li>
-                            </ul>
+                <div class="col-12">
+                    <h2 class="mb-3">Toutes vos plantes</h2>
+                    <p>Un apperçu de toutes les plantes que vous avez</p>
 
-            
-                            {{userLogged.roles}}
-
-                        </div>
-
-                        <div class="row">
-                            <h2 class="mb-3">Toutes vos plantes</h2>
-
-                            <div class="row flex-wrap col-lg-12 mb-3">
-                                <PlantCard />
-                                <PlantCard />
-								<PlantCard />
-								<PlantCard />
-                            </div>
+                    <div class="title row mt-5 p-3" v-if="plants.length">
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                            <PlantCard
+                                v-for="(plant, index) in plants"
+                                :key="index"
+								:plant="plant"
+                            >
+                            </PlantCard>
                         </div>
                     </div>
 
-                    <div class="col-lg-3">
-						<h2 class="mb-3">Vos widgets</h2>
-						<Meteo />
-					</div>
-                </main>
+                </div>
             </div>
-        </div>
+
+            <div class="col-lg-3 mt-3">
+                <h2 class="mb-3">Vos widgets</h2>
+                <Meteo />
+            </div>
+        </main>
     </div>
 </template>
 
@@ -58,40 +67,44 @@ import Filtrage from "../../components/Filtrage.vue";
 export default {
     name: "Dashboard",
     components: {
-    PlantCard,
+        PlantCard,
         Meteo,
         Filtrage
     },
-
 
     data() {
         return {
             plants: [],
             userLogged: []
-        }
+        };
     },
 
-    mounted() {
-        this.userLogged = this.$store.state.userLogged;
-    },
-    
     created() {
-        this.$http.get('api/plantes')
-        .then((result) => {
-            this.plants = result.data;
-
-            this.plants.forEach(plant => {
-                let dateArrosage = plant.watering.DERNIERARROSAGE + plant.watering.timeFrequency
-                let date = Date.now();
-                console.log(date);
-                if (dateArrosage >= date) {
-                    return plant.isArrosed = true
-                };
+        this.$http
+            .get("api/user")
+            .then(result => {
+                this.$store.state.userLogged = result.data;
+            })
+            .then(() => {
+                this.userLogged = this.$store.state.userLogged;
+                this.plants =  this.userLogged.dashboard.plantes
             });
-        });
-    },
-};
+            // .then(() => {
 
+            //         this.plants.forEach(plant => {
+            //             let dateArrosage =
+            //                 plant.watering.DERNIERARROSAGE +
+            //                 plant.watering.timeFrequency;
+            //             let date = Date.now();
+            //             console.log(date);
+            //             if (dateArrosage >= date) {
+            //                 return (plant.isArrosed = true);
+            //             }
+            //         });
+            //     });
+            // });
+    }
+};
 </script>
 
 

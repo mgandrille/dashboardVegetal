@@ -67,12 +67,15 @@ export default {
         }
     },
 
-    created() {
+    mounted() {
 
             this.$http.get('api/user')
                 .then((result) => {
                     this.$store.state.userLogged = result.data
-            });
+            })
+                .then(() => {
+                    console.log(this.$store.state.userLogged)
+                });
     }
 
     // created() {

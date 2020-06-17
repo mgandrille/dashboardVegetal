@@ -13,7 +13,7 @@
                     class="main-content col-lg-10 offset-lg-2 container-lg bg-light p-3"
                 >
                     <div class="searchbar row p-3 justify-content-center">
-                        <BarreRecherche />
+                        <BarreRecherche v-on:get-name-param="searchbarParams = $event"/>
                     </div>
 
                     <div
@@ -103,8 +103,9 @@
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
-                                :plantItem="plant"
 								:plant="plant"
+                                :userLogged="userLogged"
+                                :userPlantes="userLogged.dashboard.plantes"
                             >
                             </PlantCard>
                         </div>
@@ -168,12 +169,21 @@ export default {
     data() {
         return {
             plants: [],
-            searchParams: {},
+            searchParams: {
+                type: 'null',
+                water: 'null',
+                sunshine: 'null',
+                difficulty: 'null'
+            },
+            searchbarParams: {
+                name: 'null'
+            },
             page: 1,
             perPage: 10,
             pages: [],
             loading: false,
-            errorMsg: "plante non trouvée"
+            errorMsg: "plante non trouvée",
+            userLogged: []
         };
     },
 
@@ -188,7 +198,7 @@ export default {
                 })
                 .finally(() => {
                     this.loading = false;
-                });
+            });
         },
 
         getFiltredPlants() {
@@ -203,14 +213,24 @@ export default {
                         "&sunshine=" +
                         this.searchParams.sunshine +
                         "&difficulty=" +
-                        +this.searchParams.difficulty
+                        this.searchParams.difficulty +
+                        "&name=" +
+                        this.searchbarParams.name
                 )
                 .then(result => {
                     this.plants = result.data;
+                }).then(() => {
+                    this.searchParams.filter = false;
+                     this.searchbarParams.filter = false;
+                })
+                .then(() => {
+                    this.searchParams.filter = false;
+                    this.searchbarParams.filter = false;
                 })
                 .catch(() => {
                     this.plants = [];
                     this.searchParams.filter = false;
+                    this.searchbarParams.filter = false;
                 })
                 .finally(() => {
                     this.loading = false;
@@ -245,7 +265,7 @@ export default {
     computed: {
         displayedPlants() {
             if (this.searchParams != "") {
-                if (this.searchParams.filter === true) {
+                if (this.searchParams.filter === true || this.searchbarParams.filter === true) {
                     this.getFiltredPlants();
                 }
             }
@@ -261,12 +281,33 @@ export default {
 
         searchParams() {
             this.searchParams;
+        },
+
+                searchbarParams() {
+            this.searchbarParams;
         }
     },
 
     created() {
         this.getPlants();
-    }
+
+        this.$http.get('api/user')
+            .then((result) => {
+                this.$store.state.userLogged = result.data
+        })
+            .then(() => {
+                // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
+                if(this.$store.state.userLogged.length < 1) {
+                    this.userLogged = null;
+                }
+                // Si l'utilisateur est connecté, retourne un objet qui est inséré dans userLogged
+                else {
+                    this.userLogged = this.$store.state.userLogged;
+                    console.log(this.userLogged);
+                }
+            });
+        }
+
 };
 </script>
 

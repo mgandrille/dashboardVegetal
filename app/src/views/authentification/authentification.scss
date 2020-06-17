@@ -1,7 +1,7 @@
 @import '../../variables-styles.scss';
 
 .banner {
-	margin-top: $navbar-height;	
+	margin-top: 0;	
 	min-height: $banner-height;
 	background: url('https://i.postimg.cc/qRh9N8h6/people-happy.png'),
 		url('https://i.postimg.cc/GpFXntZY/Pngtree-hand-drawn-noise-illustration-green-4058540.png'),
@@ -26,6 +26,6 @@
 	margin-top: $banner-height;
 	min-height: 100vh;
 	@media (min-width: $lg-breakpoint) {
-		margin-top: $navbar-height;	
+		margin-top: 0;	
 	}
 }

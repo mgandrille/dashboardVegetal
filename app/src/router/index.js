@@ -32,15 +32,16 @@ Vue.use(VueRouter)
     component: Catalogue
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard
-  },
-  {
-    path: '/plante/detail/:id',
+    path: '/plante/detail/:id(\\d+)',
     name: 'Detail',
     component: Detail
   },
+  {
+    path: '/dashboard/:id(\\d+)',
+    name: 'Dashboard',
+    component: Dashboard
+  },
+  
   {
     path: '/about',
     name: 'About',
