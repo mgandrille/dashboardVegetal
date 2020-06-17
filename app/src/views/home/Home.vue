@@ -7,7 +7,7 @@
 
                 <!-- main content -->
                 <main class="main-content col-lg-8 offset-lg-4 container-lg bg-light">
-                    
+
                     <div id="top" class="title row p-3">
                         <div class="col-lg-12">
                             <p>Suivez l'évolution de vos plantes avec</p>
@@ -27,14 +27,23 @@
                                     <i class="fa fa-leaf"></i>
                                 </router-link>
                             </div>
-                            
-                            <div v-else>
-                            <p>Vous venez d'acquérir une plante ? Venez créer votre dashboard !</p>
-                                <router-link :to="{path: '/authentification/inscription'}" class="btn btn-lg btn-secondary text-light" tag="btn">
-                                    <i class="fa fa-leaf"></i> Inscrivez-vous <i class="fa fa-leaf"></i>
-                                </router-link> 
+
+                            <div v-else class="row text-center align-middle">
+                                <div class="col my-3">
+                                    <p>Vous avez déjà un dashboard ? </p>
+                                    <router-link :to="{ path: '/authentification/connexion' }" class="btn btn-lg btn-primary text-light" tag="btn">
+                                        <i class="fa fa-user"></i>
+                                        connectez vous !
+                                    </router-link>
+                                </div>
+                                <div class="col my-3">
+                                    <p>Vous venez d'acquérir une plante ? <br> Venez créer votre dashboard !</p>
+                                    <router-link :to="{path: '/authentification/inscription'}" class="btn btn-lg btn-secondary text-light" tag="btn">
+                                        <i class="fa fa-leaf"></i> Inscrivez-vous <i class="fa fa-leaf"></i>
+                                    </router-link>
+                                </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -55,7 +64,6 @@
             </div>
         </div>
 
-        
     </div>
 </template>
 
