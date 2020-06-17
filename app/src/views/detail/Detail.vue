@@ -3,7 +3,10 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner mettre le style en dynamique-->
-                <div class="banner col-lg-5 bg-light" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }"></div>
+                <div class="banner col-lg-5 bg-light" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }">
+                    <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }" :disabled="disable">Ajouter +</button>
+
+                </div>
 
                 <!-- main content -->
                 <main class="main-content col-lg-7 offset-lg-5 container-lg bg-light">
@@ -36,7 +39,7 @@
                                     <ul class="text-capitalize">
                                         <li>entretien : {{ plant.difficulty.level }}</li>
                                         <li>fréquence d'arrosage : {{ plant.watering.frequency }}</li>
-                                        <li>exposition : {{ plant.sunshine.exposure }}</li>
+                                        <li>ensoleillement : {{ plant.sunshine.exposure }}</li>
                                     </ul>
                                 </li>
                                 <li class="list-group-item py-3">
@@ -79,9 +82,13 @@
 <script>
 export default {
     name: "Detail",
+
     data() {
         return {
-            plant: []
+            plant: [],
+            userLogged: [],
+            disable: false,
+            inDashboard: false,
         };
     },
 
@@ -92,12 +99,54 @@ export default {
                 .then(result => {
                     this.plant = result.data;
                 });
-        }
+        },
+
+        addPlant() {
+            if (this.userLogged != undefined && this.userLogged.dashboard.plantes != undefined) {
+                this.$http
+                    .get(
+                        "dashboard/add/" +
+                            this.userLogged.dashboard.id +
+                            "/" +
+                            this.plant.id
+                    )
+                    .then(() => {
+                        return this.disable = true;
+                    });
+            }
+        },
+
     },
 
     created() {
+        this.$http
+            .get("api/user")
+            .then(result => {
+                if(Object.keys(result.data).length) {
+                    this.userLogged = result.data;
+                } else {
+                    this.userLogged = null;
+                }
+            })
+
         this.getPlant();
+        this.isDisabled();
+
+    },
+
+    computed: {
+        isDisabled: function() {
+            if (this.userLogged != undefined && this.userLogged.dashboard.plantes != undefined) {
+                this.userLogged.dashboard.plantes.forEach(plante => {
+                    if (this.plant.id === plante.id) {
+                        this.inDashboard = true;
+                        return (this.disable = true);
+                    }
+                });
+            }
+        }
     }
+
 };
 </script>
 
