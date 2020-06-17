@@ -34,7 +34,7 @@
                     <h2 class="mb-3">Toutes vos plantes</h2>
                     <p>Un apperçu de toutes les plantes que vous avez</p>
 
-                    <div class="title row mt-5 p-3" v-if="plants.length && userLogged.length > 0">
+                    <div class="title row mt-5 p-3" v-if="userLogged.dashboard.id == $route.params.id">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in plants"
@@ -48,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="title row mt-5 p-3" v-else-if="plants.length">
+                    <div class="title row mt-5 p-3" v-else>
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in plants"
@@ -91,7 +91,7 @@ export default {
         return {
             plants: [],
             userLogged: [],
-            inDashboard: true,
+            inDashboard: false,
         };
     },
 
@@ -102,10 +102,9 @@ export default {
                 this.userLogged = result.data;
             })
             .then(() => {
-                let currentDashboard = this.$route.params.id;
-
-                if(this.userLogged.length > 0 && this.userLogged.dashboard.id === currentDashboard) {
+                if(this.userLogged.dashboard.id == this.$route.params.id) {
                     this.plants = this.userLogged.dashboard.plantes;
+                    this.inDashboard = true;
                 } else {
                     this.$http.get('api/dashboards').then((result) => {
                         let dashboardPlants = result.data;
