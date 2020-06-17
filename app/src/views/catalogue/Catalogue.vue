@@ -13,7 +13,7 @@
                     class="main-content col-lg-10 offset-lg-2 container-lg bg-light p-3"
                 >
                     <div class="searchbar row p-3 justify-content-center">
-                        <BarreRecherche v-on:get-name-param="searchbarParams = $event"/>
+                        <BarreRecherche v-on:get-name-param="searchbarParams = $event" />
                     </div>
 
                     <div
@@ -103,25 +103,27 @@
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
-								:plant="plant"
+                                :plant="plant"
                                 :userLogged="'test'"
                                 :userPlantes="'test'"
-                            >
-                            </PlantCard>
+                            ></PlantCard>
                         </div>
                     </div>
 
                     <!-- <div
                         class="title row mt-5 p-3"
                         
-                    >{{ errorMsg }}</div> -->
-
+                    >{{ errorMsg }}</div>-->
 
                     <!-- ***
                     Pagination
                     ***-->
-                    <div class="row col-12 justify-content-end" v-scroll-to="'#top-page'" v-if="plants.length">
-                        <div class="clearfix btn-group " >
+                    <div
+                        class="row col-12 justify-content-end"
+                        v-scroll-to="'#top-page'"
+                        v-if="plants.length"
+                    >
+                        <div class="clearfix btn-group">
                             <button
                                 type="button"
                                 class="btn btn-primary"
@@ -293,17 +295,20 @@ export default {
                 .get("api/plantes")
                 .then(result => {
                     this.plants = result.data;
+                })
+                .then(() => {
+                    this.$http.get('api/user')
+                    .then(result => {
+                        this.userLogged = result.data;
+                    })
                 });
+                
+                // .then(() => {
+                //     this.$http.get('api/user').then(() => {
+                //         this.$store.state.userLogged = result.datathis.
+                // });
 
-        // this.$http.get('api/user')
-        //     .then((result) => {
-        //         if(result.data.status === 500 ) {
-        //             this.getPlants();
-        //         } else {
-        //             this.$store.state.userLogged = result.datathis.
-        //         }
 
-           // })
             // .then(() => {
             //     // Si l'utilisateur n'est pas connecté, retourne un tableau vide donc userLogged est NULL
             //     if(this.$store.state.userLogged.length < 1) {
