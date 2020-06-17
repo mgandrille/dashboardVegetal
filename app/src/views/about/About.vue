@@ -81,7 +81,7 @@ export default {
     },
     data(){
         return {
-            sourceC: "http://localhost:8888/uploads/img/carlyne.jpg",
+            sourceC: "http://localhost:8888/uploads/img/carlyne2.jpg",
             sourceM: "http://localhost:8888/uploads/img/marie.jpg",
             sourceT: "http://localhost:8888/uploads/img/theau.jpg"
         };
@@ -89,10 +89,10 @@ export default {
 
     methods: {
         hoverOver(){
-            this.sourceC = "http://localhost:8888/uploads/img/carlyne2.jpg"
+            this.sourceC = "http://localhost:8888/uploads/img/giphy2.gif"
         },
         hoverOut(){
-            this.sourceC = "http://localhost:8888/uploads/img/carlyne.jpg"
+            this.sourceC = "http://localhost:8888/uploads/img/carlyne2.jpg"
         },
 
         hoverOverM(){
