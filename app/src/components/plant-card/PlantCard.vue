@@ -20,7 +20,7 @@
 
 		<footer class="m-2 text-right">
                 <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
-                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable }">Ajouter +</button>
+                <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }">Ajouter +</button>
         </footer>
     </div>
 </template>
@@ -32,7 +32,8 @@ export default {
         'plantSrcImg',
         'plant',
         'userLogged',
-        'userPlantes'
+        'userPlantes',
+        'inDashboard'
     ],
 
     data() {
@@ -67,7 +68,7 @@ export default {
         isDisabled: function() {
             this.userPlantes.forEach(plante => {
                 if (this.plant.id === plante.id) {
-                    this.inDashboard = true;
+                    // this.inDashboard = true;
                     return this.disable = true
                 }
             });

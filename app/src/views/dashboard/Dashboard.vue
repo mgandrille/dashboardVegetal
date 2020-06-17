@@ -40,6 +40,7 @@
                                 v-for="(plant, index) in plants"
                                 :key="index"
 								:plant="plant"
+                                :inDashboard="inDashboard"
                             >
                             </PlantCard>
                         </div>
@@ -75,7 +76,8 @@ export default {
     data() {
         return {
             plants: [],
-            userLogged: []
+            userLogged: [],
+            inDashboard: true,
         };
     },
 
@@ -87,7 +89,8 @@ export default {
             })
             .then(() => {
                 this.userLogged = this.$store.state.userLogged;
-                this.plants =  this.userLogged.dashboard.plantes
+                this.plants =  this.userLogged.dashboard.plantes;
+                this.this.inDashboard = true;
             });
             // .then(() => {
 
@@ -103,7 +106,10 @@ export default {
             //         });
             //     });
             // });
-    }
+        
+        
+    },
+
 };
 </script>
 
