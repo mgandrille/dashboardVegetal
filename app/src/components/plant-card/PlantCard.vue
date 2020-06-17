@@ -19,7 +19,7 @@
         </div>
 
 		<footer class="m-2 text-right">
-                <router-link :to="{ path: 'plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
+                <router-link :to="{ path: '../plante/detail/' + plant.id }" class="btn btn-primary ml-auto" >Voir</router-link>
                 <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }">Ajouter +</button>
         </footer>
     </div>
