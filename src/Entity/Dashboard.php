@@ -23,7 +23,7 @@ class Dashboard
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="dashboard", cascade={"persist", "remove"})
-     * @Groups("dashboard")
+     * @Groups({"dashboard"})
      */
     private $user;
 
