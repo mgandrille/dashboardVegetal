@@ -16,6 +16,9 @@
                     </button>
 
                 </div>
+
+                 <h5 class="card-title">{{ plant.name }}</h5>
+                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
             </div>
         </div>
 		<footer class="m-2 text-right">
