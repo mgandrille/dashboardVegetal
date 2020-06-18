@@ -98,24 +98,14 @@
                         </svg>
                     </div>
 
-                    <div class="title row mt-2 p-3" v-if="userLogged.username && plantLenght > 0">
+                    <div class="title row mt-2 p-3">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
                                 :plant="plant"
                                 :userLogged="userLogged"
-                                :userPlantes="userLogged.dashboard.plantes"
-                            ></PlantCard>
-                        </div>
-                    </div>
-                    <div class="title row mt-2 p-3" v-else>
-                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
-                            <PlantCard
-                                v-for="(plant, index) in displayedPlants"
-                                :key="index"
-                                :plant="plant"
-                                :userLogged="userLogged"
+                                :userPlantes="(userLogged != null) ? userLogged.dashboard.plantes : null"
                             ></PlantCard>
                         </div>
                     </div>
@@ -313,7 +303,11 @@ export default {
             })
             .then(() => {
                 this.$http.get("api/user").then(result => {
+                    if(Object.keys(result.data).length) {
                     this.userLogged = result.data;
+                } else {
+                    this.userLogged = null;
+                }
                 });
             }).finally(() => {
                 this.loading = false

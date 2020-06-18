@@ -27,8 +27,8 @@
             </div>
         </div>
 
-		<footer v-if="userLogged.id != undefined" class="footer my-2 text-right">
-            <button class="btn btn-primary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
+		<footer v-if="userLogged != null" class="footer my-2 text-right">
+            <button class="btn btn-secondary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
             <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }" :disabled="isDisable">Ajouter +</button>
         </footer>
     </div>
@@ -74,7 +74,7 @@ export default {
 
     methods: {
         addPlant() {
-            if (this.userLogged != undefined || this.userPlantes != undefined) {
+            if (this.userLogged != null || this.userPlantes != null) {
                 this.$http
                     .get(
                         "dashboard/add/" +
@@ -104,7 +104,7 @@ export default {
 
     computed: {
         isDisabled: function() {
-            if (this.userLogged != undefined || this.userPlantes != undefined) {
+            if (this.userLogged != null || this.userPlantes != null) {
                 this.userPlantes.forEach(plante => {
                     if (this.plant.id === plante.id) {
                         this.inDashboard = true;
