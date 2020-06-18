@@ -22,6 +22,7 @@
                         class="alert alert-success alert-dismissible fade show d-none"
                         v-bind:class="{ 'd-block': isAlert }"
                         role="alert"
+                        v-if="userLogged != null"
                     >La plante a été ajoutée à votre <router-link :to="{ path: `/dashboard/${userLogged.dashboard.id}` }" class="font-weight-bold"> Dashboard </router-link> !</div>
 
                     <router-link :to="{ path: '../plante/detail/' + plant.id }" class="card-title" tag="h5">{{ plant.name }}</router-link>
