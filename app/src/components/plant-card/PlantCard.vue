@@ -3,7 +3,7 @@
             :class="classes"
             @mouseover="hoverOver"
             @mouseout="hoverOut"
-            class="card m-2 m-lg-5 col-12 col-md-auto"
+            class="animCard card m-2 m-lg-5 col-12 col-md-auto"
             style="width: 18rem;"
         >
             <div
