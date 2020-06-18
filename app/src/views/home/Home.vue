@@ -11,14 +11,14 @@
                     <div id="top" class="title row p-3">
                         <div class="col-lg-12">
                             <p>Suivez l'évolution de vos plantes avec</p>
-                            <h1>PlantBoard</h1>
+                            <h1>GardenBoard</h1>
                             <hr>
                         </div>
                     </div>
 
                     <div class="content row p-3">
                         <div class="col-lg-12 mb-4 ">
-                            <h3 class="text-primary mb-5">Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs.</h3>
+                            <h3 class="text-primary mb-5">Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcon et d'intérieur.</h3>
 
                             <div v-if="userLogged" class="text-capitalize mb-3">
                                 <router-link :to="{ path: `/dashboard/${userLogged.dashboard.id}` }" class="btn btn-lg btn-primary text-light" tag="btn">
@@ -45,7 +45,7 @@
                                     <router-link :to="{path: '/authentification/inscription'}" class="btn btn-lg btn-secondary text-light" tag="btn">
                                         <i class="fa fa-leaf"></i> Inscrivez-vous <i class="fa fa-leaf"></i>
                                     </router-link>
-                                  
+
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@
                     <div class="row p-3">
                         <div class="col-lg-12">
                             <h2>Voir un exemple de dashboard</h2>
-                            <p>Découvrez comment nos utilisateurs entretiennent leurs plantes grâce à Plantboard. </p>
+                            <p>Découvrez comment nos utilisateurs entretiennent leurs plantes grâce à GardenBoard. </p>
                         </div>
                     </div>
 
