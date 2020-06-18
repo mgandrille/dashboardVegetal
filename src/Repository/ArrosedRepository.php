@@ -38,6 +38,7 @@ class ArrosedRepository extends ServiceEntityRepository
 
     public function findTheGood($dashId, $planteId)
     {
+        // Find the arrosed with ID dashboard and ID Plante
         return $this->createQueryBuilder('a')
             ->where('a.plante = :planteId')
             ->setParameter('planteId', $planteId)

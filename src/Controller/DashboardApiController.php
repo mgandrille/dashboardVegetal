@@ -44,7 +44,7 @@ class DashboardApiController extends AbstractController
      * @Route("/api/bigdash", name="api_bigdash")
      */
     public function findBigDash(DashboardRepository $dashboardRepository){
-        // Find two biggers dashboard in db
+        // Find two biggers dashboard in db for main page
         $dash = $dashboardRepository->findBigger();
 
         $dashArray = array();

@@ -19,7 +19,8 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         
         if($error){
-            return $this->redirect('http://localhost:8888/#/authentification/connexion?error=1', 301);
+            //  if error, redirect on the Vue URl with GET error for display error message
+            return $this->redirect('/#/authentification/connexion?error=1', 301);
         }
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
