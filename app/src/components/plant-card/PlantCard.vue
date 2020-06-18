@@ -3,7 +3,7 @@
             :class="classes"
             @mouseover="hoverOver"
             @mouseout="hoverOut"
-            class="card m-2 m-lg-5 col-12 col-md-auto"
+            class="animCard card m-2 m-lg-5 col-12 col-md-auto"
             style="width: 18rem;"
         >
             <div
@@ -22,7 +22,7 @@
                         class="alert alert-success alert-dismissible fade show d-none"
                         v-bind:class="{ 'd-block': isAlert }"
                         role="alert"
-                    >La plante a été ajoutée à votre Dashboard !</div>
+                    >La plante a été ajoutée à votre <router-link :to="{ path: `/dashboard/${userLogged.dashboard.id}` }" class="font-weight-bold"> Dashboard </router-link> !</div>
 
                     <router-link :to="{ path: '../plante/detail/' + plant.id }" class="card-title" tag="h5">{{ plant.name }}</router-link>
                     <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
