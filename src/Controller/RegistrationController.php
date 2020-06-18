@@ -36,7 +36,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && !$form->isValid()){
-            return $this->redirect('http://localhost:8888/#/authentification/inscription?error=1', 301);
+            //  if error, redirect on the Vue URl with GET error for display error message
+            return $this->redirect('/#/authentification/inscription?error=1', 301);
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -48,7 +49,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            // Add dashboard automatic when new User register
             $newDashboard = new Dashboard();
             $user->setDashboard($newDashboard);
   

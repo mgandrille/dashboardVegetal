@@ -109,7 +109,7 @@ class DashboardController extends AbstractController
             return new Response('', Response::HTTP_CREATED);
 
         }else{
-
+            // If the dashboard ID is not the ID of User connected
             return $this->render('fail/joker.html.twig', [
                 'joker'     => 'joker.gif'
             ]);
@@ -136,7 +136,7 @@ class DashboardController extends AbstractController
             return new Response('', Response::HTTP_CREATED);
 
         }else{
-
+            // If the dashboard ID is not the ID of User connected
             return $this->render('fail/joker.html.twig', [
                 'joker'     => 'joker.gif'
             ]);

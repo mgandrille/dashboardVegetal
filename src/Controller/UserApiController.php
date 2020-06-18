@@ -41,11 +41,12 @@ class UserApiController extends AbstractController
             $user = $this->getUser();
 
             $data = $this->serializer->normalize($user, null, ['groups' => 'user']);
-
+            // Return the dashboard os User
             return new JsonResponse($data);
         }
 
         else {
+            // Return empty Json if User is not connected but Route called
             $data = [];
             return new JsonResponse($data);
         }
