@@ -29,14 +29,14 @@
                             </div>
 
                             <div v-else class="row text-center align-middle">
-                                <div class="col my-3">
+                                <div class="col-md-6 mb-4 mb-md-0">
                                     <p>Vous avez déjà un dashboard ? </p>
                                     <router-link :to="{ path: '/authentification/connexion' }" class="btn btn-lg btn-primary text-light" tag="btn">
                                         <i class="fa fa-user"></i>
                                         connectez vous !
                                     </router-link>
                                 </div>
-                                <div class="col my-3">
+                                <div class="col-md-6">
                                     <p>Vous venez d'acquérir une plante ? <br> Venez créer votre dashboard !</p>
                                     <router-link :to="{path: '/authentification/inscription'}" class="btn btn-lg btn-secondary text-light" tag="btn">
                                         <i class="fa fa-leaf"></i> Inscrivez-vous <i class="fa fa-leaf"></i>
