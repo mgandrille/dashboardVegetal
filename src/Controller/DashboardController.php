@@ -121,19 +121,19 @@ class DashboardController extends AbstractController
      */
     public function removePlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
 
-        if($this->getUser()->getDasboard()->getId() == $id){
-                    // Find plante with ID for add into dashboard
-        $planteToDelete = $planteRepository->find($plante_id);
-        // Find dashboard with ID
-        $dashboard = $dashboardRepository->find($id);
+        if($this->getUser()->getDashboard()->getId() == $id){
+            // Find plante with ID for add into dashboard
+            $planteToDelete = $planteRepository->find($plante_id);
+            // Find dashboard with ID
+            $dashboard = $dashboardRepository->find($id);
 
-        $dashboard->removePlante($planteToDelete);
+            $dashboard->removePlante($planteToDelete);
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($dashboard);
-        $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($dashboard);
+            $entityManager->flush();
 
-        return new Response('', Response::HTTP_CREATED);
+            return new Response('', Response::HTTP_CREATED);
 
         }else{
 
