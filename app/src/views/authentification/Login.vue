@@ -15,6 +15,10 @@
                         </div>
                     </div>
 
+					<div v-if="isRedirected == true" class="alert alert-danger">
+						<strong>Attention!</strong> Il y a un problème avec vos informations de connexion
+					</div>
+
 					<div class="title row mt-5 p-3">
                         <div class="col-lg-12" v-html="loginForm">
 							
@@ -33,11 +37,20 @@ export default {
 	data() {
 		return {
 			loginForm: null,
+			isRedirected: false,
 		}
 	},
 	mounted() {
 		this.$http.get('/login')
 			.then(result => this.loginForm = result.data);
+	},
+
+	created() {
+		if(window.location.href.indexOf("?error=1") > -1){
+			return this.isRedirected = true
+		}else{
+			return this.isRedirected = false
+		}
 	}
 };
 </script>

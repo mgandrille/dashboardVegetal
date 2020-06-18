@@ -36,7 +36,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && !$form->isValid()){
-            return $this->redirect('http://localhost:8888/#/authentification/inscription', 301);
+            return $this->redirect('http://localhost:8888/#/authentification/inscription?error=1', 301);
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
