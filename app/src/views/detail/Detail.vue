@@ -3,18 +3,27 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left-side banner mettre le style en dynamique-->
-                <div class="banner col-lg-5 bg-light" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }">
-                    <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: disable, 'd-none': inDashboard }" :disabled="disable">Ajouter +</button>
-
-                </div>
+                <div class="banner col-lg-5 bg-light" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }"></div>
 
                 <!-- main content -->
                 <main class="main-content col-lg-7 offset-lg-5 container-lg bg-light">
-                    <router-link :to="{ path: '/catalogue' }" class="dropdown-item text-secondary text-capitalize" href="#">
+                    <router-link :to="{ path: '/catalogue' }" class="dropdown-item text-secondary text-capitalize">
                         <i class="fa fa-angle-double-left"></i>
-                        retour
+                        catalogue
                     </router-link>
-                    <div class="title row mt-5 p-3">
+
+                    <div class="title row d-flex justify-content-end mt-5 p-3">
+                        <div v-if="userLogged != null" class="mr-5">
+                            <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }" :disabled="isDisable">Ajouter +</button>
+                        </div>
+                        <div v-if="inDashboard === true" class="text-right text-capitalize">
+                            <router-link :to="{ path: `/dashboard/${userLogged.dashboard.id}` }" class="btn btn-outline-primary border-top-0 border-left-0 p-3 mr-5">
+                                <i class="fa fa-leaf"></i>
+                                voir sur mon dashboard
+                                <i class="fa fa-leaf"></i>
+                            </router-link>
+                    </div>
+
                         <div class="col-lg-12">
                             <h2 class="text-primary">{{ plant.name }}</h2>
                         </div>
@@ -87,7 +96,7 @@ export default {
         return {
             plant: [],
             userLogged: [],
-            disable: false,
+            isDisable: false,
             inDashboard: false,
         };
     },
@@ -111,7 +120,7 @@ export default {
                             this.plant.id
                     )
                     .then(() => {
-                        return this.disable = true;
+                        return this.isDisable = true;
                     });
             }
         },
@@ -124,28 +133,19 @@ export default {
             .then(result => {
                 if(Object.keys(result.data).length) {
                     this.userLogged = result.data;
+                    this.userLogged.dashboard.plantes.forEach(plante => {
+                        if (this.plant.id === plante.id) {
+                            return this.inDashboard = true;
+                        }
+                    });
                 } else {
                     this.userLogged = null;
                 }
             })
 
         this.getPlant();
-        this.isDisabled();
 
     },
-
-    computed: {
-        isDisabled: function() {
-            if (this.userLogged != undefined && this.userLogged.dashboard.plantes != undefined) {
-                this.userLogged.dashboard.plantes.forEach(plante => {
-                    if (this.plant.id === plante.id) {
-                        this.inDashboard = true;
-                        return (this.disable = true);
-                    }
-                });
-            }
-        }
-    }
 
 };
 </script>
