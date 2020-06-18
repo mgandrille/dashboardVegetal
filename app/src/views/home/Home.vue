@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="content row p-3">
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-12 mb-4 ">
                             <h3 class="text-primary mb-5">Suivez, arrosez et planifiez votre entretien de plantes au quotidien grâce à ce gestionnaire de plantes de balcons et d'intérieurs.</h3>
 
                             <div v-if="userLogged" class="text-capitalize mb-3">
@@ -28,19 +28,24 @@
                                 </router-link>
                             </div>
 
-                            <div v-else class="row text-center align-middle">
-                                <div class="col-md-6 mb-4 mb-md-0">
-                                    <p>Vous avez déjà un dashboard ? </p>
+                            <div v-else class="row text-center justify-content-around">
+                                <div class="col-md-4 d-flex flex-column justify-content-between mb-4 mb-md-0">
+                                    
+                                        <p>Vous avez déjà un dashboard ? </p>
                                     <router-link :to="{ path: '/authentification/connexion' }" class="btn btn-lg btn-primary text-light" tag="btn">
                                         <i class="fa fa-user"></i>
                                         connectez vous !
                                     </router-link>
+                                    
+                                
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4 d-flex flex-column justify-content-between">
+
                                     <p>Vous venez d'acquérir une plante ? <br> Venez créer votre dashboard !</p>
                                     <router-link :to="{path: '/authentification/inscription'}" class="btn btn-lg btn-secondary text-light" tag="btn">
                                         <i class="fa fa-leaf"></i> Inscrivez-vous <i class="fa fa-leaf"></i>
                                     </router-link>
+                                  
                                 </div>
                             </div>
 

@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <footer v-if="userLogged != null" class="footer my-2 text-right">
+            <footer v-if="userLogged != null || toArrose != true" class="footer my-2 text-right">
                 <button
                     class="btn btn-secondary ml-auto d-none"
                     @click.prevent="deletePlant()"
@@ -54,7 +54,8 @@ export default {
         "userLogged",
         "userPlantes",
         "inDashboard",
-        "dashboard"
+        "dashboard",
+        "toArrose"
     ],
 
     data() {
