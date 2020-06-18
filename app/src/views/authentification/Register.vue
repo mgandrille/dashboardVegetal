@@ -13,7 +13,7 @@
                     </div>
 
 					<div v-if="isRedirected == true" class="alert alert-danger">
-						<strong>Attention!</strong> Il y a un problème avec vos informations d'inscription
+						<strong>Attention!</strong> Il y a un problème avec vos informations d'inscription. <br> Votre mot de passe doit faire au moins 6 caractères
 					</div>
 
 					<div class="title row mt-5 p-3">
