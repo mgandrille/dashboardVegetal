@@ -4,7 +4,7 @@
 		:class="classes"
         @mouseover="hoverOver"
         @mouseout="hoverOut"
-	 	class="card m-2 col-12 col-md-auto" style="width: 18rem;">
+	 	class="animCard card m-2 col-12 col-md-auto" style="width: 18rem;">
 		<div class="card-header d-flex align-items-baseline">
 			<p>Dashboard</p>
 			<div class="separator d-flex align-items-baseline"><div class="align-self-baseline"></div></div>
