@@ -25,6 +25,7 @@ class ArrosedController extends AbstractController
      */
     public function changeArrosed(ArrosedRepository $arrosedRepository, Request $request)
     {    
+        // refresh the isArrosed DateTime with the actual DateTime
         $dashId = $request->request->get('dashboard');
         $planteId = $request->request->get('plante');
 
@@ -47,12 +48,17 @@ class ArrosedController extends AbstractController
                                 ArrosedRepository $arrosedRepository,
                                 Request $request)
     {
+        // Start the isArrosed DateTime
         $planteToArrose = $planteRepository->find($plante_id);
         $dashboardToUpdate = $dashboardRepository->find($id);
 
         $arrosedToUpdate = $arrosedRepository->findTheGood($id, $plante_id);
 
         $arrosedToUpdate->setArrosedAt(new \DateTime());
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($arrosedToUpdate);
+        $entityManager->flush();
 
         return new Response('', Response::HTTP_CREATED);
     }
