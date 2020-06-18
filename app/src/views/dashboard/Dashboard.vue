@@ -9,19 +9,18 @@
                 <hr />
             </div>
 
-            <div class="col-lg-9 mt-3">
+            <div class="arrosage col-lg-9 mt-3">
                 <div class="col-12">
                     <h2 class="mb-3">Prochain arrosage</h2>
                     <p>Voici les plantes à entretenir en priorité</p>
-                    <div class=" row bg-primary justify-content-center pt-3">
+                    <div class="arrosage-plante row bg-primary justify-content-center pt-3">
                         <div v-for="plant in plants" :key="plant.id">
                             <div
                                 v-if="plant.watering.timeFrequency == 259200"
                             >
-                                <p class="arrosage text-light text-center">A arroser dans : 3 jours</p>
+                                <p class=" text-light text-center">A arroser dans : 3 jours</p>
                                 <PlantCard
                                     :plant="plant"
-                                    :toArrose="true"
                                 >
                                 </PlantCard>
                             </div>

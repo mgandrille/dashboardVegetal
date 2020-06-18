@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <footer v-if="userLogged != null || toArrose != true" class="footer my-2 text-right">
+            <footer v-if="userLogged != null" class="footer my-2 text-right is-hidden">
                 <button
                     class="btn btn-secondary ml-auto d-none"
                     @click.prevent="deletePlant()"
@@ -42,6 +42,7 @@
                     :disabled="isDisable"
                 >Ajouter +</button>
             </footer>
+            
         </div>
 </template>
 
@@ -120,7 +121,7 @@ export default {
                 this.userPlantes.forEach(plante => {
                     if (this.plant.id === plante.id) {
                         this.inDashboard = true;
-                        return (this.disable = true);
+                        return (this.isDisable = true);
                     }
                 });
             }
