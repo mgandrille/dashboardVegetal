@@ -8,7 +8,7 @@
             </button>
 
             <div class="collapse navbar-collapse bg-light navbar-light justify-content-md-end" id="navbarSupportedContent">
-                <ul class="navbar-nav container text-capitalize d-flex justify-content-md-around mx-4">
+                <ul class="navbar-nav container text-capitalize d-flex justify-content-md-end mx-4">
 
                     <li class="nav-item">     <!-- LIEN VERS LA PAGE CATALOGUE -->
                         <router-link :to="{ path: '/catalogue' }" class="nav-link">catalogue</router-link>

@@ -124,22 +124,6 @@ export default {
                     })
                 }
 
-                // this.plants.forEach(plant => {
-                //     let dateArrosage =
-                //         plant.arroseds.convertTimestamp +
-                //         plant.watering.timeFrequency;
-                        
-                //     console.log('date arrosage : ' + dateArrosage);
-
-                //     let date = Date.now();
-                //     console.log('aujourdhui : ' + date);
-
-                //     if (dateArrosage >= date) {
-                //         return (plant.isArrosed = true);
-                //         this.$http.get("/arrosed/isArrosed/" + this.dashboard.id + "/" + this.plant.id)
-                //     }
-                // });
-
             });
 
     }
