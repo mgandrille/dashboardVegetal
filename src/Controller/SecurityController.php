@@ -19,7 +19,7 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         
         if($error){
-            return $this->redirect('http://localhost:8888/#/authentification/connexion', 301);
+            return $this->redirect('http://localhost:8888/#/authentification/connexion?error=1', 301);
         }
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
