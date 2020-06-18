@@ -10,7 +10,7 @@
             </div>
 
             <div class="arrosage col-lg-9 mt-3"  >
-
+                <!-- **** Espace des alertes **** -->
                 <div class="col-12">
                     <h2 class="mb-3">Prochain arrosage</h2>
                     <p>Voici les plantes à entretenir en priorité</p>
@@ -35,15 +35,17 @@
 
                 <hr />
 
+                <!-- **** Espace des plantes contenues dans le dashboard **** -->
+
                 <div class="col-12" >
                     <h2 class="mb-3">Toutes vos plantes</h2>
                     <p>Un apperçu de toutes les plantes que vous avez :</p>
 
-                    <div class="title row mt-5 p-3" v-if="userLogged != null && userLogged.dashboard.id == $route.params.id">
+                    <div class="title row mt-5 p-3" v-if="userLogged != null && userLogged.dashboard.id == $route.params.id"> <!-- *** plantCard si connecté *** -->
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center" v-if="Object.keys(plants).length">
                             <PlantCard
                                 v-for="(plant, index) in plants"
-                                                                :key="index"
+                                :key="index"
 								:plant="plant"
                                 :inDashboard="inDashboard"
                                 :dashboard="userLogged"
@@ -56,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="title row mt-5 p-3" v-else>
+                    <div class="title row mt-5 p-3" v-else>  <!-- *** plantCard si non connecté *** -->
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center" v-if="Object.keys(plants).length">
                             <PlantCard
                                 v-for="(plant, index) in plants"
@@ -73,6 +75,8 @@
 
                 </div>
             </div>
+            
+            <!-- **** Espace Widgets **** -->
 
             <div class="col-lg-3 mt-3">
                 <h2 class="mb-3">Vos widgets</h2>

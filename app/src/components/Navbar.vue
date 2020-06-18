@@ -15,7 +15,7 @@
                     </li>
 
                     <li class="nav-item">     <!-- LIEN VERS LA PAGE CONTACT / A PROPOS -->
-                        <router-link :to="{ path: '/about' }" class="nav-link">à propos / contact</router-link>
+                        <router-link :to="{ path: '/about' }" class="nav-link">l'équipe</router-link>
                     </li>
 
                     <li class="nav-item dropdown">   <!-- BOUTTON DE CONNECTION -->

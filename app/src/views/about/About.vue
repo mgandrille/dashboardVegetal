@@ -20,6 +20,7 @@
                         </div>
                     </div>
 
+                    <!--  Cartes de description de l'équipe  -->
                     <div class="card-deck mb-5">
                         <div class="card">
                             <img @mouseover="hoverOver" @mouseout="hoverOut"  class="card-img-top" :src="sourceC" alt="Card image cap">

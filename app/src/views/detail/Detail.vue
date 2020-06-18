@@ -2,17 +2,17 @@
     <div class="detail bg-light">
         <div class="container-fluid">
             <div class="row">
-                <!-- left-side banner mettre le style en dynamique-->
+                <!-- left-side banner -->
                 <div class="banner col-lg-5 bg-light" v-bind:style="{ backgroundImage: 'url(http://localhost:8888/uploads/pictures/' + plant.picture + ')' }"></div>
 
                 <!-- main content -->
-                <main class="main-content col-lg-7 offset-lg-5 container-lg bg-light">
+                <main class="main-content col-lg-7 offset-lg-5 container-lg bg-light">  <!-- *** Lien vers catalogue *** -->
                     <router-link :to="{ path: '/catalogue' }" class="dropdown-item text-secondary text-capitalize">
                         <i class="fa fa-angle-double-left"></i>
                         catalogue
                     </router-link>
 
-                    <div class="title row d-flex justify-content-end mt-5 p-3">
+                    <div class="title row d-flex justify-content-end mt-5 p-3"> <!-- *** Affichage du bouton "Ajouter" en fonction de la connexion *** -->
                         <div v-if="userLogged != null" class="mr-5">
                             <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }" :disabled="isDisable">Ajouter +</button>
                         </div>
@@ -22,8 +22,9 @@
                                 voir sur mon dashboard
                                 <i class="fa fa-leaf"></i>
                             </router-link>
-                    </div>
+                        </div>
 
+                        <!-- *** Description plante *** -->
                         <div class="col-lg-12">
                             <h2 class="text-primary">{{ plant.name }}</h2>
                         </div>

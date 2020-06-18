@@ -16,6 +16,7 @@
                         <BarreRecherche v-on:get-name-param="searchbarParams = $event" />
                     </div>
 
+                    <!--  Spinner d'attente lors de la recherche  -->
                     <div
                         class="loader row justify-content-center align-items-center"
                         v-if="loading"
@@ -97,6 +98,8 @@
                             </g>
                         </svg>
                     </div>
+
+                    <!-- Fin du spinner -->
 
                     <div class="title row mt-2 p-3">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
