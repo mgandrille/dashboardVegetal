@@ -89,17 +89,6 @@ export default {
         }
     },
 
-    mounted() {
-
-            this.$http.get('api/user')
-                .then((result) => {
-                    this.$store.state.userLogged = result.data
-            })
-                .then(() => {
-                    console.log(this.$store.state.userLogged)
-                });
-    },
-
     created() {
         this.$http
             .get("api/user")
@@ -109,12 +98,12 @@ export default {
                 } else {
                     this.userLogged = null;
                 }
-        }),
+        });
 
         this.$http.get('/api/bigdash')
             .then((result) => {
                 this.dashboards = result.data;
-            })
+            });
 	}
 };
 </script>
