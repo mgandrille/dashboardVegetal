@@ -14,7 +14,7 @@
 	min-height: 100vh;
 	
 	@media (min-width: $lg-breakpoint) {
-		margin-top: 0;	
+		margin-top: $navbar-height;	
 	}
 }
 
@@ -28,4 +28,8 @@ h2 {
 	@media (min-width: $lg-breakpoint) {
 		text-align: left;	
 	}
+}
+
+.arrosage {
+	font-size: 1.5rem;
 }

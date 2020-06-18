@@ -13,16 +13,15 @@
                 <div class="col-12">
                     <h2 class="mb-3">Prochain arrosage</h2>
                     <p>Voici les plantes à entretenir en priorité</p>
-                    <div class="row bg-primary justify-content-center pt-3">
+                    <div class=" row bg-primary justify-content-center pt-3">
                         <div v-for="plant in plants" :key="plant.id">
-                            <div class="text-light"
+                            <div
                                 v-if="plant.watering.timeFrequency == 259200"
                             >
-                                <h6 class="text-light">A arroser dans : 3 jours</h6>
+                                <p class="arrosage text-light text-center">A arroser dans : 3 jours</p>
                                 <PlantCard
-                                    
                                     :plant="plant"
-                                    
+                                    :toArrose="true"
                                 >
                                 </PlantCard>
                             </div>
