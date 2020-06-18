@@ -1,7 +1,7 @@
 <template>
         <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed fixed-top" id="top">
 
-            <router-link :to="{ path: '/' }" class="navbar-brand text-capitalize"><i class="fa fa-leaf"></i>  dashboard végétal </router-link>
+            <router-link :to="{ path: '/' }" class="navbar-brand"><i class="fa fa-leaf"></i>  GardenBoard </router-link>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                             <span v-if="userLogged"> 
                                 bienvenue <span class="text-primary font-weight-bold">  {{ userLogged.username }}  </span> !
                             </span>
-                            <span v-else>  
+                            <span v-else class="font-weight-bold">  
                                 connexion
                             </span>
                             
@@ -80,5 +80,9 @@ export default {
     @import '../variables-styles.scss';
     nav {
         height: $navbar-height;
+    }
+    .dropdown-menu {
+        left: auto;
+        right: 0;
     }
 </style>
