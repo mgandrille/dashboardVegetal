@@ -27,8 +27,8 @@
             </div>
         </div>
 
-		<footer v-if="userLogged.id != undefined" class="footer my-2 text-right">
-            <button class="btn btn-primary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
+		<footer v-if="userLogged != null" class="footer my-2 text-right">
+            <button class="btn btn-secondary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
             <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }" :disabled="isDisable">Ajouter +</button>
         </footer>
     </div>

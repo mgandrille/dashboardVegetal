@@ -98,27 +98,17 @@
                         </svg>
                     </div>
 
-                    <div class="title row mt-2 p-3" v-if="userLogged.username">
+                    <div class="title row mt-2 p-3">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in displayedPlants"
                                 :key="index"
                                 :plant="plant"
                                 :userLogged="userLogged"
-                                :userPlantes="userLogged.dashboard.plantes"
+                                :userPlantes="(userLogged != null) ? userLogged.dashboard.plantes : null"
                             ></PlantCard>
                         </div>
                     </div>
-                    <!-- <div class="title row mt-2 p-3" v-else>
-                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
-                            <PlantCard
-                                v-for="(plant, index) in displayedPlants"
-                                :key="index"
-                                :plant="plant"
-                                :userLogged="userLogged"
-                            ></PlantCard>
-                        </div>
-                    </div> -->
 
                     <div v-if="notFind" class="title row p-3">
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
