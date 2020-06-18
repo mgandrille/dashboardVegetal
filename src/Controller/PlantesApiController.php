@@ -51,7 +51,6 @@ class PlantesApiController extends AbstractController
     /**
      * @Route("/plantes/search")
      */
-
      public function search(Request $request, PlantesRepository $plantesrepository){
         // Search with GET parameters, init with $request if exists, empty if not
 
@@ -62,8 +61,10 @@ class PlantesApiController extends AbstractController
             // if search with string exists
             if($request->query->get('name') != 'null'){
                 // if not null
+                $searchString = preg_replace("/[^a-zA-Z]/s",'', $request->query->get('name'));
+                // Clean string without specials characters
                 $result->where('p.name LIKE :name OR p.species LIKE :name')
-                ->setParameter('name', '%' . $request->query->get('name') . '%');
+                ->setParameter('name', '%' . $searchString . '%');
             }
         }
 
