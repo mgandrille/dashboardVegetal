@@ -40,7 +40,7 @@
                     <p>Un apperçu de toutes les plantes que vous avez :</p>
 
                     <div class="title row mt-5 p-3" v-if="userLogged != null && userLogged.dashboard.id == $route.params.id">
-                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center" v-if="Object.keys(plants).length">
                             <PlantCard
                                 v-for="(plant, index) in plants"
                                                                 :key="index"
@@ -51,10 +51,13 @@
                             >
                             </PlantCard>
                         </div>
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center" v-else>
+                            <p>Aucune plante dans ce dashboard</p>
+                        </div>
                     </div>
 
                     <div class="title row mt-5 p-3" v-else>
-                        <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center" v-if="Object.keys(plants).length">
                             <PlantCard
                                 v-for="(plant, index) in plants"
                                 :key="index"
@@ -62,6 +65,9 @@
                                 :inDashboard="inDashboard"
                             >
                             </PlantCard>
+                        </div>
+                        <div class="col-lg-12 d-flex flex-wrap justify-content-center" v-else>
+                            <p>Aucune plante dans ce dashboard</p>
                         </div>
                     </div>
 
