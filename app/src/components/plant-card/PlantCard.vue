@@ -1,5 +1,4 @@
 <template>
-
         <div
             :class="classes"
             @mouseover="hoverOver"

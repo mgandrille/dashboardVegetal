@@ -107,6 +107,12 @@ class DashboardController extends AbstractController
             $entityManager->flush();
             
             return new Response('', Response::HTTP_CREATED);
+
+        }else{
+
+            return $this->render('fail/joker.html.twig', [
+                'joker'     => 'joker.gif'
+            ]);
         }
     }
 
@@ -115,7 +121,8 @@ class DashboardController extends AbstractController
      */
     public function removePlante(Request $request, DashboardRepository $dashboardRepository, PlantesRepository $planteRepository, $id, $plante_id){
 
-        // Find plante with ID for add into dashboard
+        if($this->getUser()->getDasboard()->getId() == $id){
+                    // Find plante with ID for add into dashboard
         $planteToDelete = $planteRepository->find($plante_id);
         // Find dashboard with ID
         $dashboard = $dashboardRepository->find($id);
@@ -127,6 +134,13 @@ class DashboardController extends AbstractController
         $entityManager->flush();
 
         return new Response('', Response::HTTP_CREATED);
+
+        }else{
+
+            return $this->render('fail/joker.html.twig', [
+                'joker'     => 'joker.gif'
+            ]);
+        }
     }
 
     /**
