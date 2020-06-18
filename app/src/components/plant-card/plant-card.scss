@@ -3,6 +3,7 @@
 .card-img-top {
 	height: auto;
 	width: 150px;
+	cursor: pointer;
 
 	@media (min-width: $md-breakpoint ) {
 		height: 200px;
@@ -12,7 +13,10 @@
 
 .card {
 	border-radius: 10px !important;
-	cursor: pointer !important;
+}
+
+.card-title {
+	cursor: pointer;
 }
 
 .card-header {

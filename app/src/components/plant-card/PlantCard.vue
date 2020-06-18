@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{ path: '../plante/detail/' + plant.id }">
+
         <div
             :class="classes"
             @mouseover="hoverOver"
@@ -7,46 +7,55 @@
             class="card m-2 m-lg-5 col-12 col-md-auto"
             style="width: 18rem;"
         >
-        <div class="d-flex flex-md-column">
-            <img
-                v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
-                class="card-img-top p-3"
-                alt="image"
-            />
-            <div class="d-flex flex-column card-body">
-                <div
-                    class="alert alert-success alert-dismissible fade show d-none"
-                    v-bind:class="{ 'd-block': isAlert }"
-                    role="alert"
-                >
-                    La plante a été ajoutée à votre Dashboard !
+            <div
+                router-link
+                :to="{ path: '../plante/detail/' + plant.id }"
+                tag="div"
+                class="d-flex flex-md-column"
+            >
+                <router-link :to="{ path: '../plante/detail/' + plant.id }" tag="img"
+                    v-bind:src="'http://localhost:8888/uploads/pictures/' + plant.picture"
+                    class="card-img-top p-3"
+                    alt="image"
+                />
+                <div class="d-flex flex-column card-body">
+                    <div
+                        class="alert alert-success alert-dismissible fade show d-none"
+                        v-bind:class="{ 'd-block': isAlert }"
+                        role="alert"
+                    >La plante a été ajoutée à votre Dashboard !</div>
+
+                    <router-link :to="{ path: '../plante/detail/' + plant.id }" class="card-title" tag="h5">{{ plant.name }}</router-link>
+                    <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
                 </div>
-
-                <h5 class="card-title">{{ plant.name }}</h5>
-                <p class="card-text">{{ plant.description.substring(0, 85) }}...</p>
             </div>
+
+            <footer v-if="userLogged != null" class="footer my-2 text-right">
+                <button
+                    class="btn btn-secondary ml-auto d-none"
+                    @click.prevent="deletePlant()"
+                    v-bind:class="{ 'd-inline-block': inDashboard }"
+                >Supprimer</button>
+                <button
+                    class="btn btn-primary ml-auto"
+                    @click.prevent="addPlant()"
+                    v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }"
+                    :disabled="isDisable"
+                >Ajouter +</button>
+            </footer>
         </div>
-
-		<footer v-if="userLogged != null" class="footer my-2 text-right">
-            <button class="btn btn-secondary ml-auto d-none" @click.prevent="deletePlant()" v-bind:class="{ 'd-inline-block': inDashboard }">Supprimer</button>
-            <button class="btn btn-primary ml-auto" @click.prevent="addPlant()" v-bind:class="{ disabled: isDisable, 'd-none': inDashboard }" :disabled="isDisable">Ajouter +</button>
-        </footer>
-    </div>
-
-    </router-link>
-
 </template>
 
 <script>
 export default {
     name: "PlantCard",
     props: [
-        'plantSrcImg',
-        'plant',
-        'userLogged',
-        'userPlantes',
-        'inDashboard',
-        'dashboard'
+        "plantSrcImg",
+        "plant",
+        "userLogged",
+        "userPlantes",
+        "inDashboard",
+        "dashboard"
     ],
 
     data() {
@@ -59,17 +68,14 @@ export default {
     },
 
     created() {
-        this.$http
-            .get("api/user")
-            .then(result => {
-                if(Object.keys(result.data).length) {
-                    this.userLogged = result.data;
-                } else {
-                    this.userLogged = null;
-                }
-            })
+        this.$http.get("api/user").then(result => {
+            if (Object.keys(result.data).length) {
+                this.userLogged = result.data;
+            } else {
+                this.userLogged = null;
+            }
+        });
         this.isDisabled();
-
     },
 
     methods: {
@@ -88,18 +94,24 @@ export default {
             }
         },
         deletePlant() {
-            this.$http.get('dashboard/remove/' + this.userLogged.dashboard.id + '/' + this.plant.id)
-            .then(() => {
-                console.log('plante supprimée');
-                window.location.reload();
-            })
+            this.$http
+                .get(
+                    "dashboard/remove/" +
+                        this.userLogged.dashboard.id +
+                        "/" +
+                        this.plant.id
+                )
+                .then(() => {
+                    console.log("plante supprimée");
+                    window.location.reload();
+                });
         },
-        hoverOver(){
-            this.classes.push('animated')
+        hoverOver() {
+            this.classes.push("animated");
         },
-        hoverOut(){
-            this.classes = []
-        },
+        hoverOut() {
+            this.classes = [];
+        }
     },
 
     computed: {
