@@ -43,7 +43,7 @@
                         <div class="col-lg-12 d-flex flex-wrap justify-content-center">
                             <PlantCard
                                 v-for="(plant, index) in plants"
-                                :key="index"
+                                                                :key="index"
 								:plant="plant"
                                 :inDashboard="inDashboard"
                                 :dashboard="userLogged"
@@ -59,6 +59,7 @@
                                 v-for="(plant, index) in plants"
                                 :key="index"
 								:plant="plant"
+                                :inDashboard="inDashboard"
                             >
                             </PlantCard>
                         </div>
